@@ -1,12 +1,16 @@
 import React from 'react';
 import MinimalHeader from './cms/MinimalHeader.jsx';
-import BrandLogoCarousel from './cms/BrandLogoCarousel.jsx';
 import ShopByCategoryV2 from './cms/ShopByCategoryV2.jsx';
+import DeliveredGalleries from './cms/DeliveredGalleries.jsx';
+import WhyChooseOurBrand from './cms/WhyChooseOurBrand.jsx';
+import HowItWorksProcessSection from './cms/HowItWorksProcessSection.jsx';
 
 const LayoutRendererInternalComponentMap = {
   'Minimal Header': MinimalHeader,
-  'Brand Logo Carousel': BrandLogoCarousel,
   'Shop By Category V2': ShopByCategoryV2,
+  'Delivered Galleries': DeliveredGalleries,
+  'Why Choose Our Brand': WhyChooseOurBrand,
+  'How It Works (Process Section)': HowItWorksProcessSection,
 };
 
 // Forward declaration for recursive use

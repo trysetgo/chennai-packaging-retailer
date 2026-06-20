@@ -7,8 +7,7 @@
     "react-dom": "^18.2.0",
     "react-router-dom": "latest",
     "prop-types": "latest",
-    "@heroicons/react": "latest",
-    "lucide-react": "latest"
+    "@heroicons/react": "latest"
   },
   "devDependencies": {
     "vite": "^5.0.0",
