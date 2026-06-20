@@ -1,4 +1,7 @@
 import React from 'react';
+import Heading from './cms/Heading.jsx';
+import List from './cms/List.jsx';
+import Paragraph from './cms/Paragraph.jsx';
 import MinimalHeader from './cms/MinimalHeader.jsx';
 import ShopByCategoryV2 from './cms/ShopByCategoryV2.jsx';
 import DeliveredGalleries from './cms/DeliveredGalleries.jsx';
@@ -8,6 +11,9 @@ import ModernMixedCta from './cms/ModernMixedCta.jsx';
 import Footer from './cms/Footer.jsx';
 
 const LayoutRendererInternalComponentMap = {
+  'Heading': Heading,
+  'List': List,
+  'Paragraph': Paragraph,
   'Minimal Header': MinimalHeader,
   'Shop By Category V2': ShopByCategoryV2,
   'Delivered Galleries': DeliveredGalleries,
