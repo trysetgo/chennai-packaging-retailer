@@ -4,6 +4,8 @@ import ShopByCategoryV2 from './cms/ShopByCategoryV2.jsx';
 import DeliveredGalleries from './cms/DeliveredGalleries.jsx';
 import WhyChooseOurBrand from './cms/WhyChooseOurBrand.jsx';
 import HowItWorksProcessSection from './cms/HowItWorksProcessSection.jsx';
+import ModernMixedCta from './cms/ModernMixedCta.jsx';
+import Footer from './cms/Footer.jsx';
 
 const LayoutRendererInternalComponentMap = {
   'Minimal Header': MinimalHeader,
@@ -11,6 +13,8 @@ const LayoutRendererInternalComponentMap = {
   'Delivered Galleries': DeliveredGalleries,
   'Why Choose Our Brand': WhyChooseOurBrand,
   'How It Works (Process Section)': HowItWorksProcessSection,
+  'Modern Mixed CTA': ModernMixedCta,
+  'Footer': Footer,
 };
 
 // Forward declaration for recursive use
