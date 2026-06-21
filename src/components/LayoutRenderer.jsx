@@ -2,25 +2,19 @@ import React from 'react';
 import Heading from './cms/Heading.jsx';
 import List from './cms/List.jsx';
 import Paragraph from './cms/Paragraph.jsx';
-import MinimalHeader from './cms/MinimalHeader.jsx';
-import ShopByCategoryV2 from './cms/ShopByCategoryV2.jsx';
-import DeliveredGalleries from './cms/DeliveredGalleries.jsx';
+import DigitalHeaderBanner from './cms/DigitalHeaderBanner.jsx';
+import TrustCredibilityV1 from './cms/TrustCredibilityV1.jsx';
 import WhyChooseOurBrand from './cms/WhyChooseOurBrand.jsx';
-import HowItWorksProcessSection from './cms/HowItWorksProcessSection.jsx';
-import ModernMixedCta from './cms/ModernMixedCta.jsx';
-import Footer from './cms/Footer.jsx';
+import ShopByCategoryV1 from './cms/ShopByCategoryV1.jsx';
 
 const LayoutRendererInternalComponentMap = {
   'Heading': Heading,
   'List': List,
   'Paragraph': Paragraph,
-  'Minimal Header': MinimalHeader,
-  'Shop By Category V2': ShopByCategoryV2,
-  'Delivered Galleries': DeliveredGalleries,
+  'Digital Header Banner': DigitalHeaderBanner,
+  'TrustCredibilityV1': TrustCredibilityV1,
   'Why Choose Our Brand': WhyChooseOurBrand,
-  'How It Works (Process Section)': HowItWorksProcessSection,
-  'Modern Mixed CTA': ModernMixedCta,
-  'Footer': Footer,
+  'Shop By Category V1': ShopByCategoryV1,
 };
 
 // Forward declaration for recursive use
