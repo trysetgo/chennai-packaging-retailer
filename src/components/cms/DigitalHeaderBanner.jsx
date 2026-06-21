@@ -15,6 +15,11 @@ export const digitalHeaderBannerDefaultProps = {
   heroSubtitle: "Designing modern experiences for bold clients and growing brands.",
   logoText: "Digital Logo",
   logoHref: "#",
+  logoImage: "",
+  logoImageAlt: "Digital Logo",
+  logoImageWidth: "auto",
+  logoImageHeight: "40px",
+  showLogoTextWithImage: false,
   logoFontFamily: "Inter, system-ui, sans-serif",
   logoFontSize: "24px",
   ctaText: "Get Started",
@@ -81,6 +86,11 @@ const DigitalHeaderBanner = ({
   heroSubtitle = digitalHeaderBannerDefaultProps.heroSubtitle,
   logoText = digitalHeaderBannerDefaultProps.logoText,
   logoHref = digitalHeaderBannerDefaultProps.logoHref,
+  logoImage = digitalHeaderBannerDefaultProps.logoImage,
+  logoImageAlt = digitalHeaderBannerDefaultProps.logoImageAlt,
+  logoImageWidth = digitalHeaderBannerDefaultProps.logoImageWidth,
+  logoImageHeight = digitalHeaderBannerDefaultProps.logoImageHeight,
+  showLogoTextWithImage = digitalHeaderBannerDefaultProps.showLogoTextWithImage,
   logoFontFamily = digitalHeaderBannerDefaultProps.logoFontFamily,
   logoFontSize = digitalHeaderBannerDefaultProps.logoFontSize,
   ctaText = digitalHeaderBannerDefaultProps.ctaText,
@@ -131,6 +141,26 @@ const DigitalHeaderBanner = ({
     flexWrap: "wrap",
     fontSize: "14px",
     fontWeight: 600,
+  };
+
+  const logoLinkStyle = {
+    fontSize: logoFontSize || "24px",
+    fontFamily: logoFontFamily || "'Inter', system-ui, sans-serif",
+    color: textColor,
+    fontWeight: 700,
+    textDecoration: "none",
+    display: "inline-flex",
+    alignItems: "center",
+    gap: "10px",
+    minWidth: 0,
+  };
+
+  const logoImageStyle = {
+    width: logoImageWidth || "auto",
+    height: logoImageHeight || "40px",
+    maxWidth: "220px",
+    objectFit: "contain",
+    display: "block",
   };
 
   const heroStyle = {
@@ -200,17 +230,11 @@ const DigitalHeaderBanner = ({
       `}</style>
       <div style={containerStyle}>
         <div style={navStyle}>
-          <a
-            href={logoHref || "#"}
-            style={{
-              fontSize: logoFontSize || "24px",
-              fontFamily: logoFontFamily || "'Inter', system-ui, sans-serif",
-              color: textColor,
-              fontWeight: 700,
-              textDecoration: "none",
-            }}
-          >
-            {logoText}
+          <a href={logoHref || "#"} style={logoLinkStyle}>
+            {logoImage ? (
+              <img src={logoImage} alt={logoImageAlt || logoText || "Logo"} style={logoImageStyle} />
+            ) : null}
+            {(!logoImage || showLogoTextWithImage) && logoText ? <span>{logoText}</span> : null}
           </a>
           <div style={navLinksStyle}>
             {safeNavLinks.map((link) => (
@@ -306,6 +330,11 @@ DigitalHeaderBanner.propTypes = {
   heroSubtitle: PropTypes.string,
   logoText: PropTypes.string,
   logoHref: PropTypes.string,
+  logoImage: PropTypes.string,
+  logoImageAlt: PropTypes.string,
+  logoImageWidth: PropTypes.string,
+  logoImageHeight: PropTypes.string,
+  showLogoTextWithImage: PropTypes.bool,
   logoFontFamily: PropTypes.string,
   logoFontSize: PropTypes.string,
   ctaText: PropTypes.string,
