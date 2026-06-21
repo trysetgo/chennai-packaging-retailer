@@ -34,7 +34,7 @@ return (
     "text": "Sustainable materials."
   }
 ]`} imageObjectFit="cover" cardSubTextColor="#6b7280" sectionBackgroundColor="#ffffff"></WhyChooseOurBrand>
-<ShopByCategoryV1 gap="20px" columns={5} imageObjectFit="contain" categoriesLayout={`[
+<ShopByCategoryV1 gap="20px" columns={5} imageObjectFit="contain" showCardAccent={true} animationEffect="zoom-in" categoriesLayout={`[
   {
     "id": "cat-1",
     "title": "Butter Papers",
@@ -56,14 +56,23 @@ return (
     "title": "Shipping Boxes",
     "image": "http://localhost:4105/api/assets/serve/ac3d552b-092f-4217-971e-5fc57891c27c/440e4625-7cb0-42ca-9bbf-81f85964ebfd/supabase",
     "link": "#",
-    "itemCount": ""
+    "itemCount": "",
+    "hidden": false,
+    "badge": "12 Products",
+    "useGlassContent": true
   },
   {
     "id": "cat-4",
     "title": "Premium Envelop",
     "image": "http://localhost:4105/api/assets/serve/7c58dfe2-d7a1-4850-8b49-b2cc4e4e7584/440e4625-7cb0-42ca-9bbf-81f85964ebfd/supabase",
     "link": "#",
-    "itemCount": ""
+    "itemCount": "",
+    "accentColor": "#ffffff",
+    "cardBackgroundColor": "#ffffff",
+    "titleColor": "#ffffff",
+    "useGlassContent": false,
+    "subTextColor": "#f7eeee",
+    "badgeBackgroundColor": "#7ea1ec"
   },
   {
     "id": "cat-1782018474059",
@@ -119,6 +128,6 @@ return (
     "description": "",
     "price": ""
   }
-]`}></ShopByCategoryV1></>
+]`} sectionBackgroundColor="#ffffff" enableEntranceAnimation={true}></ShopByCategoryV1></>
 );
 };
