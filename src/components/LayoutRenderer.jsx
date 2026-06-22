@@ -1,26 +1,8 @@
 import React from 'react';
-import Heading from './cms/Heading.jsx';
-import List from './cms/List.jsx';
-import Paragraph from './cms/Paragraph.jsx';
-import DigitalHeaderBanner from './cms/DigitalHeaderBanner.jsx';
-import TrustCredibilityV1 from './cms/TrustCredibilityV1.jsx';
-import WhyChooseOurBrand from './cms/WhyChooseOurBrand.jsx';
-import ShopByCategoryV1 from './cms/ShopByCategoryV1.jsx';
-import HowItWorksProcessSection from './cms/HowItWorksProcessSection.jsx';
-import ModernMixedCta from './cms/ModernMixedCta.jsx';
-import Footer from './cms/Footer.jsx';
+import DataTable from './cms/DataTable.jsx';
 
 const LayoutRendererInternalComponentMap = {
-  'Heading': Heading,
-  'List': List,
-  'Paragraph': Paragraph,
-  'Digital Header Banner': DigitalHeaderBanner,
-  'TrustCredibilityV1': TrustCredibilityV1,
-  'Why Choose Our Brand': WhyChooseOurBrand,
-  'Shop By Category V1': ShopByCategoryV1,
-  'How It Works (Process Section)': HowItWorksProcessSection,
-  'Modern Mixed CTA': ModernMixedCta,
-  'Footer': Footer,
+  'Data Table': DataTable,
 };
 
 // Forward declaration for recursive use
