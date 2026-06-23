@@ -87,7 +87,7 @@ export const headerComponentDefaultProps = {
   containerPaddingY: "12px",
   backdropBlur: "20px",
   sticky: true,
-  topOffset: "16px",
+  topOffset: "0px",
   zIndex: 50,
   showAuth: true,
   isLoggedIn: false,
@@ -344,9 +344,10 @@ const HeaderComponent = (rawProps) => {
     top: sticky ? topOffset : undefined,
     zIndex,
     width: "100%",
+    boxSizing: "border-box",
     background: variant === "solid" ? backgroundColor || innerBackground : "transparent",
     color: textColor,
-    padding: variant === "floating" ? (isResponsiveViewport ? "10px 12px 0" : "14px 16px 0") : isResponsiveViewport ? "0 12px" : "0 16px",
+    padding: variant === "floating" ? (isResponsiveViewport ? "10px 12px 0" : "14px 16px 0") : "0px",
     ...style,
   };
 

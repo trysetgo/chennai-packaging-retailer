@@ -165,6 +165,7 @@ const IllustratedHowItWorks = ({
           {safeSteps.map((step, index) => (
             <article
               key={step.id || `ihiw-${index}`}
+              className={classNames("ihiw-card", { "ihiw-slide": sliderMode })}
               style={{
                 position: "relative",
                 background: cardBackground,
@@ -172,19 +173,15 @@ const IllustratedHowItWorks = ({
                 border: `1px solid ${borderColor}`,
                 boxShadow: cardShadow,
                 padding: "18px",
-                display: "grid",
-                gridTemplateColumns: "1fr 1fr",
-                gap: "12px",
-                gridTemplateAreas:
-                  (step.imagePosition || "right") === "left" ? '"media text"' : '"text media"',
                 alignItems: "center",
-                minHeight: step.cardHeight || cardHeight,
-                width: step.cardWidth || cardWidth,
-                minWidth: step.cardWidth || cardWidth,
                 scrollSnapAlign: sliderMode ? "start" : "initial",
+                "--card-min-height": step.cardHeight || cardHeight,
+                "--card-width": step.cardWidth || cardWidth,
+                "--card-grid-areas": (step.imagePosition || "right") === "left" ? '"media text"' : '"text media"',
+                "--card-media-align": (step.imagePosition || "right") === "left" ? "left" : "right",
               }}
             >
-              <div style={{ position: "absolute", top: "14px", left: "14px" }}>
+              <div style={{ position: "absolute", top: "14px", left: "14px", zIndex: 10 }}>
                 <span
                   style={{
                     display: "inline-flex",
@@ -203,7 +200,7 @@ const IllustratedHowItWorks = ({
                 </span>
               </div>
 
-              <div style={{ paddingLeft: "4px", gridArea: (step.imagePosition || "right") === "left" ? "text" : "text" }}>
+              <div className="ihiw-card-text" style={{ paddingLeft: "4px", gridArea: "text" }}>
                 <h3
                   style={{
                     margin: "0 0 8px 0",
@@ -228,7 +225,7 @@ const IllustratedHowItWorks = ({
                 ) : null}
               </div>
 
-              <div style={{ textAlign: (step.imagePosition || "right") === "left" ? "left" : "right", gridArea: "media" }}>
+              <div className="ihiw-card-media" style={{ gridArea: "media" }}>
                 {step.image ? (
                   <img
                     src={step.image}
@@ -252,7 +249,8 @@ const IllustratedHowItWorks = ({
                       borderRadius: "12px",
                       background: `${accentColor}12`,
                       border: `1px dashed ${accentColor}66`,
-                      marginLeft: "auto",
+                      marginLeft: (step.imagePosition || "right") === "left" ? "0" : "auto",
+                      marginRight: (step.imagePosition || "right") === "left" ? "auto" : "0",
                     }}
                   />
                 )}
@@ -281,9 +279,48 @@ const IllustratedHowItWorks = ({
       </div>
 
       <style>{`
+        .ihiw-card {
+          display: grid;
+          grid-template-columns: 1fr 1fr;
+          gap: 12px;
+          grid-template-areas: var(--card-grid-areas);
+          min-height: var(--card-min-height);
+          width: 100%;
+        }
+        .ihiw-slide {
+          width: var(--card-width) !important;
+          min-width: var(--card-width) !important;
+        }
+        .ihiw-card-media {
+          text-align: var(--card-media-align);
+        }
         @media (max-width: 1024px) {
-          .ihiw-grid {
+          .ihiw-grid:not(.ihiw-slider) {
             grid-template-columns: repeat(auto-fit, minmax(min(100%, 280px), 1fr)) !important;
+          }
+          .ihiw-slide {
+            width: min(85vw, var(--card-width)) !important;
+            min-width: min(85vw, var(--card-width)) !important;
+          }
+        }
+        @media (max-width: 640px) {
+          .ihiw-card {
+            grid-template-columns: 1fr !important;
+            grid-template-areas: "media" "text" !important;
+            padding: 32px 16px 24px 16px !important;
+          }
+          .ihiw-card-media {
+            text-align: center !important;
+            display: flex;
+            justify-content: center;
+          }
+          .ihiw-card-media > div {
+             margin: 0 auto !important;
+          }
+          .ihiw-card-text {
+            text-align: center !important;
+            padding-left: 0 !important;
+            margin-top: 8px;
           }
         }
         .ihiw-hide-scrollbar::-webkit-scrollbar {
