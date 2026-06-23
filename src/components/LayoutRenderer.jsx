@@ -12,7 +12,6 @@ import IllustratedHowItWorks from './cms/IllustratedHowItWorks.jsx';
 import RichTextContentBlock from './cms/RichTextContentBlock.jsx';
 import CenteredCta from './cms/CenteredCta.jsx';
 import Paragraph from './cms/Paragraph.jsx';
-import HeroComponentDefaultProps from './cms/HeroComponentDefaultProps.jsx';
 
 const LayoutRendererInternalComponentMap = {
   'Minimal Header': MinimalHeader,
