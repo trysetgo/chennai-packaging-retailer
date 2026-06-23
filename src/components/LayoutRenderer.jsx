@@ -1,8 +1,33 @@
 import React from 'react';
-import DataTable from './cms/DataTable.jsx';
+import MinimalHeader from './cms/MinimalHeader.jsx';
+import Heading from './cms/Heading.jsx';
+import List from './cms/List.jsx';
+import TimelineRoadmap from './cms/TimelineRoadmap.jsx';
+import Footer from './cms/Footer.jsx';
+import Header from './cms/Header.jsx';
+import HeroBanner from './cms/HeroBanner.jsx';
+import WhyChooseOurBrand from './cms/WhyChooseOurBrand.jsx';
+import TrendingProductHero from './cms/TrendingProductHero.jsx';
+import IllustratedHowItWorks from './cms/IllustratedHowItWorks.jsx';
+import RichTextContentBlock from './cms/RichTextContentBlock.jsx';
+import CenteredCta from './cms/CenteredCta.jsx';
+import Paragraph from './cms/Paragraph.jsx';
+import HeroComponentDefaultProps from './cms/HeroComponentDefaultProps.jsx';
 
 const LayoutRendererInternalComponentMap = {
-  'Data Table': DataTable,
+  'Minimal Header': MinimalHeader,
+  'Heading': Heading,
+  'List': List,
+  'Timeline / Roadmap': TimelineRoadmap,
+  'Footer': Footer,
+  'Header': Header,
+  'Hero Banner': HeroBanner,
+  'Why Choose Our Brand': WhyChooseOurBrand,
+  'Trending Product Hero': TrendingProductHero,
+  'Illustrated How It Works': IllustratedHowItWorks,
+  'Rich Text Content Block': RichTextContentBlock,
+  'Centered CTA': CenteredCta,
+  'Paragraph': Paragraph,
 };
 
 // Forward declaration for recursive use
