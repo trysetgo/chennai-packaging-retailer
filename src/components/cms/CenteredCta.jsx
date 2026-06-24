@@ -73,55 +73,29 @@ const CenteredCTA = ({
 }) => {
   const defaultButtons = [
     { id: "1", text: "Shop Now", link: "#", style: "primary", target: "_self" },
-    {
-      id: "2",
-      text: "Contact Us",
-      link: "#",
-      style: "secondary",
-      target: "_self",
-    },
+    { id: "2", text: "Contact Us", link: "#", style: "secondary", target: "_self" },
   ];
 
-  const displayButtons =
-    Array.isArray(buttons) && buttons.length ? buttons : defaultButtons;
+  const displayButtons = Array.isArray(buttons) && buttons.length ? buttons : defaultButtons;
 
   const getButtonStyles = (buttonStyle) => {
     switch (buttonStyle) {
       case "primary":
-        return {
-          backgroundColor: primaryButtonBg,
-          color: primaryButtonColor,
-          border: primaryButtonBorder || "none",
-        };
+        return { backgroundColor: primaryButtonBg, color: primaryButtonColor, border: primaryButtonBorder || "none" };
       case "secondary":
-        return {
-          backgroundColor: secondaryButtonBg,
-          color: secondaryButtonColor,
-          border: secondaryButtonBorder || "none",
-        };
+        return { backgroundColor: secondaryButtonBg, color: secondaryButtonColor, border: secondaryButtonBorder || "none" };
       case "tertiary":
-        return {
-          backgroundColor: tertiaryButtonBg,
-          color: tertiaryButtonColor,
-          border: tertiaryButtonBorder || "none",
-        };
+        return { backgroundColor: tertiaryButtonBg, color: tertiaryButtonColor, border: tertiaryButtonBorder || "none" };
       default:
         return { backgroundColor: "#e2e8f0", color: "#0f172a", border: "none" };
     }
   };
 
-  const justifyContent =
-    textAlign === "left"
-      ? "flex-start"
-      : textAlign === "right"
-        ? "flex-end"
-        : "center";
+  const justifyContent = textAlign === "left" ? "flex-start" : textAlign === "right" ? "flex-end" : "center";
   const resolvedOverlayOpacity = Number(overlayOpacity) || 0;
   const resolvedShapeOpacity = Number(floatingShapeOpacity) || 0;
   const showOverlay = Boolean(backgroundOverlay) && resolvedOverlayOpacity > 0;
-  const showShape =
-    Boolean(floatingShapeColor && floatingShapeColor !== "transparent") &&
-    resolvedShapeOpacity > 0;
+  const showShape = Boolean(floatingShapeColor && floatingShapeColor !== "transparent") && resolvedShapeOpacity > 0;
 
   return (
     <section
@@ -334,12 +308,8 @@ const CenteredCTA = ({
             opacity: resolvedShapeOpacity,
             pointerEvents: "none",
             boxShadow: "none",
-            ...(String(floatingShapePosition).includes("top")
-              ? { top: floatingShapeOffset }
-              : { bottom: floatingShapeOffset }),
-            ...(String(floatingShapePosition).includes("left")
-              ? { left: floatingShapeOffset }
-              : { right: floatingShapeOffset }),
+            ...(String(floatingShapePosition).includes("top") ? { top: floatingShapeOffset } : { bottom: floatingShapeOffset }),
+            ...(String(floatingShapePosition).includes("left") ? { left: floatingShapeOffset } : { right: floatingShapeOffset }),
           }}
         />
       ) : null}
@@ -392,9 +362,7 @@ const CenteredCTA = ({
               className="evo-centered-cta__button"
               href={button.link || "#"}
               target={button.target || "_self"}
-              rel={
-                button.target === "_blank" ? "noopener noreferrer" : undefined
-              }
+              rel={button.target === "_blank" ? "noopener noreferrer" : undefined}
               style={getButtonStyles(button.style)}
             >
               {button.text || "Button"}
@@ -466,12 +434,7 @@ CenteredCTA.propTypes = {
   floatingShapeSize: PropTypes.string,
   floatingShapeBlur: PropTypes.string,
   floatingShapeOffset: PropTypes.string,
-  floatingShapePosition: PropTypes.oneOf([
-    "top-right",
-    "top-left",
-    "bottom-right",
-    "bottom-left",
-  ]),
+  floatingShapePosition: PropTypes.oneOf(["top-right", "top-left", "bottom-right", "bottom-left"]),
   floatingShapeOpacity: PropTypes.number,
   style: PropTypes.object,
   className: PropTypes.string,

@@ -37,8 +37,7 @@ export const illustratedHowItWorksDefaultProps = {
       id: "step-2",
       title: "Invite Transactional Members",
       description: "Exclusive invitations await, sparking collaboration.",
-      image:
-        "https://images.unsplash.com/photo-1524504388940-b1c1722653e1?w=640",
+      image: "https://images.unsplash.com/photo-1524504388940-b1c1722653e1?w=640",
       imageAlt: "Two people shaking hands",
       imagePosition: "right",
       imageWidth: "160px",
@@ -48,8 +47,7 @@ export const illustratedHowItWorksDefaultProps = {
       id: "step-3",
       title: "Begin Collaborating",
       description: "Unite for a journey of teamwork and innovation.",
-      image:
-        "https://images.unsplash.com/photo-1521737604893-d14cc237f11d?w=640",
+      image: "https://images.unsplash.com/photo-1521737604893-d14cc237f11d?w=640",
       imageAlt: "Team collaborating around a table",
       imagePosition: "left",
       imageWidth: "140px",
@@ -59,8 +57,7 @@ export const illustratedHowItWorksDefaultProps = {
       id: "step-4",
       title: "Close Deals",
       description: "Seal the path to success as deals unfold seamlessly.",
-      image:
-        "https://images.unsplash.com/photo-1521737604893-ffb90e06a0f3?w=640",
+      image: "https://images.unsplash.com/photo-1521737604893-ffb90e06a0f3?w=640",
       imageAlt: "People high-fiving after a successful deal",
       imagePosition: "right",
       imageWidth: "170px",
@@ -188,22 +185,11 @@ const IllustratedHowItWorks = ({
                 scrollSnapAlign: sliderMode ? "start" : "initial",
                 "--card-min-height": step.cardHeight || cardHeight,
                 "--card-width": step.cardWidth || cardWidth,
-                "--card-grid-areas":
-                  (step.imagePosition || "right") === "left"
-                    ? '"media text"'
-                    : '"text media"',
-                "--card-media-align":
-                  (step.imagePosition || "right") === "left" ? "left" : "right",
+                "--card-grid-areas": (step.imagePosition || "right") === "left" ? '"media text"' : '"text media"',
+                "--card-media-align": (step.imagePosition || "right") === "left" ? "left" : "right",
               }}
             >
-              <div
-                style={{
-                  position: "absolute",
-                  top: "14px",
-                  left: "14px",
-                  zIndex: 10,
-                }}
-              >
+              <div style={{ position: "absolute", top: "14px", left: "14px", zIndex: 10 }}>
                 <span
                   style={{
                     display: "inline-flex",
@@ -222,10 +208,7 @@ const IllustratedHowItWorks = ({
                 </span>
               </div>
 
-              <div
-                className="ihiw-card-text"
-                style={{ paddingLeft: "4px", gridArea: "text" }}
-              >
+              <div className="ihiw-card-text" style={{ paddingLeft: "4px", gridArea: "text" }}>
                 <h3
                   style={{
                     margin: "0 0 8px 0",
@@ -274,14 +257,8 @@ const IllustratedHowItWorks = ({
                       borderRadius: "12px",
                       background: `${accentColor}12`,
                       border: `1px dashed ${accentColor}66`,
-                      marginLeft:
-                        (step.imagePosition || "right") === "left"
-                          ? "0"
-                          : "auto",
-                      marginRight:
-                        (step.imagePosition || "right") === "left"
-                          ? "auto"
-                          : "0",
+                      marginLeft: (step.imagePosition || "right") === "left" ? "0" : "auto",
+                      marginRight: (step.imagePosition || "right") === "left" ? "auto" : "0",
                     }}
                   />
                 )}
