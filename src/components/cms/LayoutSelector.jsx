@@ -7,7 +7,7 @@ import React, {
   useMemo,
   useState,
 } from "react";
-import LayoutColumn from "../../LayoutColumn";
+import LayoutColumn from "../LayoutColumn.jsx";
 import PropTypes from "prop-types";
 import { availableComponents } from "../availableComponents.js";
 
