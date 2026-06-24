@@ -624,16 +624,20 @@ const HeroComponent = (rawProps) => {
     full: "max-w-full",
   };
 
+  const componentId = rawProps?.id || Math.random().toString(36).substr(2, 9);
   const ratio = Math.max(30, Math.min(70, Number(contentSplitRatio) || 56));
   const headingSize = parsePx(headingFontSize, 68);
   const bodySize = parsePx(subheadingFontSize, 20);
 
+  const padY = parsePx(sectionPaddingY, 64);
+  const padX = parsePx(sectionPaddingX, 24);
+
   const backgroundStyle = {
     background: backgroundColor,
-    paddingLeft: sectionPaddingX,
-    paddingRight: sectionPaddingX,
-    paddingTop: sectionPaddingY,
-    paddingBottom: sectionPaddingY,
+    paddingLeft: `clamp(${Math.max(16, padX * 0.4)}px, 5vw, ${padX}px)`,
+    paddingRight: `clamp(${Math.max(16, padX * 0.4)}px, 5vw, ${padX}px)`,
+    paddingTop: `clamp(${Math.max(32, padY * 0.5)}px, 8vw, ${padY}px)`,
+    paddingBottom: `clamp(${Math.max(32, padY * 0.5)}px, 8vw, ${padY}px)`,
   };
 
   if (backgroundImage) {
@@ -1217,7 +1221,12 @@ const HeroComponent = (rawProps) => {
     <section
       className={classNames(
         "relative isolate w-full overflow-hidden",
-        sectionHeights[height] || sectionHeights.lg,
+        {
+          sm: "min-h-[320px] md:min-h-[480px]",
+          md: "min-h-[420px] md:min-h-[620px]",
+          lg: "min-h-[520px] md:min-h-[760px]",
+          full: "min-h-[80vh] md:min-h-screen",
+        }[height] || "min-h-[520px] md:min-h-[760px]",
       )}
       style={backgroundStyle}
       aria-label={heading || "Hero section"}
@@ -1246,16 +1255,24 @@ const HeroComponent = (rawProps) => {
 
       <div className={shellClassName}>
         {isSideBySide && mediaPanel ? (
-          <div
-            className={classNames("grid items-center gap-8 lg:gap-12", {
-              "lg:[&>*:first-child]:order-2 lg:[&>*:last-child]:order-1": isReverse,
-              "lg:items-end": safeLayoutMode === "immersive",
-            })}
-            style={{
-              gap,
-              gridTemplateColumns: `minmax(0, ${ratio}fr) minmax(0, ${100 - ratio}fr)`,
-            }}
-          >
+          <>
+            <style>{`
+              .hero-split-${componentId} {
+                grid-template-columns: 1fr;
+              }
+              @media (min-width: 1024px) {
+                .hero-split-${componentId} {
+                  grid-template-columns: minmax(0, ${ratio}fr) minmax(0, ${100 - ratio}fr);
+                }
+              }
+            `}</style>
+            <div
+              className={classNames(`hero-split-${componentId}`, "grid items-center gap-8 lg:gap-12", {
+                "lg:[&>*:first-child]:order-2 lg:[&>*:last-child]:order-1": isReverse,
+                "lg:items-end": safeLayoutMode === "immersive",
+              })}
+              style={{ gap }}
+            >
             {contentBlock}
             <div
               className={classNames("w-full", {
@@ -1264,7 +1281,8 @@ const HeroComponent = (rawProps) => {
             >
               {mediaPanel}
             </div>
-          </div>
+            </div>
+          </>
         ) : isStacked && mediaPanel ? (
           <div className="space-y-8">
             {contentBlock}

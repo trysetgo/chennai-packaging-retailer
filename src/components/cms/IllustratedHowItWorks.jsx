@@ -64,6 +64,10 @@ export const illustratedHowItWorksDefaultProps = {
       imageHeight: "130px",
     },
   ],
+  titleColor: "#111827",
+  titleFontSize: "16px",
+  descriptionColor: "#4b5563",
+  descriptionFontSize: "13px",
   className: "",
   style: {},
 };
@@ -88,6 +92,10 @@ const IllustratedHowItWorks = ({
   slideGap,
   maxWidth,
   steps,
+  titleColor,
+  titleFontSize,
+  descriptionColor,
+  descriptionFontSize,
   className,
   style,
 }) => {
@@ -204,8 +212,8 @@ const IllustratedHowItWorks = ({
                 <h3
                   style={{
                     margin: "0 0 8px 0",
-                    color: "#111827",
-                    fontSize: "16px",
+                    color: titleColor || "#111827",
+                    fontSize: titleFontSize || "16px",
                     fontWeight: 700,
                   }}
                 >
@@ -215,8 +223,8 @@ const IllustratedHowItWorks = ({
                   <p
                     style={{
                       margin: 0,
-                      color: "#4b5563",
-                      fontSize: "13px",
+                      color: descriptionColor || "#4b5563",
+                      fontSize: descriptionFontSize || "13px",
                       lineHeight: 1.5,
                     }}
                   >
@@ -368,6 +376,10 @@ IllustratedHowItWorks.propTypes = {
       cardHeight: PropTypes.string,
     }),
   ),
+  titleColor: PropTypes.string,
+  titleFontSize: PropTypes.string,
+  descriptionColor: PropTypes.string,
+  descriptionFontSize: PropTypes.string,
   className: PropTypes.string,
   style: PropTypes.object,
 };

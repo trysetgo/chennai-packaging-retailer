@@ -9,9 +9,8 @@ import HeroBanner from './cms/HeroBanner.jsx';
 import WhyChooseOurBrand from './cms/WhyChooseOurBrand.jsx';
 import TrendingProductHero from './cms/TrendingProductHero.jsx';
 import IllustratedHowItWorks from './cms/IllustratedHowItWorks.jsx';
-import Image from './cms/Image.jsx';
-import RichTextContentBlock from './cms/RichTextContentBlock.jsx';
 import CenteredCta from './cms/CenteredCta.jsx';
+import Image from './cms/Image.jsx';
 import Button from './cms/Button.jsx';
 import Paragraph from './cms/Paragraph.jsx';
 
@@ -26,9 +25,8 @@ const LayoutRendererInternalComponentMap = {
   'Why Choose Our Brand': WhyChooseOurBrand,
   'Trending Product Hero': TrendingProductHero,
   'Illustrated How It Works': IllustratedHowItWorks,
-  'Image': Image,
-  'Rich Text Content Block': RichTextContentBlock,
   'Centered CTA': CenteredCta,
+  'Image': Image,
   'Button': Button,
   'Paragraph': Paragraph,
 };
