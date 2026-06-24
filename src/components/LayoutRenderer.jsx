@@ -12,115 +12,139 @@ import IllustratedHowItWorks from './cms/IllustratedHowItWorks.jsx';
 import CenteredCta from './cms/CenteredCta.jsx';
 import ImageCard from './cms/ImageCard.jsx';
 import RichTextContentBlock from './cms/RichTextContentBlock.jsx';
+import Image from './cms/Image.jsx';
+import Button from './cms/Button.jsx';
 import Paragraph from './cms/Paragraph.jsx';
 
 const LayoutRendererInternalComponentMap = {
-  "Minimal Header": MinimalHeader,
-  "Heading": Heading,
-  "List": List,
-  "Timeline / Roadmap": TimelineRoadmap,
-  "Footer": Footer,
-  "Header": Header,
-  "Hero Banner": HeroBanner,
-  "Why Choose Our Brand": WhyChooseOurBrand,
-  "Trending Product Hero": TrendingProductHero,
-  "Illustrated How It Works": IllustratedHowItWorks,
-  "Centered CTA": CenteredCta,
-  "Image Card": ImageCard,
-  "Rich Text Content Block": RichTextContentBlock,
-  "Paragraph": Paragraph,
+  'Minimal Header': MinimalHeader,
+  'Heading': Heading,
+  'List': List,
+  'Timeline / Roadmap': TimelineRoadmap,
+  'Footer': Footer,
+  'Header': Header,
+  'Hero Banner': HeroBanner,
+  'Why Choose Our Brand': WhyChooseOurBrand,
+  'Trending Product Hero': TrendingProductHero,
+  'Illustrated How It Works': IllustratedHowItWorks,
+  'Centered CTA': CenteredCta,
+  'Image Card': ImageCard,
+  'Rich Text Content Block': RichTextContentBlock,
+  'Image': Image,
+  'Button': Button,
+  'Paragraph': Paragraph,
 };
 
+// Forward declaration for recursive use
 let RenderElementInternal;
 
 const renderChildrenRecursive = (children) => {
-  if (!children || !Array.isArray(children)) return null;
-  return children.map((child, index) => <RenderElementInternal key={child.id || index} element={child} />);
+if (!children || !Array.isArray(children)) return null;
+return children.map((child, index) => <RenderElementInternal key={child.id || index} element={child} />);
 };
 
 const RenderElementInternalComponent = ({ element }) => {
-  if (!element?.type) return null;
-  const { type, props = {} } = element;
-  const Comp = LayoutRendererInternalComponentMap[type];
+if (!element?.type) return null;
+const { type, props = {} } = element;
 
-  if (Comp) {
-    let childrenToRender = props.children;
-    if (Array.isArray(props.children) && props.children.every((child) => typeof child === 'object' && child !== null && child.type)) {
-      childrenToRender = renderChildrenRecursive(props.children);
-    }
-    return <Comp {...props}>{childrenToRender}</Comp>;
-  }
+// Handle content components from the map
+const Comp = LayoutRendererInternalComponentMap[type];
+if (Comp) {
+let childrenToRender = props.children;
+// If props.children is an array of element objects (our internal structure), render them recursively
+if (Array.isArray(props.children) && props.children.every(c => typeof c === 'object' && c !== null && c.type)) {
+childrenToRender = renderChildrenRecursive(props.children);
+}
+// Otherwise, pass props.children as is (could be a string, number, or already JSX)
+return <Comp {...props}>{childrenToRender}</Comp>;
+}
 
-  return <div>Unknown component type in LayoutRenderer: {type}</div>;
+// Fallback for unknown types (should ideally not be hit if generateJsx is comprehensive)
+console.warn("[LayoutRenderer] Unknown component type encountered:", type, "with props:", props);
+return <div>Unknown component type in LayoutRenderer: {type}</div>;
 };
 
-RenderElementInternal = RenderElementInternalComponent;
+RenderElementInternal = RenderElementInternalComponent; // Assign after definition for recursion
 
 const LayoutRenderer = (props) => {
-  const { layoutType, rows, columnsData, gap, padding, backgroundColor, style, ...restProps } = props;
+const { layoutType, rows, columnsData, gap, padding, backgroundColor, style, ...restProps } = props;
 
-  if (layoutType === "Layout Selector") {
-    const containerStyle = {
-      padding: padding || "0.5rem",
-      backgroundColor: backgroundColor || "transparent",
-      margin: restProps.margin || "0px",
-      display: "flex",
-      flexDirection: "column",
-      width: "100%",
-      boxSizing: "border-box",
-      ...(style || {}),
-    };
-    const actualRows = rows || [];
+if (layoutType === "Layout Selector") {
+const containerStyle = {
+padding: padding || "0.5rem",
+backgroundColor: backgroundColor || "transparent",
+margin: restProps.margin || "0px", 
+display: "flex",
+flexDirection: "column",
+width: "100%",
+boxSizing: 'border-box',
+...(style || {}), 
+};
+const actualRows = rows || [];
 
-    return (
-      <div style={containerStyle}>
-        {actualRows.map((row, rowIndex) => (
-          <div
-            key={row.id || `row-${rowIndex}`}
-            className="flex"
-            style={{
-              gap: row.gap || gap || "0.5rem",
-              marginBottom: rowIndex < actualRows.length - 1 ? row.gap || gap || "0.5rem" : "0",
-              boxSizing: "border-box",
-              width: "100%",
-            }}
-          >
-            {(row.columns || []).map((col, colIndex) => (
-              <div
-                key={col.id || `col-${colIndex}`}
-                style={{ ...col.style, flexBasis: col.style?.flexBasis || "auto", flexGrow: 1, boxSizing: "border-box" }}
-              >
-                {renderChildrenRecursive(col.children)}
-              </div>
-            ))}
-          </div>
-        ))}
-      </div>
-    );
-  }
+return (
+<div style={containerStyle}>
+{actualRows.map((row, rowIndex) => (
+<div
+key={row.id || `row-${rowIndex}`}
+className="flex"
+style={{ gap: row.gap || gap || "0.5rem", marginBottom: rowIndex < actualRows.length - 1 ? (row.gap || gap || "0.5rem") : "0", boxSizing: 'border-box', width: '100%' }}
+>
+{(row.columns || []).map((col, colIndex) => (
+col.subColumns && col.subColumns.length > 0 ? (
+<div
+key={col.id || `col-split-${colIndex}`}
+style={{ ...col.style, flexBasis: col.style?.flexBasis || 'auto', flexGrow: 1, boxSizing: 'border-box', display: 'flex', flexWrap: 'wrap', gap: row.gap || gap || "0.5rem" }}
+>
+{col.subColumns.map((subCol, subColIndex) => (
+<div
+key={subCol.id || `subcol-${colIndex}-${subColIndex}`}
+style={{ ...subCol.style, flexBasis: subCol.style?.flexBasis || 'auto', flexGrow: 1, boxSizing: 'border-box' }}
+>
+{renderChildrenRecursive(subCol.children)}
+</div>
+))}
+</div>
+) : (
+<div
+key={col.id || `col-${colIndex}`}
+style={{ ...col.style, flexBasis: col.style?.flexBasis || 'auto', flexGrow: 1, boxSizing: 'border-box' }}
+>
+{renderChildrenRecursive(col.children)}
+</div>
+)
+))}
+</div>
+))}
+</div>
+);
+}
 
-  if (layoutType === "Multi Column Layout") {
-    const containerStyle = {
-      display: "flex",
-      gap: gap || "0.5rem",
-      padding: padding || "0.5rem",
-      backgroundColor: backgroundColor || "transparent",
-      boxSizing: "border-box",
-      ...(style || {}),
-    };
-    return (
-      <div style={containerStyle}>
-        {(columnsData || []).map((col, index) => (
-          <div key={col.id || index} style={{ ...col.style, flex: col.style?.flex || 1, boxSizing: "border-box" }}>
-            {renderChildrenRecursive(col.children)}
-          </div>
-        ))}
-      </div>
-    );
-  }
+if (layoutType === "Multi Column Layout") {
+const containerStyle = {
+display: 'flex',
+gap: gap || "0.5rem",
+padding: padding || "0.5rem",
+backgroundColor: backgroundColor || "transparent",
+boxSizing: 'border-box',
+...(style || {}),
+};
+return (
+<div style={containerStyle}>
+{(columnsData || []).map((col, index) => (
+<div key={col.id || index} style={{ ...col.style, flex: col.style?.flex || 1, boxSizing: 'border-box' }}>
+{renderChildrenRecursive(col.children)}
+</div>
+))}
+</div>
+);
+}
 
-  if (props.element) return <RenderElementInternal element={props.element} />;
-  return <div>LayoutRenderer: Invalid props or direct usage. layoutType: {layoutType}</div>;
+if (props.element) { 
+return <RenderElementInternal element={props.element} />;
+}
+console.warn("[LayoutRenderer] Invalid props or direct usage. layoutType:", layoutType, "Props:", props);
+return <div>LayoutRenderer: Invalid props or direct usage. layoutType: {layoutType}</div>;
 };
 
 export default LayoutRenderer;
