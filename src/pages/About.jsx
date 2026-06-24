@@ -1,42 +1,9 @@
-import React from "react";
-import LayoutRenderer from "../components/LayoutRenderer.jsx";
-import Paragraph from "../components/cms/Paragraph.jsx";
+import React from 'react';
+import LayoutRenderer from '../components/LayoutRenderer.jsx';
+import Paragraph from '../components/cms/Paragraph.jsx';
 
 export default function AboutPage() {
   return (
-    <>
-      <LayoutRenderer
-        gap="18px"
-        rows={JSON.parse(
-          `[{"id":"default-row-1","columns":[{"id":"default-row-1-col-1","style":{"flexBasis":"45%"},"children":[],"subColumns":[{"id":"92f37ae1-c47a-4d41-be43-b9768fc2ca9a","style":{"flexGrow":1,"flexBasis":"40%","flexShrink":1},"children":[{"id":"30873e83-5c58-4aff-824a-b93828375588","type":"Image","props":{"alt":"Placeholder","src":"https://project.trysetgo.com/api/assets/serve/e16524f8-2864-4d80-8920-7112188858b1/440e4625-7cb0-42ca-9bbf-81f85964ebfd/supabase","imageBorderRadius":"0px","containerBorderRadius":"0px"}},{"id":"b1251250-07bd-4e6e-b3e0-d9eef4a43442","type":"Image","props":{"alt":"Placeholder","src":"https://project.trysetgo.com/api/assets/serve/e16524f8-2864-4d80-8920-7112188858b1/440e4625-7cb0-42ca-9bbf-81f85964ebfd/supabase","imageBorderRadius":"0px","containerBorderRadius":"0px"}},{"id":"eb3df5ed-1e21-412d-9c95-66c20df3d5e7","type":"Image","props":{"alt":"Placeholder","src":"https://project.trysetgo.com/api/assets/serve/e16524f8-2864-4d80-8920-7112188858b1/440e4625-7cb0-42ca-9bbf-81f85964ebfd/supabase","imageBorderRadius":"0px","containerBorderRadius":"0px"}}]},{"id":"3c8d9c6f-1607-4668-aa49-397550211f74","style":{"flexGrow":1,"flexBasis":"40%","flexShrink":1},"children":[{"id":"4bfe7d4b-9274-4a07-972c-b0923785492b","type":"Image","props":{"alt":"Placeholder","src":"https://project.trysetgo.com/api/assets/serve/e16524f8-2864-4d80-8920-7112188858b1/440e4625-7cb0-42ca-9bbf-81f85964ebfd/supabase","imageBorderRadius":"0px","containerBorderRadius":"0px"}},{"id":"6188bae2-4acc-43ff-874e-b95568ea97bb","type":"Image","props":{"alt":"Placeholder","src":"https://project.trysetgo.com/api/assets/serve/e16524f8-2864-4d80-8920-7112188858b1/440e4625-7cb0-42ca-9bbf-81f85964ebfd/supabase","imageBorderRadius":"0px","containerBorderRadius":"0px"}},{"id":"ce556ea0-cf11-46d3-8597-2cb3270b84ca","type":"Image","props":{"alt":"Placeholder","src":"https://project.trysetgo.com/api/assets/serve/e16524f8-2864-4d80-8920-7112188858b1/440e4625-7cb0-42ca-9bbf-81f85964ebfd/supabase","imageBorderRadius":"0px","containerBorderRadius":"0px"}},{"id":"898745dd-6c45-42ee-9c67-2f3336443298","type":"Button","props":{"label":"Click Me"}}]}]},{"id":"9b4d9f22-10fa-43ba-aa85-60e3205bbcb2","style":{"flexGrow":1,"flexBasis":"50%","flexShrink":1},"children":[{"id":"1e264ca7-0ed2-4752-a664-a29f19d459ea","type":"Paragraph","props":{"text":"This is a default paragraph. Click to edit its content and style. This is a default paragraph. Click to edit its content and style. This is a default paragraph. Click to edit its content and style. This is a default paragraph. Click to edit its content and style. This is a default paragraph. Click to edit its content and style. "}},{"id":"1e7eb37a-9887-4974-9d70-f711e3a33eb0","type":"Paragraph","props":{"text":"This is a default paragraph. Click to edit its content and style. This is a default paragraph. Click to edit its content and style. This is a default paragraph. Click to edit its content and style. This is a default paragraph. Click to edit its content and style. This is a default paragraph. Click to edit its content and style. "}}]}],"numColumns":2}]`,
-        )}
-        width="100%"
-        border="1px solid rgba(226,232,240,0.9)"
-        margin="0px auto"
-        padding="18px"
-        maxWidth="100%"
-        boxShadow="none"
-        minHeight="140px"
-        rowBorder="1px solid rgba(226,232,240,0.9)"
-        rowRadius="0px"
-        rowShadow="none"
-        rowPadding="14px"
-        accentColor="#ec3080"
-        borderRadius="0px"
-        columnBorder="1px dashed rgba(203,213,225,0.9)"
-        columnRadius="0px"
-        columnShadow="none"
-        columnPadding="14px"
-        rowBackground="transparent"
-        showRowLabels={true}
-        stackOnMobile={false}
-        backgroundColor="transparent"
-        columnMinHeight="120px"
-        columnBackground="transparent"
-        mobileBreakpoint="768px"
-        secondaryAccentColor="#6366f1"
-        layoutType="Layout Selector"
-      />
-    </>
+    <><LayoutRenderer gap="18px" rows={JSON.parse(`[{"id":"default-row-1","columns":[{"id":"default-row-1-col-1","style":{"flexBasis":"45%"},"children":[],"subColumns":[{"id":"92f37ae1-c47a-4d41-be43-b9768fc2ca9a","style":{"flexGrow":1,"flexBasis":"40%","flexShrink":1},"children":[{"id":"30873e83-5c58-4aff-824a-b93828375588","type":"Image","props":{"alt":"Placeholder","src":"https://project.trysetgo.com/api/assets/serve/e16524f8-2864-4d80-8920-7112188858b1/440e4625-7cb0-42ca-9bbf-81f85964ebfd/supabase","imageBorderRadius":"0px","containerBorderRadius":"0px"}},{"id":"b1251250-07bd-4e6e-b3e0-d9eef4a43442","type":"Image","props":{"alt":"Placeholder","src":"https://project.trysetgo.com/api/assets/serve/e16524f8-2864-4d80-8920-7112188858b1/440e4625-7cb0-42ca-9bbf-81f85964ebfd/supabase","imageBorderRadius":"0px","containerBorderRadius":"0px"}},{"id":"eb3df5ed-1e21-412d-9c95-66c20df3d5e7","type":"Image","props":{"alt":"Placeholder","src":"https://project.trysetgo.com/api/assets/serve/e16524f8-2864-4d80-8920-7112188858b1/440e4625-7cb0-42ca-9bbf-81f85964ebfd/supabase","imageBorderRadius":"0px","containerBorderRadius":"0px"}}]},{"id":"3c8d9c6f-1607-4668-aa49-397550211f74","style":{"flexGrow":1,"flexBasis":"40%","flexShrink":1},"children":[{"id":"4bfe7d4b-9274-4a07-972c-b0923785492b","type":"Image","props":{"alt":"Placeholder","src":"https://project.trysetgo.com/api/assets/serve/e16524f8-2864-4d80-8920-7112188858b1/440e4625-7cb0-42ca-9bbf-81f85964ebfd/supabase","imageBorderRadius":"0px","containerBorderRadius":"0px"}},{"id":"6188bae2-4acc-43ff-874e-b95568ea97bb","type":"Image","props":{"alt":"Placeholder","src":"https://project.trysetgo.com/api/assets/serve/e16524f8-2864-4d80-8920-7112188858b1/440e4625-7cb0-42ca-9bbf-81f85964ebfd/supabase","imageBorderRadius":"0px","containerBorderRadius":"0px"}},{"id":"ce556ea0-cf11-46d3-8597-2cb3270b84ca","type":"Image","props":{"alt":"Placeholder","src":"https://project.trysetgo.com/api/assets/serve/e16524f8-2864-4d80-8920-7112188858b1/440e4625-7cb0-42ca-9bbf-81f85964ebfd/supabase","imageBorderRadius":"0px","containerBorderRadius":"0px"}},{"id":"898745dd-6c45-42ee-9c67-2f3336443298","type":"Button","props":{"label":"Click Me"}}]}]},{"id":"9b4d9f22-10fa-43ba-aa85-60e3205bbcb2","style":{"flexGrow":1,"flexBasis":"50%","flexShrink":1},"children":[{"id":"1e264ca7-0ed2-4752-a664-a29f19d459ea","type":"Paragraph","props":{"text":"This is a default paragraph. Click to edit its content and style. This is a default paragraph. Click to edit its content and style. This is a default paragraph. Click to edit its content and style. This is a default paragraph. Click to edit its content and style. This is a default paragraph. Click to edit its content and style. "}},{"id":"1e7eb37a-9887-4974-9d70-f711e3a33eb0","type":"Paragraph","props":{"text":"This is a default paragraph. Click to edit its content and style. This is a default paragraph. Click to edit its content and style. This is a default paragraph. Click to edit its content and style. This is a default paragraph. Click to edit its content and style. This is a default paragraph. Click to edit its content and style. "}}]}],"numColumns":2}]`)} width="100%" border="1px solid rgba(226,232,240,0.9)" margin="0px auto" padding="18px" maxWidth="100%" boxShadow="none" minHeight="140px" rowBorder="1px solid rgba(226,232,240,0.9)" rowRadius="0px" rowShadow="none" rowPadding="14px" accentColor="#ec3080" borderRadius="0px" columnBorder="1px dashed rgba(203,213,225,0.9)" columnRadius="0px" columnShadow="none" columnPadding="14px" rowBackground="transparent" showRowLabels={true} stackOnMobile={false} backgroundColor="transparent" columnMinHeight="120px" columnBackground="transparent" mobileBreakpoint="768px" secondaryAccentColor="#6366f1" layoutType="Layout Selector" /></>
   );
 }

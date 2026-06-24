@@ -174,7 +174,8 @@ const SingleImageCard = ({
     currentLayoutOrientation === "horizontal" && showImage;
   const isSplitBannerVariant = cardVariant === "split-banner";
   const shouldUseSplitBanner =
-    isHorizontalLayout && (isSplitBannerVariant || Boolean(enableSplitClip));
+    isHorizontalLayout &&
+    (isSplitBannerVariant || Boolean(enableSplitClip));
   const effectiveSplitClipSize = shouldUseSplitBanner ? splitClipSize : "0px";
   const effectiveCardHeight =
     currentCardHeight !== "auto"

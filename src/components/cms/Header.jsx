@@ -61,7 +61,8 @@ export const headerComponentDefaultProps = {
     { id: "nav3", text: "Pricing", href: "#" },
   ],
   navGap: "0.25rem",
-  navDropdownBg: "rgba(255,255,255,0.98)",
+  navDropdownBg:
+    "rgba(255,255,255,0.98)",
   navDropdownTextColor: "#0f172a",
   navDropdownBorder: "1px solid rgba(226,232,240,0.8)",
   navDropdownShadow: "0 10px 40px -10px rgba(15,23,42,0.1)",
@@ -77,7 +78,8 @@ export const headerComponentDefaultProps = {
   headerHeight: "72px",
   maxWidth: "100%",
   backgroundColor: "transparent",
-  innerBackground: "rgba(255,255,255,0.85)",
+  innerBackground:
+    "rgba(255,255,255,0.85)",
   innerBorder: "1px solid rgba(255,255,255,0.4)",
   innerRadius: "0px",
   innerShadow: "0 4px 24px -6px rgba(15,23,42,0.05)",
@@ -112,7 +114,8 @@ export const headerComponentDefaultProps = {
   primaryActionBorderColor: "transparent",
   primaryActionBorderWidth: "0px",
   primaryActionBorderRadius: "999px",
-  mobileMenuBg: "rgba(255,255,255,0.98)",
+  mobileMenuBg:
+    "rgba(255,255,255,0.98)",
   mobileMenuTextColor: "#0f172a",
   mobileMenuBorderColor: "rgba(226,232,240,0.8)",
   mobileMenuShadow: "0 20px 40px -10px rgba(15,23,42,0.15)",
@@ -139,27 +142,17 @@ const buildCompatibleHeaderProps = (rawProps = {}) => ({
           rawProps.borderBottomColor || "rgba(226,232,240,0.88)"
         }`
       : headerComponentDefaultProps.innerBorder),
-  innerRadius:
-    rawProps.innerRadius ||
-    rawProps.borderRadius ||
-    headerComponentDefaultProps.innerRadius,
-  innerShadow:
-    rawProps.innerShadow ||
-    rawProps.boxShadow ||
-    headerComponentDefaultProps.innerShadow,
+  innerRadius: rawProps.innerRadius || rawProps.borderRadius || headerComponentDefaultProps.innerRadius,
+  innerShadow: rawProps.innerShadow || rawProps.boxShadow || headerComponentDefaultProps.innerShadow,
   navDropdownBorder:
     rawProps.navDropdownBorder ||
     `1px solid ${rawProps.borderBottomColor || "rgba(226,232,240,0.9)"}`,
-  searchShadow:
-    rawProps.searchShadow || headerComponentDefaultProps.searchShadow,
+  searchShadow: rawProps.searchShadow || headerComponentDefaultProps.searchShadow,
   mobileMenuBorderColor:
     rawProps.mobileMenuBorderColor ||
     rawProps.borderBottomColor ||
     headerComponentDefaultProps.mobileMenuBorderColor,
-  mobileMenuShadow:
-    rawProps.mobileMenuShadow ||
-    rawProps.boxShadow ||
-    headerComponentDefaultProps.mobileMenuShadow,
+  mobileMenuShadow: rawProps.mobileMenuShadow || rawProps.boxShadow || headerComponentDefaultProps.mobileMenuShadow,
 });
 
 const HeaderComponent = (rawProps) => {
@@ -254,11 +247,7 @@ const HeaderComponent = (rawProps) => {
   const defaultLogo = "https://via.placeholder.com/120x50.png?text=Your+Logo";
 
   useEffect(() => {
-    if (
-      viewport === "mobile" ||
-      viewport === "tablet" ||
-      viewport === "desktop"
-    ) {
+    if (viewport === "mobile" || viewport === "tablet" || viewport === "desktop") {
       const forcedMobile = viewport === "mobile";
       const forcedDrawer = viewport === "mobile" || viewport === "tablet";
       setIsMobileViewport(forcedMobile);
@@ -327,9 +316,10 @@ const HeaderComponent = (rawProps) => {
       color: isHovered
         ? linkStyle.hoverColor || linkStyle.color || textColor || "#0f172a"
         : linkStyle.color || textColor || "#475569",
-      background: isHovered
-        ? linkStyle.hoverBg || "rgba(15,23,42,0.04)"
-        : "transparent",
+      background:
+        isHovered
+          ? linkStyle.hoverBg || "rgba(15,23,42,0.04)"
+          : "transparent",
       boxShadow: "none",
       transform: "none",
     };
@@ -342,9 +332,10 @@ const HeaderComponent = (rawProps) => {
       color: isHovered
         ? linkStyle.hoverColor || linkStyle.color || textColor || "#0f172a"
         : linkStyle.color || textColor || "#475569",
-      background: isHovered
-        ? linkStyle.hoverBg || "rgba(15,23,42,0.04)"
-        : "transparent",
+      background:
+        isHovered
+          ? linkStyle.hoverBg || "rgba(15,23,42,0.04)"
+          : "transparent",
     };
   };
 
@@ -354,15 +345,9 @@ const HeaderComponent = (rawProps) => {
     zIndex,
     width: "100%",
     boxSizing: "border-box",
-    background:
-      variant === "solid" ? backgroundColor || innerBackground : "transparent",
+    background: variant === "solid" ? backgroundColor || innerBackground : "transparent",
     color: textColor,
-    padding:
-      variant === "floating"
-        ? isResponsiveViewport
-          ? "10px 12px 0"
-          : "14px 16px 0"
-        : "0px",
+    padding: variant === "floating" ? (isResponsiveViewport ? "10px 12px 0" : "14px 16px 0") : "0px",
     ...style,
   };
 
@@ -377,19 +362,15 @@ const HeaderComponent = (rawProps) => {
     border: variant === "minimal" ? "none" : innerBorder,
     borderRadius: variant === "minimal" ? "0px" : innerRadius,
     boxShadow: variant === "minimal" ? "none" : innerShadow,
-    backdropFilter:
-      backdropBlur !== "none" ? `blur(${backdropBlur})` : undefined,
-    WebkitBackdropFilter:
-      backdropBlur !== "none" ? `blur(${backdropBlur})` : undefined,
+    backdropFilter: backdropBlur !== "none" ? `blur(${backdropBlur})` : undefined,
+    WebkitBackdropFilter: backdropBlur !== "none" ? `blur(${backdropBlur})` : undefined,
     overflow: "visible",
   };
 
   const topRowStyle = {
     minHeight: headerHeight,
     display: "grid",
-    gridTemplateColumns: isResponsiveViewport
-      ? "minmax(0,1fr) auto"
-      : "auto minmax(0,1fr) auto",
+    gridTemplateColumns: isResponsiveViewport ? "minmax(0,1fr) auto" : "auto minmax(0,1fr) auto",
     alignItems: alignItems,
     gap: "1rem",
   };
@@ -416,10 +397,7 @@ const HeaderComponent = (rawProps) => {
     ...baseLinkStyle,
     background: primaryActionBg,
     color: primaryActionTextColor,
-    border:
-      primaryActionBorderWidth && primaryActionBorderWidth !== "0px"
-        ? `${primaryActionBorderWidth} solid ${primaryActionBorderColor}`
-        : "none",
+    border: primaryActionBorderWidth && primaryActionBorderWidth !== "0px" ? `${primaryActionBorderWidth} solid ${primaryActionBorderColor}` : "none",
     borderRadius: primaryActionBorderRadius,
     boxShadow: "none",
     fontWeight: 500,
@@ -436,8 +414,7 @@ const HeaderComponent = (rawProps) => {
       }}
     >
       {links.map((link) => {
-        const hasChildren =
-          Array.isArray(link.children) && link.children.length > 0;
+        const hasChildren = Array.isArray(link.children) && link.children.length > 0;
         const linkStyleForMode = isMobile
           ? {
               ...baseLinkStyle,
@@ -452,10 +429,7 @@ const HeaderComponent = (rawProps) => {
         return (
           <li
             key={link.id}
-            style={{
-              marginBottom: isMobile ? "0.4rem" : 0,
-              position: "relative",
-            }}
+            style={{ marginBottom: isMobile ? "0.4rem" : 0, position: "relative" }}
             onMouseEnter={() => !isMobile && setHoveredNavId(link.id)}
             onMouseLeave={() => !isMobile && setHoveredNavId(null)}
           >
@@ -465,13 +439,7 @@ const HeaderComponent = (rawProps) => {
             </a>
 
             {hasChildren && isMobile ? (
-              <ul
-                style={{
-                  listStyle: "none",
-                  marginTop: "0.25rem",
-                  paddingLeft: "0.75rem",
-                }}
-              >
+              <ul style={{ listStyle: "none", marginTop: "0.25rem", paddingLeft: "0.75rem" }}>
                 {link.children.map((child) => (
                   <li key={child.id} style={{ marginBottom: "0.25rem" }}>
                     <a
@@ -602,141 +570,118 @@ const HeaderComponent = (rawProps) => {
 
       <div style={shellStyle}>
         <div style={topRowStyle}>
-          <div
-            style={{
-              display: "flex",
-              alignItems: "center",
-              minWidth: 0,
-              gap: "0.75rem",
-              position: "relative",
-              zIndex: 1,
-            }}
-          >
-            {logoSrc ? (
-              <img
-                src={logoSrc || defaultLogo}
-                alt={logoAlt}
+        <div style={{ display: "flex", alignItems: "center", minWidth: 0, gap: "0.75rem", position: "relative", zIndex: 1 }}>
+          {logoSrc ? (
+            <img
+              src={logoSrc || defaultLogo}
+              alt={logoAlt}
+              style={{ width: logoWidth, height: logoHeight, objectFit: "contain" }}
+            />
+          ) : (
+            <span
+              style={{
+                color: logoTextColor || textColor,
+                fontWeight: logoFontWeight,
+                fontSize: logoFontSize,
+                letterSpacing: logoLetterSpacing,
+                fontFamily: logoFontFamily,
+                textTransform: logoTextTransform,
+                whiteSpace: "nowrap",
+                maxWidth: "100%",
+                overflow: "hidden",
+                textOverflow: "ellipsis",
+              }}
+            >
+              {logoText}
+            </span>
+          )}
+          {showLogoBadge && logoBadgeText && !isResponsiveViewport ? (
+            <span
+              style={{
+                display: "inline-flex",
+                alignItems: "center",
+                padding: "0.35rem 0.65rem",
+                borderRadius: "999px",
+                fontSize: "0.68rem",
+                fontWeight: 700,
+                letterSpacing: "0.12em",
+                textTransform: "uppercase",
+                color: logoBadgeTextColor,
+                background: logoBadgeBackground,
+                border: "none",
+              }}
+            >
+              {logoBadgeText}
+            </span>
+          ) : null}
+        </div>
+
+        {menuLayout !== "stacked" ? (
+          <nav style={navWrapStyle}>{renderNavLinks(navItems)}</nav>
+        ) : (
+          <div style={{ display: isResponsiveViewport ? "none" : "block" }} />
+        )}
+
+        <div
+          style={{
+            display: "flex",
+            alignItems: "center",
+            justifyContent: "flex-end",
+            gap: "0.65rem",
+            minWidth: 0,
+            position: "relative",
+            zIndex: 1,
+          }}
+        >
+          {showSearch && !isResponsiveViewport ? (
+            <div style={{ position: "relative" }}>
+              <Search
+                size={16}
                 style={{
-                  width: logoWidth,
-                  height: logoHeight,
-                  objectFit: "contain",
+                  position: "absolute",
+                  left: "0.9rem",
+                  top: "50%",
+                  transform: "translateY(-50%)",
+                  color: searchTextColor,
+                  opacity: 0.55,
                 }}
               />
-            ) : (
-              <span
-                style={{
-                  color: logoTextColor || textColor,
-                  fontWeight: logoFontWeight,
-                  fontSize: logoFontSize,
-                  letterSpacing: logoLetterSpacing,
-                  fontFamily: logoFontFamily,
-                  textTransform: logoTextTransform,
-                  whiteSpace: "nowrap",
-                  maxWidth: "100%",
-                  overflow: "hidden",
-                  textOverflow: "ellipsis",
-                }}
-              >
-                {logoText}
-              </span>
-            )}
-            {showLogoBadge && logoBadgeText && !isResponsiveViewport ? (
-              <span
-                style={{
-                  display: "inline-flex",
-                  alignItems: "center",
-                  padding: "0.35rem 0.65rem",
-                  borderRadius: "999px",
-                  fontSize: "0.68rem",
-                  fontWeight: 700,
-                  letterSpacing: "0.12em",
-                  textTransform: "uppercase",
-                  color: logoBadgeTextColor,
-                  background: logoBadgeBackground,
-                  border: "none",
-                }}
-              >
-                {logoBadgeText}
-              </span>
-            ) : null}
-          </div>
+              <input type="search" placeholder={searchPlaceholder} style={searchInputStyle} />
+            </div>
+          ) : null}
 
-          {menuLayout !== "stacked" ? (
-            <nav style={navWrapStyle}>{renderNavLinks(navItems)}</nav>
+          {!isResponsiveViewport ? (
+            <div style={{ display: "flex", alignItems: "center", gap: "0.35rem" }}>
+              {renderAuthArea()}
+              {showPrimaryAction ? (
+                <a href={primaryActionHref} style={primaryActionStyle}>
+                  {primaryActionText}
+                </a>
+              ) : null}
+            </div>
           ) : (
-            <div style={{ display: isResponsiveViewport ? "none" : "block" }} />
+            <button
+              type="button"
+              onClick={() => setMobileOpen((prev) => !prev)}
+              style={{
+                border: "1px solid rgba(226,232,240,0.8)",
+                borderRadius: "999px",
+                background: "rgba(255,255,255,0.5)",
+                color: textColor,
+                width: "40px",
+                height: "40px",
+                display: "inline-flex",
+                alignItems: "center",
+                justifyContent: "center",
+                cursor: "pointer",
+                boxShadow: "0 2px 10px rgba(15,23,42,0.05)",
+              }}
+              aria-label="Toggle mobile menu"
+            >
+              {mobileOpen ? <X size={20} /> : <Menu size={20} />}
+            </button>
           )}
-
-          <div
-            style={{
-              display: "flex",
-              alignItems: "center",
-              justifyContent: "flex-end",
-              gap: "0.65rem",
-              minWidth: 0,
-              position: "relative",
-              zIndex: 1,
-            }}
-          >
-            {showSearch && !isResponsiveViewport ? (
-              <div style={{ position: "relative" }}>
-                <Search
-                  size={16}
-                  style={{
-                    position: "absolute",
-                    left: "0.9rem",
-                    top: "50%",
-                    transform: "translateY(-50%)",
-                    color: searchTextColor,
-                    opacity: 0.55,
-                  }}
-                />
-                <input
-                  type="search"
-                  placeholder={searchPlaceholder}
-                  style={searchInputStyle}
-                />
-              </div>
-            ) : null}
-
-            {!isResponsiveViewport ? (
-              <div
-                style={{
-                  display: "flex",
-                  alignItems: "center",
-                  gap: "0.35rem",
-                }}
-              >
-                {renderAuthArea()}
-                {showPrimaryAction ? (
-                  <a href={primaryActionHref} style={primaryActionStyle}>
-                    {primaryActionText}
-                  </a>
-                ) : null}
-              </div>
-            ) : (
-              <button
-                type="button"
-                onClick={() => setMobileOpen((prev) => !prev)}
-                style={{
-                  border: "1px solid rgba(226,232,240,0.8)",
-                  borderRadius: "999px",
-                  background: "rgba(255,255,255,0.5)",
-                  color: textColor,
-                  width: "40px",
-                  height: "40px",
-                  display: "inline-flex",
-                  alignItems: "center",
-                  justifyContent: "center",
-                  cursor: "pointer",
-                  boxShadow: "0 2px 10px rgba(15,23,42,0.05)",
-                }}
-                aria-label="Toggle mobile menu"
-              >
-                {mobileOpen ? <X size={20} /> : <Menu size={20} />}
-              </button>
-            )}
-          </div>
+        </div>
         </div>
 
         {!isResponsiveViewport && menuLayout === "stacked" && (
@@ -744,11 +689,7 @@ const HeaderComponent = (rawProps) => {
             style={{
               display: "flex",
               justifyContent:
-                menuAlignment === "center"
-                  ? "center"
-                  : menuAlignment === "right"
-                    ? "flex-end"
-                    : "flex-start",
+                menuAlignment === "center" ? "center" : menuAlignment === "right" ? "flex-end" : "flex-start",
               paddingTop: "0.75rem",
               paddingBottom: "0.5rem",
               borderTop: "1px solid rgba(148, 163, 184, 0.2)",
@@ -760,9 +701,7 @@ const HeaderComponent = (rawProps) => {
       </div>
 
       {isResponsiveViewport && mobileOpen ? (
-        <div
-          style={{ padding: variant === "floating" ? "10px 0 0" : "8px 0 0" }}
-        >
+        <div style={{ padding: variant === "floating" ? "10px 0 0" : "8px 0 0" }}>
           <div
             style={{
               maxWidth,
@@ -799,14 +738,7 @@ const HeaderComponent = (rawProps) => {
             ) : null}
 
             {renderNavLinks(navItems, true)}
-            <div
-              style={{
-                marginTop: "0.75rem",
-                display: "flex",
-                flexDirection: "column",
-                gap: "0.35rem",
-              }}
-            >
+            <div style={{ marginTop: "0.75rem", display: "flex", flexDirection: "column", gap: "0.35rem" }}>
               {renderAuthArea(true)}
               {showPrimaryAction ? (
                 <a
@@ -843,12 +775,7 @@ HeaderComponent.propTypes = {
   logoFontWeight: PropTypes.oneOfType([PropTypes.string, PropTypes.number]),
   logoLetterSpacing: PropTypes.string,
   logoFontFamily: PropTypes.string,
-  logoTextTransform: PropTypes.oneOf([
-    "none",
-    "capitalize",
-    "uppercase",
-    "lowercase",
-  ]),
+  logoTextTransform: PropTypes.oneOf(["none", "capitalize", "uppercase", "lowercase"]),
   logoWidth: PropTypes.string,
   logoHeight: PropTypes.string,
   showLogoBadge: PropTypes.bool,

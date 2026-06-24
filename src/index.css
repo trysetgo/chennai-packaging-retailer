@@ -2,16 +2,12 @@
 @tailwind components;
 @tailwind utilities;
 
-*,
-::before,
-::after {
-  box-sizing: border-box;
-}
 body {
   margin: 0;
-  font-family:
-    ui-sans-serif,
-    system-ui,
-    -apple-system,
-    sans-serif;
+  font-family: sans-serif;
+}
+
+.paragraph-content a {
+  color: blue;
+  text-decoration: underline;
 }

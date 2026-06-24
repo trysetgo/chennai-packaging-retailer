@@ -39,10 +39,8 @@ const columnClass = (count = 3) => {
 };
 
 const buildCompatibleHeroProps = (rawProps = {}) => {
-  const form =
-    rawProps?.form && typeof rawProps.form === "object" ? rawProps.form : {};
-  const info =
-    rawProps?.info && typeof rawProps.info === "object" ? rawProps.info : {};
+  const form = rawProps?.form && typeof rawProps.form === "object" ? rawProps.form : {};
+  const info = rawProps?.info && typeof rawProps.info === "object" ? rawProps.info : {};
   const formInputs = Array.isArray(form.inputs) ? form.inputs : [];
   const formButtons = Array.isArray(form.buttons) ? form.buttons : [];
   const infoTexts = Array.isArray(info.texts) ? info.texts : [];
@@ -71,17 +69,14 @@ const buildCompatibleHeroProps = (rawProps = {}) => {
         }));
 
   const primaryActionLabel =
-    rawProps?.buttonText ||
-    formButtons?.[0]?.label ||
-    rawProps?.searchButtonText;
+    rawProps?.buttonText || formButtons?.[0]?.label || rawProps?.searchButtonText;
   const secondaryActionLabel =
     rawProps?.secondaryButtonText || formButtons?.[1]?.label || "";
 
   return {
     ...rawProps,
     heading: rawProps?.heading || rawProps?.header || rawProps?.title,
-    subheading:
-      rawProps?.subheading || rawProps?.subheader || rawProps?.subtitle,
+    subheading: rawProps?.subheading || rawProps?.subheader || rawProps?.subtitle,
     buttonText: primaryActionLabel,
     showSecondaryButton:
       rawProps?.showSecondaryButton !== undefined
@@ -94,20 +89,15 @@ const buildCompatibleHeroProps = (rawProps = {}) => {
         : searchFields.length > 0,
     searchFields,
     searchPlaceholder:
-      rawProps?.searchPlaceholder ||
-      searchFields?.[0]?.placeholder ||
-      "Search...",
+      rawProps?.searchPlaceholder || searchFields?.[0]?.placeholder || "Search...",
     searchButtonText:
       rawProps?.searchButtonText ||
-      (String(primaryActionLabel || "")
-        .toLowerCase()
-        .includes("search")
+      (String(primaryActionLabel || "").toLowerCase().includes("search")
         ? "Search"
         : primaryActionLabel),
     showStats:
       rawProps?.showStats !== undefined ? rawProps.showStats : stats.length > 0,
-    statsVariant:
-      rawProps?.statsVariant || (stats.length > 0 ? "inline" : "cards"),
+    statsVariant: rawProps?.statsVariant || (stats.length > 0 ? "inline" : "cards"),
     stats,
     layoutMode:
       rawProps?.layoutMode ||
@@ -130,8 +120,7 @@ const getButtonPresentation = ({
 }) => {
   const base = {
     borderRadius: radius,
-    transition:
-      "transform 180ms ease, box-shadow 180ms ease, background-color 180ms ease, color 180ms ease",
+    transition: "transform 180ms ease, box-shadow 180ms ease, background-color 180ms ease, color 180ms ease",
   };
 
   if (styleType === "ghost") {
@@ -176,12 +165,7 @@ const getButtonPresentation = ({
 };
 
 const renderFeatureCards = (items, textColor, accentColor) => (
-  <div
-    className={classNames(
-      "grid gap-4",
-      columnClass(Math.min(4, items.length || 1)),
-    )}
-  >
+  <div className={classNames("grid gap-4", columnClass(Math.min(4, items.length || 1)))}>
     {items.map((feature) => (
       <div
         key={feature.id || feature.title}
@@ -227,9 +211,7 @@ const renderInlineStats = (items, textColor) => (
           className="flex items-center gap-2 text-sm sm:text-base"
           style={{ color: textColor }}
         >
-          <span className="text-base font-semibold opacity-90">
-            {item?.icon || "*"}
-          </span>
+          <span className="text-base font-semibold opacity-90">{item?.icon || "*"}</span>
           <span className="font-medium">{itemText}</span>
         </div>
       );
@@ -238,12 +220,7 @@ const renderInlineStats = (items, textColor) => (
 );
 
 const renderStatCards = (items, textColor, accentColor) => (
-  <div
-    className={classNames(
-      "grid gap-4",
-      columnClass(Math.min(4, items.length || 1)),
-    )}
-  >
+  <div className={classNames("grid gap-4", columnClass(Math.min(4, items.length || 1)))}>
     {items.map((item) => (
       <div
         key={item.id || item.label}
@@ -271,12 +248,7 @@ const renderStatCards = (items, textColor, accentColor) => (
 );
 
 const renderProductCards = (items) => (
-  <div
-    className={classNames(
-      "grid gap-4",
-      columnClass(Math.min(4, items.length || 1)),
-    )}
-  >
+  <div className={classNames("grid gap-4", columnClass(Math.min(4, items.length || 1)))}>
     {items
       .filter((grid) => grid?.showProduct !== false)
       .map((grid) => (
@@ -341,19 +313,14 @@ const renderTrustItems = (items, trustStyle, accentColor, textColor) => {
         <div
           key={item.id || item.label}
           className={classNames("inline-flex items-center gap-2", {
-            "rounded-full px-3 py-2 border backdrop-blur-sm":
-              trustStyle === "pill",
+            "rounded-full px-3 py-2 border backdrop-blur-sm": trustStyle === "pill",
           })}
           style={
             trustStyle === "pill"
               ? {
                   color: textColor,
                   background: "rgba(255,255,255,0.12)",
-                  borderColor: hexToRgba(
-                    accentColor,
-                    0.12,
-                    "rgba(255,255,255,0.18)",
-                  ),
+                  borderColor: hexToRgba(accentColor, 0.12, "rgba(255,255,255,0.18)"),
                 }
               : { color: textColor }
           }
@@ -368,11 +335,7 @@ const renderTrustItems = (items, trustStyle, accentColor, textColor) => {
             <span
               className="inline-flex h-6 w-6 items-center justify-center rounded-full text-[11px] font-semibold"
               style={{
-                background: hexToRgba(
-                  accentColor,
-                  0.12,
-                  "rgba(236,48,128,0.12)",
-                ),
+                background: hexToRgba(accentColor, 0.12, "rgba(236,48,128,0.12)"),
                 color: accentColor,
               }}
             >
@@ -388,8 +351,7 @@ const renderTrustItems = (items, trustStyle, accentColor, textColor) => {
 
 export const heroComponentDefaultProps = {
   heading: "Build something amazing",
-  subheading:
-    "Create beautiful, fast, and modern web applications with our intuitive drag-and-drop builder.",
+  subheading: "Create beautiful, fast, and modern web applications with our intuitive drag-and-drop builder.",
   showEyebrow: false,
   eyebrowText: "New Release",
   eyebrowColor: "#4f46e5",
@@ -454,8 +416,7 @@ export const heroComponentDefaultProps = {
   searchFieldTextColor: "#0f172a",
   searchFieldDividerColor: "#e2e8f0",
   mediaType: "image",
-  mediaImageUrl:
-    "https://images.unsplash.com/photo-1551434678-e076c223a692?auto=format&fit=crop&w=1600&q=80",
+  mediaImageUrl: "https://images.unsplash.com/photo-1551434678-e076c223a692?auto=format&fit=crop&w=1600&q=80",
   mediaImageAlt: "Hero Image",
   mediaObjectFit: "cover",
   mediaAspectRatio: "4/3",
@@ -620,23 +581,12 @@ const HeroComponent = (rawProps) => {
   const safeProductGrids = Array.isArray(productGrids)
     ? productGrids.filter((item) => item && item.showProduct !== false)
     : [];
-  const safeSearchFields = Array.isArray(searchFields)
-    ? searchFields.filter(Boolean)
-    : [];
-  const safeTrustItems = Array.isArray(trustItems)
-    ? trustItems.filter(Boolean)
-    : [];
-  const safeMediaCardItems = Array.isArray(mediaCardItems)
-    ? mediaCardItems.filter(Boolean)
-    : [];
+  const safeSearchFields = Array.isArray(searchFields) ? searchFields.filter(Boolean) : [];
+  const safeTrustItems = Array.isArray(trustItems) ? trustItems.filter(Boolean) : [];
+  const safeMediaCardItems = Array.isArray(mediaCardItems) ? mediaCardItems.filter(Boolean) : [];
   const safeMediaType = mediaType || "none";
   const safeLayoutMode = layoutMode || "panel";
-  const isSideBySide = [
-    "split",
-    "split-reverse",
-    "panel",
-    "immersive",
-  ].includes(safeLayoutMode);
+  const isSideBySide = ["split", "split-reverse", "panel", "immersive"].includes(safeLayoutMode);
   const isReverse = safeLayoutMode === "split-reverse";
   const isCentered = safeLayoutMode === "centered";
   const isStacked = safeLayoutMode === "stacked";
@@ -646,12 +596,8 @@ const HeroComponent = (rawProps) => {
   const hasFeatureMedia = safeFeatures.length > 0;
   const hasStatsMedia = safeStats.length > 0;
   const hasProductMedia = safeProductGrids.length > 0;
-  const hasCustomMedia = Boolean(
-    mediaCardTitle ||
-    mediaCardDescription ||
-    mediaCardValue ||
-    safeMediaCardItems.length,
-  );
+  const hasCustomMedia =
+    Boolean(mediaCardTitle || mediaCardDescription || mediaCardValue || safeMediaCardItems.length);
   const showMediaPanel =
     safeMediaType !== "none" &&
     ((safeMediaType === "image" && hasImageMedia) ||
@@ -696,8 +642,7 @@ const HeroComponent = (rawProps) => {
 
   if (backgroundImage) {
     backgroundStyle.backgroundImage =
-      String(backgroundImage).includes("gradient(") ||
-      String(backgroundImage).includes("url(")
+      String(backgroundImage).includes("gradient(") || String(backgroundImage).includes("url(")
         ? backgroundImage
         : `url(${backgroundImage})`;
     backgroundStyle.backgroundSize = "cover";
@@ -709,13 +654,7 @@ const HeroComponent = (rawProps) => {
     overlayType === "none"
       ? null
       : overlayType === "solid"
-        ? {
-            background: hexToRgba(
-              overlayColor,
-              safeOpacity,
-              `rgba(2,6,23,${safeOpacity})`,
-            ),
-          }
+        ? { background: hexToRgba(overlayColor, safeOpacity, `rgba(2,6,23,${safeOpacity})`) }
         : overlayType === "radial"
           ? {
               background: `radial-gradient(circle at 18% 18%, ${hexToRgba(overlayColor, Math.min(0.82, safeOpacity + 0.28), "rgba(2,6,23,0.68)")}, transparent 54%), linear-gradient(160deg, rgba(2,6,23,${Math.min(0.62, safeOpacity + 0.16)}) 0%, rgba(15,23,42,${Math.max(0.12, safeOpacity)}) 58%, transparent 100%)`,
@@ -777,8 +716,7 @@ const HeroComponent = (rawProps) => {
 
   const primaryButtonStyle = getButtonPresentation({
     styleType: buttonStyle,
-    backgroundColor:
-      buttonStyle === "custom" ? buttonColor : buttonColor || accentColor,
+    backgroundColor: buttonStyle === "custom" ? buttonColor : buttonColor || accentColor,
     textColor: buttonTextColor,
     accentColor,
     radius: buttonBorderRadius,
@@ -833,9 +771,7 @@ const HeroComponent = (rawProps) => {
               >
                 <input
                   type="search"
-                  placeholder={
-                    field.placeholder || field.label || searchPlaceholder
-                  }
+                  placeholder={field.placeholder || field.label || searchPlaceholder}
                   className="h-full w-full bg-transparent px-5 py-4 text-sm outline-none"
                   style={{ color: searchFieldTextColor }}
                 />
@@ -913,24 +849,15 @@ const HeroComponent = (rawProps) => {
       <>
         {showStats && safeStats.length > 0 && safeMediaType !== "stats" ? (
           statsVariant === "inline" ? (
-            <div className="mt-8 w-full">
-              {renderInlineStats(safeStats, textColor)}
-            </div>
+            <div className="mt-8 w-full">{renderInlineStats(safeStats, textColor)}</div>
           ) : (
-            <div className="mt-8 w-full">
-              {renderStatCards(safeStats, textColor, accentColor)}
-            </div>
+            <div className="mt-8 w-full">{renderStatCards(safeStats, textColor, accentColor)}</div>
           )
         ) : null}
 
-        {showFeatures &&
-        safeFeatures.length > 0 &&
-        safeMediaType !== "features" ? (
+        {showFeatures && safeFeatures.length > 0 && safeMediaType !== "features" ? (
           <div
-            className={classNames(
-              "mt-8 grid w-full gap-4",
-              columnClass(featureGridColumns),
-            )}
+            className={classNames("mt-8 grid w-full gap-4", columnClass(featureGridColumns))}
           >
             {safeFeatures.map((feature) => (
               <div
@@ -947,27 +874,17 @@ const HeroComponent = (rawProps) => {
                   <div
                     className="mb-4 inline-flex h-12 w-12 items-center justify-center rounded-2xl text-lg font-semibold"
                     style={{
-                      background: hexToRgba(
-                        accentColor,
-                        0.12,
-                        "rgba(236,48,128,0.12)",
-                      ),
+                      background: hexToRgba(accentColor, 0.12, "rgba(236,48,128,0.12)"),
                       color: accentColor,
                     }}
                   >
                     {feature.icon || "*"}
                   </div>
                 )}
-                <h3
-                  className="mb-2 text-lg font-semibold"
-                  style={{ color: textColor }}
-                >
+                <h3 className="mb-2 text-lg font-semibold" style={{ color: textColor }}>
                   {feature.title}
                 </h3>
-                <p
-                  className="text-sm leading-6"
-                  style={{ color: textColor, opacity: 0.82 }}
-                >
+                <p className="text-sm leading-6" style={{ color: textColor, opacity: 0.82 }}>
                   {feature.description}
                 </p>
               </div>
@@ -975,9 +892,7 @@ const HeroComponent = (rawProps) => {
           </div>
         ) : null}
 
-        {showProductGrid &&
-        safeProductGrids.length > 0 &&
-        safeMediaType !== "products" ? (
+        {showProductGrid && safeProductGrids.length > 0 && safeMediaType !== "products" ? (
           <div
             className={classNames(
               "mt-8 grid w-full gap-4",
@@ -1012,8 +927,7 @@ const HeroComponent = (rawProps) => {
                     style={{
                       color: grid.productDiscountColor || "#16a34a",
                       fontSize: grid.productDiscountFontSize || "0.875rem",
-                      marginBottom:
-                        grid.productDiscountMarginBottom || "0.5rem",
+                      marginBottom: grid.productDiscountMarginBottom || "0.5rem",
                       padding: grid.productDiscountPadding || "0",
                     }}
                   >
@@ -1025,8 +939,7 @@ const HeroComponent = (rawProps) => {
                   className="inline-flex items-center justify-center px-4 py-2 text-sm font-semibold"
                   style={{
                     borderRadius: grid.productButtonBorderRadius || "12px",
-                    background:
-                      grid.productButtonBackgroundColor || accentColor,
+                    background: grid.productButtonBackgroundColor || accentColor,
                     color: grid.productButtonTextColor || "#ffffff",
                   }}
                 >
@@ -1058,48 +971,26 @@ const HeroComponent = (rawProps) => {
             loading={lazyLoadMedia ? "lazy" : "eager"}
             decoding="async"
           />
-          {(mediaCardTitle ||
-            mediaCardDescription ||
-            safeMediaCardItems.length > 0) && (
+          {(mediaCardTitle || mediaCardDescription || safeMediaCardItems.length > 0) && (
             <div
               className="absolute inset-x-4 bottom-4 rounded-[22px] border border-white/60 p-4 backdrop-blur-md"
-              style={{
-                backgroundColor: mediaCardIsTransparent
-                  ? "transparent"
-                  : mediaCardBackgroundColor,
-                color: mediaCardTextColor,
-              }}
+              style={{ backgroundColor: mediaCardIsTransparent ? "transparent" : mediaCardBackgroundColor, color: mediaCardTextColor }}
             >
               {mediaCardEyebrow ? (
                 <p
                   className="mb-2 font-semibold uppercase tracking-[0.24em]"
-                  style={{
-                    color: mediaCardEyebrowColor || accentColor,
-                    fontSize: mediaCardEyebrowFontSize,
-                  }}
+                  style={{ color: mediaCardEyebrowColor || accentColor, fontSize: mediaCardEyebrowFontSize }}
                 >
                   {mediaCardEyebrow}
                 </p>
               ) : null}
               {mediaCardTitle ? (
-                <h3
-                  className="font-semibold"
-                  style={{
-                    color: mediaCardTitleColor || mediaCardTextColor,
-                    fontSize: mediaCardTitleFontSize,
-                  }}
-                >
+                <h3 className="font-semibold" style={{ color: mediaCardTitleColor || mediaCardTextColor, fontSize: mediaCardTitleFontSize }}>
                   {mediaCardTitle}
                 </h3>
               ) : null}
               {mediaCardDescription ? (
-                <p
-                  className="mt-2 leading-6"
-                  style={{
-                    color: mediaCardDescriptionColor,
-                    fontSize: mediaCardDescriptionFontSize,
-                  }}
-                >
+                <p className="mt-2 leading-6" style={{ color: mediaCardDescriptionColor, fontSize: mediaCardDescriptionFontSize }}>
                   {mediaCardDescription}
                 </p>
               ) : null}
@@ -1109,19 +1000,12 @@ const HeroComponent = (rawProps) => {
                     <div
                       key={item.id || item.text}
                       className="flex items-center gap-2"
-                      style={{
-                        color: mediaCardItemColor,
-                        fontSize: mediaCardItemFontSize,
-                      }}
+                      style={{ color: mediaCardItemColor, fontSize: mediaCardItemFontSize }}
                     >
                       <span
                         className="inline-flex h-5 w-5 shrink-0 items-center justify-center rounded-full text-[10px] font-semibold"
                         style={{
-                          background: hexToRgba(
-                            accentColor,
-                            0.12,
-                            "rgba(236,48,128,0.12)",
-                          ),
+                          background: hexToRgba(accentColor, 0.12, "rgba(236,48,128,0.12)"),
                           color: accentColor,
                         }}
                       >
@@ -1155,38 +1039,25 @@ const HeroComponent = (rawProps) => {
     }
 
     if (safeMediaType === "products") {
-      return (
-        <div style={mediaSurfaceStyle}>
-          {renderProductCards(safeProductGrids)}
-        </div>
-      );
+      return <div style={mediaSurfaceStyle}>{renderProductCards(safeProductGrids)}</div>;
     }
 
     return (
       <div className="relative overflow-hidden" style={mediaSurfaceStyle}>
         <div
           className="pointer-events-none absolute -right-10 top-0 h-40 w-40 rounded-full blur-3xl"
-          style={{
-            background: hexToRgba(accentColor, 0.24, "rgba(236,48,128,0.24)"),
-          }}
+          style={{ background: hexToRgba(accentColor, 0.24, "rgba(236,48,128,0.24)") }}
         />
         <div
           className="pointer-events-none absolute -bottom-12 left-0 h-44 w-44 rounded-full blur-3xl"
           style={{
-            background: hexToRgba(
-              secondaryAccentColor,
-              0.18,
-              "rgba(99,102,241,0.18)",
-            ),
+            background: hexToRgba(secondaryAccentColor, 0.18, "rgba(99,102,241,0.18)"),
           }}
         />
         {mediaCardEyebrow ? (
           <p
             className="relative z-10 mb-3 font-semibold uppercase tracking-[0.26em]"
-            style={{
-              color: mediaCardEyebrowColor || accentColor,
-              fontSize: mediaCardEyebrowFontSize,
-            }}
+            style={{ color: mediaCardEyebrowColor || accentColor, fontSize: mediaCardEyebrowFontSize }}
           >
             {mediaCardEyebrow}
           </p>
@@ -1194,10 +1065,7 @@ const HeroComponent = (rawProps) => {
         {mediaCardTitle ? (
           <h3
             className="relative z-10 max-w-md font-semibold leading-tight"
-            style={{
-              color: mediaCardTitleColor,
-              fontSize: mediaCardTitleFontSize || "clamp(1.8rem,3vw,2.6rem)",
-            }}
+            style={{ color: mediaCardTitleColor, fontSize: mediaCardTitleFontSize || "clamp(1.8rem,3vw,2.6rem)" }}
           >
             {mediaCardTitle}
           </h3>
@@ -1205,49 +1073,24 @@ const HeroComponent = (rawProps) => {
         {mediaCardDescription ? (
           <p
             className="relative z-10 mt-4 max-w-lg leading-7"
-            style={{
-              color: mediaCardDescriptionColor,
-              fontSize: mediaCardDescriptionFontSize,
-            }}
+            style={{ color: mediaCardDescriptionColor, fontSize: mediaCardDescriptionFontSize }}
           >
             {mediaCardDescription}
           </p>
         ) : null}
         <div className="relative z-10 mt-8 grid gap-4 sm:grid-cols-[minmax(0,1fr)_auto] sm:items-end">
-          <div
-            className="rounded-[24px] border border-slate-200/80 p-5 backdrop-blur-sm"
-            style={{
-              backgroundColor: mediaCardIsTransparent
-                ? "transparent"
-                : mediaCardBackgroundColor,
-            }}
-          >
+          <div className="rounded-[24px] border border-slate-200/80 p-5 backdrop-blur-sm" style={{ backgroundColor: mediaCardIsTransparent ? "transparent" : mediaCardBackgroundColor }}>
             <p className="text-[11px] font-semibold uppercase tracking-[0.24em] text-slate-500">
               System signal
             </p>
-            <div
-              className="mt-3 font-semibold"
-              style={{
-                color: mediaCardValueColor,
-                fontSize: mediaCardValueFontSize,
-              }}
-            >
+            <div className="mt-3 font-semibold" style={{ color: mediaCardValueColor, fontSize: mediaCardValueFontSize }}>
               {mediaCardValue || "01"}
             </div>
             <p className="mt-2 text-sm text-slate-600">
               {mediaCardMeta || "Composed from props"}
             </p>
           </div>
-          <div
-            className="rounded-[24px] border border-slate-200/80 px-5 py-4 text-sm backdrop-blur-sm"
-            style={{
-              backgroundColor: mediaCardIsTransparent
-                ? "transparent"
-                : mediaCardBackgroundColor,
-              color: mediaCardItemColor,
-              fontSize: mediaCardItemFontSize,
-            }}
-          >
+          <div className="rounded-[24px] border border-slate-200/80 px-5 py-4 text-sm backdrop-blur-sm" style={{ backgroundColor: mediaCardIsTransparent ? "transparent" : mediaCardBackgroundColor, color: mediaCardItemColor, fontSize: mediaCardItemFontSize }}>
             {safeLayoutMode}
           </div>
         </div>
@@ -1257,22 +1100,12 @@ const HeroComponent = (rawProps) => {
               <div
                 key={item.id || item.text}
                 className="flex items-center gap-3 rounded-[18px] border border-slate-200/80 px-4 py-3 backdrop-blur-sm"
-                style={{
-                  backgroundColor: mediaCardIsTransparent
-                    ? "transparent"
-                    : mediaCardBackgroundColor,
-                  color: mediaCardItemColor,
-                  fontSize: mediaCardItemFontSize,
-                }}
+                style={{ backgroundColor: mediaCardIsTransparent ? "transparent" : mediaCardBackgroundColor, color: mediaCardItemColor, fontSize: mediaCardItemFontSize }}
               >
                 <span
                   className="inline-flex h-8 w-8 items-center justify-center rounded-full text-xs font-semibold"
                   style={{
-                    background: hexToRgba(
-                      accentColor,
-                      0.12,
-                      "rgba(236,48,128,0.12)",
-                    ),
+                    background: hexToRgba(accentColor, 0.12, "rgba(236,48,128,0.12)"),
                     color: accentColor,
                   }}
                 >
@@ -1351,12 +1184,7 @@ const HeroComponent = (rawProps) => {
             })}
           >
             {buttonText ? (
-              <a
-                href={buttonUrl || "#"}
-                className={sharedButtonClass}
-                style={primaryButtonStyle}
-                aria-label={buttonText}
-              >
+              <a href={buttonUrl || "#"} className={sharedButtonClass} style={primaryButtonStyle} aria-label={buttonText}>
                 {buttonText}
               </a>
             ) : null}
@@ -1376,12 +1204,7 @@ const HeroComponent = (rawProps) => {
         {renderSearch()}
         {showTrustBar && safeTrustItems.length > 0 ? (
           <div className="mt-8 w-full">
-            {renderTrustItems(
-              safeTrustItems,
-              trustStyle,
-              accentColor,
-              textColor,
-            )}
+            {renderTrustItems(safeTrustItems, trustStyle, accentColor, textColor)}
           </div>
         ) : null}
         {renderContentExtras()}
@@ -1409,27 +1232,18 @@ const HeroComponent = (rawProps) => {
       aria-label={heading || "Hero section"}
     >
       {overlayStyle ? (
-        <div
-          className="pointer-events-none absolute inset-0"
-          style={overlayStyle}
-        />
+        <div className="pointer-events-none absolute inset-0" style={overlayStyle} />
       ) : null}
       {showAmbientShapes ? (
         <>
           <div
             className="pointer-events-none absolute left-[-10%] top-[8%] h-64 w-64 rounded-full blur-3xl"
-            style={{
-              background: hexToRgba(accentColor, 0.18, "rgba(236,48,128,0.18)"),
-            }}
+            style={{ background: hexToRgba(accentColor, 0.18, "rgba(236,48,128,0.18)") }}
           />
           <div
             className="pointer-events-none absolute right-[-6%] top-[12%] h-72 w-72 rounded-full blur-3xl"
             style={{
-              background: hexToRgba(
-                secondaryAccentColor,
-                0.16,
-                "rgba(99,102,241,0.16)",
-              ),
+              background: hexToRgba(secondaryAccentColor, 0.16, "rgba(99,102,241,0.16)"),
             }}
           />
           <div
@@ -1453,25 +1267,20 @@ const HeroComponent = (rawProps) => {
               }
             `}</style>
             <div
-              className={classNames(
-                `hero-split-${componentId}`,
-                "grid items-center gap-8 lg:gap-12",
-                {
-                  "lg:[&>*:first-child]:order-2 lg:[&>*:last-child]:order-1":
-                    isReverse,
-                  "lg:items-end": safeLayoutMode === "immersive",
-                },
-              )}
+              className={classNames(`hero-split-${componentId}`, "grid items-center gap-8 lg:gap-12", {
+                "lg:[&>*:first-child]:order-2 lg:[&>*:last-child]:order-1": isReverse,
+                "lg:items-end": safeLayoutMode === "immersive",
+              })}
               style={{ gap }}
             >
-              {contentBlock}
-              <div
-                className={classNames("w-full", {
-                  "lg:translate-y-6": safeLayoutMode === "immersive",
-                })}
-              >
-                {mediaPanel}
-              </div>
+            {contentBlock}
+            <div
+              className={classNames("w-full", {
+                "lg:translate-y-6": safeLayoutMode === "immersive",
+              })}
+            >
+              {mediaPanel}
+            </div>
             </div>
           </>
         ) : isStacked && mediaPanel ? (
@@ -1485,9 +1294,7 @@ const HeroComponent = (rawProps) => {
             <div className="mx-auto w-full max-w-4xl">{mediaPanel}</div>
           </div>
         ) : (
-          <div className={classNames({ "mx-auto max-w-5xl": isCentered })}>
-            {contentBlock}
-          </div>
+          <div className={classNames({ "mx-auto max-w-5xl": isCentered })}>{contentBlock}</div>
         )}
       </div>
     </section>
@@ -1544,13 +1351,7 @@ HeroComponent.propTypes = {
   ctaLayout: PropTypes.oneOf(["inline", "stacked"]),
   buttonText: PropTypes.string,
   buttonUrl: PropTypes.string,
-  buttonStyle: PropTypes.oneOf([
-    "primary",
-    "secondary",
-    "outline",
-    "ghost",
-    "custom",
-  ]),
+  buttonStyle: PropTypes.oneOf(["primary", "secondary", "outline", "ghost", "custom"]),
   buttonColor: PropTypes.string,
   buttonTextColor: PropTypes.string,
   buttonBorderRadius: PropTypes.string,
@@ -1586,14 +1387,7 @@ HeroComponent.propTypes = {
   searchPanelShadow: PropTypes.string,
   searchFieldTextColor: PropTypes.string,
   searchFieldDividerColor: PropTypes.string,
-  mediaType: PropTypes.oneOf([
-    "none",
-    "image",
-    "features",
-    "stats",
-    "products",
-    "custom-card",
-  ]),
+  mediaType: PropTypes.oneOf(["none", "image", "features", "stats", "products", "custom-card"]),
   mediaImageUrl: PropTypes.string,
   mediaImageAlt: PropTypes.string,
   mediaObjectFit: PropTypes.string,

@@ -4,34 +4,10 @@ import React, { useMemo } from "react";
 import PropTypes from "prop-types";
 
 const defaultFeatures = [
-  {
-    id: "feat-1",
-    title: "Premium Quality",
-    image:
-      "https://images.unsplash.com/photo-1542291026-7eec264c27ff?auto=format&fit=crop&w=400&q=80",
-    text: "Crafted with excellence.",
-  },
-  {
-    id: "feat-2",
-    title: "Fast Delivery",
-    image:
-      "https://images.unsplash.com/photo-1580828369019-2238b6d774d0?auto=format&fit=crop&w=400&q=80",
-    text: "Shipped quickly to your door.",
-  },
-  {
-    id: "feat-3",
-    title: "24/7 Support",
-    image:
-      "https://images.unsplash.com/photo-1516321318423-f06f85e504b3?auto=format&fit=crop&w=400&q=80",
-    text: "Always here to help you.",
-  },
-  {
-    id: "feat-4",
-    title: "Eco Friendly",
-    image:
-      "https://images.unsplash.com/photo-1542601906990-b4d3fb778b09?auto=format&fit=crop&w=400&q=80",
-    text: "Sustainable materials.",
-  },
+  { id: "feat-1", title: "Premium Quality", image: "https://images.unsplash.com/photo-1542291026-7eec264c27ff?auto=format&fit=crop&w=400&q=80", text: "Crafted with excellence." },
+  { id: "feat-2", title: "Fast Delivery", image: "https://images.unsplash.com/photo-1580828369019-2238b6d774d0?auto=format&fit=crop&w=400&q=80", text: "Shipped quickly to your door." },
+  { id: "feat-3", title: "24/7 Support", image: "https://images.unsplash.com/photo-1516321318423-f06f85e504b3?auto=format&fit=crop&w=400&q=80", text: "Always here to help you." },
+  { id: "feat-4", title: "Eco Friendly", image: "https://images.unsplash.com/photo-1542601906990-b4d3fb778b09?auto=format&fit=crop&w=400&q=80", text: "Sustainable materials." },
 ];
 
 export const whyChooseOurBrandDefaultProps = {
@@ -54,10 +30,7 @@ export const whyChooseOurBrandDefaultProps = {
 };
 
 const WhyChooseOurBrand = (incomingProps) => {
-  const props = {
-    ...whyChooseOurBrandDefaultProps,
-    ...(incomingProps.props || incomingProps),
-  };
+  const props = { ...whyChooseOurBrandDefaultProps, ...(incomingProps.props || incomingProps) };
   const { isPreviewing, isEditable } = incomingProps;
 
   const features = useMemo(() => {
@@ -70,104 +43,42 @@ const WhyChooseOurBrand = (incomingProps) => {
 
   return (
     <section
-      style={{
-        backgroundColor: props.sectionBackgroundColor,
-        padding: "64px 24px",
-        ...props.style,
-      }}
+      style={{ backgroundColor: props.sectionBackgroundColor, padding: "64px 24px", ...props.style }}
       className={`w-full font-sans ${props.className}`}
     >
       <div style={{ maxWidth: "1280px", margin: "0 auto" }}>
         <header style={{ textAlign: "center", marginBottom: "48px" }}>
           {props.title && (
-            <h2
-              style={{
-                color: props.titleColor,
-                fontSize: "2.5rem",
-                fontWeight: 800,
-                margin: "0 0 16px 0",
-                letterSpacing: "-0.02em",
-              }}
-            >
+            <h2 style={{ color: props.titleColor, fontSize: "2.5rem", fontWeight: 800, margin: "0 0 16px 0", letterSpacing: "-0.02em" }}>
               {props.title}
             </h2>
           )}
           {props.subtitle && (
-            <p
-              style={{
-                color: props.subtitleColor,
-                fontSize: "1.125rem",
-                margin: 0,
-                maxWidth: "600px",
-                marginLeft: "auto",
-                marginRight: "auto",
-              }}
-            >
+            <p style={{ color: props.subtitleColor, fontSize: "1.125rem", margin: 0, maxWidth: "600px", marginLeft: "auto", marginRight: "auto" }}>
               {props.subtitle}
             </p>
           )}
         </header>
-        <div
-          style={{
-            display: "grid",
-            gridTemplateColumns: `repeat(auto-fit, minmax(200px, 1fr))`,
-            gap: props.gap,
-            justifyItems: "center",
-          }}
-        >
+        <div style={{ display: "grid", gridTemplateColumns: `repeat(auto-fit, minmax(200px, 1fr))`, gap: props.gap, justifyItems: "center" }}>
           {features.map((feat, idx) => (
-            <div
-              key={feat.id || idx}
-              className="group block text-center transition-all"
-            >
+            <div key={feat.id || idx} className="group block text-center transition-all">
               <div
                 style={{
                   width: props.imageSize,
                   height: props.imageSize,
-                  borderRadius:
-                    props.imageShape === "circle"
-                      ? "50%"
-                      : props.imageShape === "rounded"
-                        ? "1rem"
-                        : "0",
+                  borderRadius: props.imageShape === "circle" ? "50%" : props.imageShape === "rounded" ? "1rem" : "0",
                   overflow: "hidden",
                   margin: "0 auto 20px",
                   backgroundColor: "#f3f4f6",
                 }}
               >
-                <img
-                  src={feat.image || "https://via.placeholder.com/400"}
-                  alt={feat.title}
-                  style={{
-                    width: "100%",
-                    height: "100%",
-                    objectFit: props.imageObjectFit,
-                    transition: "transform 0.5s ease",
-                  }}
-                  className="group-hover:scale-[1.08]"
-                  loading="lazy"
-                />
+                <img src={feat.image || "https://via.placeholder.com/400"} alt={feat.title} style={{ width: "100%", height: "100%", objectFit: props.imageObjectFit, transition: "transform 0.5s ease" }} className="group-hover:scale-[1.08]" loading="lazy" />
               </div>
-              <h3
-                style={{
-                  color: props.cardTextColor,
-                  fontSize: "1.25rem",
-                  fontWeight: 700,
-                  margin: 0,
-                }}
-              >
+              <h3 style={{ color: props.cardTextColor, fontSize: "1.25rem", fontWeight: 700, margin: 0 }}>
                 {feat.title}
               </h3>
               {feat.text && (
-                <p
-                  style={{
-                    color: props.cardSubTextColor,
-                    margin: "8px 0 0 0",
-                    fontSize: "1rem",
-                    fontWeight: 500,
-                    lineHeight: 1.5,
-                  }}
-                >
+                <p style={{ color: props.cardSubTextColor, margin: "8px 0 0 0", fontSize: "1rem", fontWeight: 500, lineHeight: 1.5 }}>
                   {feat.text}
                 </p>
               )}

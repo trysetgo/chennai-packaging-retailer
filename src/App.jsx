@@ -1,18 +1,19 @@
-import React from "react";
-import { BrowserRouter, Routes, Route } from "react-router-dom";
+import React from 'react';
+import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
+import ContactPage from './pages/Contact.jsx';
+import LandingPage from './pages/Landing.jsx';
+import AboutPage from './pages/About.jsx';
 
-import About from "./pages/About.jsx";
-import Contact from "./pages/Contact.jsx";
-import Landing from "./pages/Landing.jsx";
-
-export default function App() {
+function App() {
   return (
-    <BrowserRouter>
+    <Router>
       <Routes>
-        <Route path="/about" element={<About />} />
-        <Route path="/contact" element={<Contact />} />
-        <Route path="/landing" element={<Landing />} />
+          <Route path="/contact" element={<ContactPage />} />
+          <Route path="/" element={<LandingPage />} />
+          <Route path="/about" element={<AboutPage />} />
       </Routes>
-    </BrowserRouter>
+    </Router>
   );
 }
+
+export default App;

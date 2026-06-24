@@ -156,9 +156,7 @@ const TimelineRoadmapComponent = (incomingProps = {}) => {
   useEffect(() => {
     if (typeof window === "undefined") return undefined;
     if (typeof window.matchMedia !== "function") return undefined;
-    const mediaQuery = window.matchMedia(
-      `(max-width: ${mobileBreakpoint || "760px"})`,
-    );
+    const mediaQuery = window.matchMedia(`(max-width: ${mobileBreakpoint || "760px"})`);
     const sync = (event) =>
       setIsMobileViewport(Boolean(event?.matches ?? mediaQuery.matches));
     sync();
@@ -307,9 +305,7 @@ const TimelineRoadmapComponent = (incomingProps = {}) => {
             }}
           >
             {bullets.map((bullet, bulletIndex) => (
-              <li key={`${item.id || index}-bullet-${bulletIndex}`}>
-                {bullet}
-              </li>
+              <li key={`${item.id || index}-bullet-${bulletIndex}`}>{bullet}</li>
             ))}
           </ul>
         ) : null}
@@ -579,11 +575,7 @@ const TimelineRoadmapComponent = (incomingProps = {}) => {
           </div>
         ) : null}
 
-        {isHorizontal
-          ? renderHorizontal()
-          : isAlternating
-            ? renderAlternating()
-            : renderVertical()}
+        {isHorizontal ? renderHorizontal() : isAlternating ? renderAlternating() : renderVertical()}
       </div>
     </section>
   );
