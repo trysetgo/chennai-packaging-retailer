@@ -88,7 +88,10 @@ export const defaultProps = {
     pillBackgroundColor: "#e2e8f0",
     pillActiveBackgroundColor: "#4f46e5",
     pillTextColor: "#475569",
-    pillActiveTextColor: "#ffffff"
+    pillActiveTextColor: "#ffffff",
+    padding: 64,
+    margin: 0,
+    borderRadius: 8
   }
 };
 
@@ -148,8 +151,14 @@ const TrendingProductHero = (props) => {
 
   return (
     <div 
-      className="relative w-full overflow-hidden py-16 lg:py-24"
-      style={{ backgroundColor: styles.backgroundColor, color: styles.textColor }}
+      className="relative w-full overflow-hidden"
+      style={{ 
+        backgroundColor: styles.backgroundColor, 
+        color: styles.textColor,
+        padding: styles.padding !== undefined ? `${styles.padding}px` : "64px 0",
+        margin: styles.margin !== undefined ? `${styles.margin}px` : "0px",
+        borderRadius: styles.borderRadius !== undefined ? `${styles.borderRadius}px` : "0px",
+      }}
     >
       <div className="absolute top-0 left-0 w-full h-full overflow-hidden pointer-events-none">
         <div 
