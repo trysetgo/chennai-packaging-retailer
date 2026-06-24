@@ -431,6 +431,19 @@ export const heroComponentDefaultProps = {
   mediaCardValue: "100",
   mediaCardMeta: "Performance Score",
   mediaCardItems: [],
+  mediaCardIsTransparent: false,
+  mediaCardBackgroundColor: "rgba(255, 255, 255, 0.88)",
+  mediaCardTextColor: "#0f172a",
+  mediaCardEyebrowColor: "",
+  mediaCardEyebrowFontSize: "11px",
+  mediaCardTitleColor: "#0f172a",
+  mediaCardTitleFontSize: "24px",
+  mediaCardDescriptionColor: "#475569",
+  mediaCardDescriptionFontSize: "14px",
+  mediaCardValueColor: "#0f172a",
+  mediaCardValueFontSize: "36px",
+  mediaCardItemColor: "#475569",
+  mediaCardItemFontSize: "14px",
   showTrustBar: false,
   trustStyle: "inline",
   trustItems: [],
@@ -534,6 +547,19 @@ const HeroComponent = (rawProps) => {
     mediaCardValue,
     mediaCardMeta,
     mediaCardItems,
+    mediaCardIsTransparent,
+    mediaCardBackgroundColor,
+    mediaCardTextColor,
+    mediaCardEyebrowColor,
+    mediaCardEyebrowFontSize,
+    mediaCardTitleColor,
+    mediaCardTitleFontSize,
+    mediaCardDescriptionColor,
+    mediaCardDescriptionFontSize,
+    mediaCardValueColor,
+    mediaCardValueFontSize,
+    mediaCardItemColor,
+    mediaCardItemFontSize,
     showTrustBar,
     trustStyle,
     trustItems,
@@ -941,21 +967,50 @@ const HeroComponent = (rawProps) => {
             loading={lazyLoadMedia ? "lazy" : "eager"}
             decoding="async"
           />
-          {(mediaCardTitle || mediaCardDescription) && (
-            <div className="absolute inset-x-4 bottom-4 rounded-[22px] border border-white/60 bg-white/88 p-4 backdrop-blur-md">
+          {(mediaCardTitle || mediaCardDescription || safeMediaCardItems.length > 0) && (
+            <div
+              className="absolute inset-x-4 bottom-4 rounded-[22px] border border-white/60 p-4 backdrop-blur-md"
+              style={{ backgroundColor: mediaCardIsTransparent ? "transparent" : mediaCardBackgroundColor, color: mediaCardTextColor }}
+            >
               {mediaCardEyebrow ? (
                 <p
-                  className="mb-2 text-[11px] font-semibold uppercase tracking-[0.24em]"
-                  style={{ color: accentColor }}
+                  className="mb-2 font-semibold uppercase tracking-[0.24em]"
+                  style={{ color: mediaCardEyebrowColor || accentColor, fontSize: mediaCardEyebrowFontSize }}
                 >
                   {mediaCardEyebrow}
                 </p>
               ) : null}
               {mediaCardTitle ? (
-                <h3 className="text-lg font-semibold text-slate-900">{mediaCardTitle}</h3>
+                <h3 className="font-semibold" style={{ color: mediaCardTitleColor || mediaCardTextColor, fontSize: mediaCardTitleFontSize }}>
+                  {mediaCardTitle}
+                </h3>
               ) : null}
               {mediaCardDescription ? (
-                <p className="mt-2 text-sm leading-6 text-slate-600">{mediaCardDescription}</p>
+                <p className="mt-2 leading-6" style={{ color: mediaCardDescriptionColor, fontSize: mediaCardDescriptionFontSize }}>
+                  {mediaCardDescription}
+                </p>
+              ) : null}
+              {safeMediaCardItems.length > 0 ? (
+                <div className="mt-3 space-y-2">
+                  {safeMediaCardItems.map((item) => (
+                    <div
+                      key={item.id || item.text}
+                      className="flex items-center gap-2"
+                      style={{ color: mediaCardItemColor, fontSize: mediaCardItemFontSize }}
+                    >
+                      <span
+                        className="inline-flex h-5 w-5 shrink-0 items-center justify-center rounded-full text-[10px] font-semibold"
+                        style={{
+                          background: hexToRgba(accentColor, 0.12, "rgba(236,48,128,0.12)"),
+                          color: accentColor,
+                        }}
+                      >
+                        {String(item.text || "").slice(0, 1) || "*"}
+                      </span>
+                      <span className="leading-tight">{item.text}</span>
+                    </div>
+                  ))}
+                </div>
               ) : null}
             </div>
           )}
@@ -997,35 +1052,41 @@ const HeroComponent = (rawProps) => {
         />
         {mediaCardEyebrow ? (
           <p
-            className="relative z-10 mb-3 text-[11px] font-semibold uppercase tracking-[0.26em]"
-            style={{ color: accentColor }}
+            className="relative z-10 mb-3 font-semibold uppercase tracking-[0.26em]"
+            style={{ color: mediaCardEyebrowColor || accentColor, fontSize: mediaCardEyebrowFontSize }}
           >
             {mediaCardEyebrow}
           </p>
         ) : null}
         {mediaCardTitle ? (
-          <h3 className="relative z-10 max-w-md text-[clamp(1.8rem,3vw,2.6rem)] font-semibold leading-tight text-slate-950">
+          <h3
+            className="relative z-10 max-w-md font-semibold leading-tight"
+            style={{ color: mediaCardTitleColor, fontSize: mediaCardTitleFontSize || "clamp(1.8rem,3vw,2.6rem)" }}
+          >
             {mediaCardTitle}
           </h3>
         ) : null}
         {mediaCardDescription ? (
-          <p className="relative z-10 mt-4 max-w-lg text-sm leading-7 text-slate-600">
+          <p
+            className="relative z-10 mt-4 max-w-lg leading-7"
+            style={{ color: mediaCardDescriptionColor, fontSize: mediaCardDescriptionFontSize }}
+          >
             {mediaCardDescription}
           </p>
         ) : null}
         <div className="relative z-10 mt-8 grid gap-4 sm:grid-cols-[minmax(0,1fr)_auto] sm:items-end">
-          <div className="rounded-[24px] border border-slate-200/80 bg-white/72 p-5 backdrop-blur-sm">
+          <div className="rounded-[24px] border border-slate-200/80 p-5 backdrop-blur-sm" style={{ backgroundColor: mediaCardIsTransparent ? "transparent" : mediaCardBackgroundColor }}>
             <p className="text-[11px] font-semibold uppercase tracking-[0.24em] text-slate-500">
               System signal
             </p>
-            <div className="mt-3 text-4xl font-semibold text-slate-950">
+            <div className="mt-3 font-semibold" style={{ color: mediaCardValueColor, fontSize: mediaCardValueFontSize }}>
               {mediaCardValue || "01"}
             </div>
             <p className="mt-2 text-sm text-slate-600">
               {mediaCardMeta || "Composed from props"}
             </p>
           </div>
-          <div className="rounded-[24px] border border-slate-200/80 bg-white/72 px-5 py-4 text-sm text-slate-600 backdrop-blur-sm">
+          <div className="rounded-[24px] border border-slate-200/80 px-5 py-4 text-sm backdrop-blur-sm" style={{ backgroundColor: mediaCardIsTransparent ? "transparent" : mediaCardBackgroundColor, color: mediaCardItemColor, fontSize: mediaCardItemFontSize }}>
             {safeLayoutMode}
           </div>
         </div>
@@ -1034,7 +1095,8 @@ const HeroComponent = (rawProps) => {
             {safeMediaCardItems.map((item) => (
               <div
                 key={item.id || item.text}
-                className="flex items-center gap-3 rounded-[18px] border border-slate-200/80 bg-white/70 px-4 py-3 text-sm text-slate-700 backdrop-blur-sm"
+                className="flex items-center gap-3 rounded-[18px] border border-slate-200/80 px-4 py-3 backdrop-blur-sm"
+                style={{ backgroundColor: mediaCardIsTransparent ? "transparent" : mediaCardBackgroundColor, color: mediaCardItemColor, fontSize: mediaCardItemFontSize }}
               >
                 <span
                   className="inline-flex h-8 w-8 items-center justify-center rounded-full text-xs font-semibold"
@@ -1328,6 +1390,19 @@ HeroComponent.propTypes = {
       text: PropTypes.string,
     }),
   ),
+  mediaCardIsTransparent: PropTypes.bool,
+  mediaCardBackgroundColor: PropTypes.string,
+  mediaCardTextColor: PropTypes.string,
+  mediaCardEyebrowColor: PropTypes.string,
+  mediaCardEyebrowFontSize: PropTypes.string,
+  mediaCardTitleColor: PropTypes.string,
+  mediaCardTitleFontSize: PropTypes.string,
+  mediaCardDescriptionColor: PropTypes.string,
+  mediaCardDescriptionFontSize: PropTypes.string,
+  mediaCardValueColor: PropTypes.string,
+  mediaCardValueFontSize: PropTypes.string,
+  mediaCardItemColor: PropTypes.string,
+  mediaCardItemFontSize: PropTypes.string,
   showTrustBar: PropTypes.bool,
   trustStyle: PropTypes.oneOf(["pill", "inline"]),
   trustItems: PropTypes.arrayOf(
