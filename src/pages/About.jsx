@@ -1,5 +1,7 @@
 import React from 'react';
 import LayoutRenderer from '../components/LayoutRenderer.jsx';
+import Image from '../components/cms/Image.jsx';
+import Button from '../components/cms/Button.jsx';
 import Paragraph from '../components/cms/Paragraph.jsx';
 
 export default function AboutPage() { // Standardized page component name

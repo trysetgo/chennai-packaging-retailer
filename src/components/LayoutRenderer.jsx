@@ -9,8 +9,10 @@ import HeroBanner from './cms/HeroBanner.jsx';
 import WhyChooseOurBrand from './cms/WhyChooseOurBrand.jsx';
 import TrendingProductHero from './cms/TrendingProductHero.jsx';
 import IllustratedHowItWorks from './cms/IllustratedHowItWorks.jsx';
+import Image from './cms/Image.jsx';
 import RichTextContentBlock from './cms/RichTextContentBlock.jsx';
 import CenteredCta from './cms/CenteredCta.jsx';
+import Button from './cms/Button.jsx';
 import Paragraph from './cms/Paragraph.jsx';
 
 const LayoutRendererInternalComponentMap = {
@@ -24,8 +26,10 @@ const LayoutRendererInternalComponentMap = {
   'Why Choose Our Brand': WhyChooseOurBrand,
   'Trending Product Hero': TrendingProductHero,
   'Illustrated How It Works': IllustratedHowItWorks,
+  'Image': Image,
   'Rich Text Content Block': RichTextContentBlock,
   'Centered CTA': CenteredCta,
+  'Button': Button,
   'Paragraph': Paragraph,
 };
 
@@ -85,12 +89,28 @@ className="flex"
 style={{ gap: row.gap || gap || "0.5rem", marginBottom: rowIndex < actualRows.length - 1 ? (row.gap || gap || "0.5rem") : "0", boxSizing: 'border-box', width: '100%' }}
 >
 {(row.columns || []).map((col, colIndex) => (
+col.subColumns && col.subColumns.length > 0 ? (
+<div
+key={col.id || `col-split-${colIndex}`}
+style={{ ...col.style, flexBasis: col.style?.flexBasis || 'auto', flexGrow: 1, boxSizing: 'border-box', display: 'flex', flexWrap: 'wrap', gap: row.gap || gap || "0.5rem" }}
+>
+{col.subColumns.map((subCol, subColIndex) => (
+<div
+key={subCol.id || `subcol-${colIndex}-${subColIndex}`}
+style={{ ...subCol.style, flexBasis: subCol.style?.flexBasis || 'auto', flexGrow: 1, boxSizing: 'border-box' }}
+>
+{renderChildrenRecursive(subCol.children)}
+</div>
+))}
+</div>
+) : (
 <div
 key={col.id || `col-${colIndex}`}
 style={{ ...col.style, flexBasis: col.style?.flexBasis || 'auto', flexGrow: 1, boxSizing: 'border-box' }}
 >
 {renderChildrenRecursive(col.children)}
 </div>
+)
 ))}
 </div>
 ))}

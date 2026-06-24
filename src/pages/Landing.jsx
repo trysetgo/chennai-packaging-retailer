@@ -5,6 +5,7 @@ import WhyChooseOurBrand from '../components/cms/WhyChooseOurBrand.jsx';
 import TrendingProductHero from '../components/cms/TrendingProductHero.jsx';
 import IllustratedHowItWorks from '../components/cms/IllustratedHowItWorks.jsx';
 import LayoutRenderer from '../components/LayoutRenderer.jsx';
+import Image from '../components/cms/Image.jsx';
 import RichTextContentBlock from '../components/cms/RichTextContentBlock.jsx';
 import CenteredCta from '../components/cms/CenteredCta.jsx';
 import Footer from '../components/cms/Footer.jsx';
