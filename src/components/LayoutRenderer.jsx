@@ -1,34 +1,45 @@
 import React from "react";
-import Paragraph from "./cms/Paragraph.jsx";
-import MinimalHeader from "./cms/MinimalHeader.jsx";
-import Heading from "./cms/Heading.jsx";
-import List from "./cms/List.jsx";
-import TimelineRoadmap from "./cms/TimelineRoadmap.jsx";
+import CenteredCta from "./cms/CenteredCta.jsx";
 import Footer from "./cms/Footer.jsx";
 import Header from "./cms/Header.jsx";
+import Heading from "./cms/Heading.jsx";
 import HeroBanner from "./cms/HeroBanner.jsx";
-import WhyChooseOurBrand from "./cms/WhyChooseOurBrand.jsx";
-import TrendingProductHero from "./cms/TrendingProductHero.jsx";
 import IllustratedHowItWorks from "./cms/IllustratedHowItWorks.jsx";
-import CenteredCta from "./cms/CenteredCta.jsx";
 import ImageCard from "./cms/ImageCard.jsx";
+import LayoutSelector from "./cms/LayoutSelector.jsx";
+import List from "./cms/List.jsx";
+import MinimalHeader from "./cms/MinimalHeader.jsx";
+import Paragraph from "./cms/Paragraph.jsx";
 import RichTextContentBlock from "./cms/RichTextContentBlock.jsx";
+import TimelineRoadmap from "./cms/TimelineRoadmap.jsx";
+import TrendingProductHero from "./cms/TrendingProductHero.jsx";
+import WhyChooseOurBrand from "./cms/WhyChooseOurBrand.jsx";
 
 const LayoutRendererInternalComponentMap = {
-  Paragraph: Paragraph,
-  "Minimal Header": MinimalHeader,
-  Heading: Heading,
-  List: List,
-  "Timeline / Roadmap": TimelineRoadmap,
+  CenteredCta: CenteredCta,
+  "Centered Cta": CenteredCta,
   Footer: Footer,
   Header: Header,
+  Heading: Heading,
+  HeroBanner: HeroBanner,
   "Hero Banner": HeroBanner,
-  "Why Choose Our Brand": WhyChooseOurBrand,
-  "Trending Product Hero": TrendingProductHero,
+  IllustratedHowItWorks: IllustratedHowItWorks,
   "Illustrated How It Works": IllustratedHowItWorks,
-  "Centered CTA": CenteredCta,
+  ImageCard: ImageCard,
   "Image Card": ImageCard,
+  LayoutSelector: LayoutSelector,
+  List: List,
+  MinimalHeader: MinimalHeader,
+  "Minimal Header": MinimalHeader,
+  Paragraph: Paragraph,
+  RichTextContentBlock: RichTextContentBlock,
   "Rich Text Content Block": RichTextContentBlock,
+  TimelineRoadmap: TimelineRoadmap,
+  "Timeline Roadmap": TimelineRoadmap,
+  TrendingProductHero: TrendingProductHero,
+  "Trending Product Hero": TrendingProductHero,
+  WhyChooseOurBrand: WhyChooseOurBrand,
+  "Why Choose Our Brand": WhyChooseOurBrand,
 };
 
 let RenderElementInternal;
