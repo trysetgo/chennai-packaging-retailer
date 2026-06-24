@@ -42,7 +42,9 @@ const ListComponent = ({
   const ListTag = ordered ? "ol" : "ul";
   const defaultItems = ["Item 1", "Item 2", "Item 3"];
   const listItemsRaw =
-    items.length > 0 ? items : defaultItems.map((text, index) => ({ id: `default-${index}`, text }));
+    items.length > 0
+      ? items
+      : defaultItems.map((text, index) => ({ id: `default-${index}`, text }));
 
   const listItems = listItemsRaw.map((item, index) => {
     if (typeof item === "string") {
@@ -72,7 +74,11 @@ const ListComponent = ({
     maxWidth: containerMaxWidth,
     width: "100%",
     marginInline:
-      containerAlign === "center" ? "auto" : containerAlign === "right" ? "0 0 0 auto" : undefined,
+      containerAlign === "center"
+        ? "auto"
+        : containerAlign === "right"
+          ? "0 0 0 auto"
+          : undefined,
     ...style,
   };
 
@@ -97,7 +103,10 @@ const ListComponent = ({
         .${scopedClass} li:hover { background-color: ${itemHoverBackgroundColor}; }
         .${scopedClass} li:last-child { border-bottom: none; margin-bottom: 0; }
       `}</style>
-      <ListTag style={listContainerStyle} className={`${scopedClass} ${className}`.trim()}>
+      <ListTag
+        style={listContainerStyle}
+        className={`${scopedClass} ${className}`.trim()}
+      >
         {listItems.map((item) => (
           <li
             key={item.id || item.text}

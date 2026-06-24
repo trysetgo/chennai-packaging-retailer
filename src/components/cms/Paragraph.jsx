@@ -192,7 +192,9 @@ const ParagraphComponent = ({
         : "transparent",
 
     borderRightStyle:
-      headingFullBorder || headingBorderRight ? finalHeadingBorderStyle : "none",
+      headingFullBorder || headingBorderRight
+        ? finalHeadingBorderStyle
+        : "none",
     borderRightWidth:
       headingFullBorder || headingBorderRight ? finalHeadingBorderWidth : "0px",
     borderRightColor:
@@ -201,9 +203,13 @@ const ParagraphComponent = ({
         : "transparent",
 
     borderBottomStyle:
-      headingFullBorder || headingBorderBottom ? finalHeadingBorderStyle : "none",
+      headingFullBorder || headingBorderBottom
+        ? finalHeadingBorderStyle
+        : "none",
     borderBottomWidth:
-      headingFullBorder || headingBorderBottom ? finalHeadingBorderWidth : "0px",
+      headingFullBorder || headingBorderBottom
+        ? finalHeadingBorderWidth
+        : "0px",
     borderBottomColor:
       headingFullBorder || headingBorderBottom
         ? headingBorderColor
@@ -229,7 +235,10 @@ const ParagraphComponent = ({
     width: blockWidth,
     marginTop: marginTop,
     marginBottom: marginBottom,
-    marginLeft: blockAlignment === "center" || blockAlignment === "right" ? "auto" : marginLeft,
+    marginLeft:
+      blockAlignment === "center" || blockAlignment === "right"
+        ? "auto"
+        : marginLeft,
     marginRight: blockAlignment === "center" ? "auto" : marginRight,
   };
 
@@ -258,7 +267,10 @@ const ParagraphComponent = ({
   return (
     <WrapperTag style={outerWrapperStyle} className={className}>
       {spacerBeforeHeight && spacerBeforeHeight !== "0px" && (
-        <div style={{ ...spacerElementStyle, height: spacerBeforeHeight }} aria-hidden="true" />
+        <div
+          style={{ ...spacerElementStyle, height: spacerBeforeHeight }}
+          aria-hidden="true"
+        />
       )}
       <div style={mainBlockStyle}>
         {showHeading && headingText && (
@@ -267,9 +279,15 @@ const ParagraphComponent = ({
             dangerouslySetInnerHTML={{ __html: headingText }}
           />
         )}
-        {showEyebrow && eyebrowText ? <EyebrowTag style={eyebrowStyle}>{eyebrowText}</EyebrowTag> : null}
-        {showSubtitle && subtitle ? <SubtitleTag style={subtitleStyle}>{subtitle}</SubtitleTag> : null}
-        {showHighlight && highlightColor ? <div style={highlightStyle} aria-hidden="true" /> : null}
+        {showEyebrow && eyebrowText ? (
+          <EyebrowTag style={eyebrowStyle}>{eyebrowText}</EyebrowTag>
+        ) : null}
+        {showSubtitle && subtitle ? (
+          <SubtitleTag style={subtitleStyle}>{subtitle}</SubtitleTag>
+        ) : null}
+        {showHighlight && highlightColor ? (
+          <div style={highlightStyle} aria-hidden="true" />
+        ) : null}
         <div
           style={paragraphTextStyle}
           className="paragraph-content"
@@ -278,7 +296,10 @@ const ParagraphComponent = ({
         />
       </div>
       {spacerAfterHeight && spacerAfterHeight !== "0px" && (
-        <div style={{ ...spacerElementStyle, height: spacerAfterHeight }} aria-hidden="true" />
+        <div
+          style={{ ...spacerElementStyle, height: spacerAfterHeight }}
+          aria-hidden="true"
+        />
       )}
     </WrapperTag>
   );
@@ -335,21 +356,21 @@ ParagraphComponent.propTypes = {
   headingBorderBottom: PropTypes.bool,
   headingBorderLeft: PropTypes.bool,
   headingFullBorder: PropTypes.bool,
-  
+
   showEyebrow: PropTypes.bool,
   eyebrowText: PropTypes.string,
   eyebrowTag: PropTypes.string,
   eyebrowColor: PropTypes.string,
   eyebrowLetterSpacing: PropTypes.string,
   eyebrowMarginBottom: PropTypes.string,
-  
+
   showSubtitle: PropTypes.bool,
   subtitle: PropTypes.string,
   subtitleTag: PropTypes.string,
   subtitleColor: PropTypes.string,
   subtitleFontSize: PropTypes.string,
   subtitleMarginBottom: PropTypes.string,
-  
+
   showHighlight: PropTypes.bool,
   highlightColor: PropTypes.string,
   highlightHeight: PropTypes.string,
@@ -393,7 +414,8 @@ export const paragraphComponentDefaultProps = {
   wordSpacing: "normal",
   textIndent: "0px",
   textTransform: "none",
-  backgroundGradient: "linear-gradient(180deg, rgba(15,23,42,0.1), rgba(15,23,42,0))",
+  backgroundGradient:
+    "linear-gradient(180deg, rgba(15,23,42,0.1), rgba(15,23,42,0))",
 
   showHeading: true,
   headingText: "",
@@ -427,14 +449,14 @@ export const paragraphComponentDefaultProps = {
   eyebrowColor: "#fb923c",
   eyebrowLetterSpacing: "0.3em",
   eyebrowMarginBottom: "0.5rem",
-  
+
   showSubtitle: true,
   subtitle: "High-impact writing for visionary teams.",
   subtitleTag: "p",
   subtitleColor: "#94a3b8",
   subtitleFontSize: "18px",
   subtitleMarginBottom: "1rem",
-  
+
   showHighlight: true,
   highlightColor: "#fb923c",
   highlightHeight: "4px",
