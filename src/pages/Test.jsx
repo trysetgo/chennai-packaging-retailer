@@ -1,13 +1,12 @@
 import React from 'react';
-import HeroBanner from '../components/cms/HeroBanner.jsx';
 import PageMeta from '../components/PageMeta.jsx';
 
 const pageSettings = {
-  "siteTitle": "Chennai Packaging Retailers Best In Industry",
+  "siteTitle": "Test Page Packaging Products",
   "faviconUrl": "",
   "siteLogoUrl": "http://localhost:5174/images/tsg-logo.webp",
   "primaryColor": "#1910d1",
-  "textColor": "#111827",
+  "textColor": "#df1111",
   "defaultMetaDescription": "",
   "defaultMetaKeywords": "",
   "defaultLanguage": "en-US",
@@ -15,16 +14,16 @@ const pageSettings = {
   "enabled": true,
   "canonicalUrl": "",
   "robots": "index,follow",
-  "ogTitle": "Chennai Packaging Retailers Best In Industry",
+  "ogTitle": "Test Page Packaging Products",
   "ogDescription": "",
   "ogImage": "",
   "ogType": "website",
   "twitterCard": "summary_large_image",
-  "twitterTitle": "Chennai Packaging Retailers Best In Industry",
+  "twitterTitle": "Test Page Packaging Products",
   "twitterDescription": "",
   "twitterImage": "",
   "structuredData": "",
-  "backgroundColor": "",
+  "backgroundColor": "#f35858",
   "linkColor": "#1910d1",
   "fontFamily": "",
   "maxWidth": "",
@@ -33,18 +32,19 @@ const pageSettings = {
   "customCss": ""
 };
 const pageWrapperStyle = {
-  "color": "#111827",
+  "backgroundColor": "#f35858",
+  "color": "#df1111",
   "--bwevo-primary-color": "#1910d1",
-  "--bwevo-text-color": "#111827",
+  "--bwevo-text-color": "#df1111",
   "--bwevo-link-color": "#1910d1"
 };
 
-export default function AboutPage() { // Standardized page component name
+export default function TestPage() { // Standardized page component name
 return (
 <div className="bwevo-page" style={pageWrapperStyle}>
 <PageMeta settings={pageSettings} />
 
-<HeroBanner ></HeroBanner>
+<div>Empty Page Content</div>
 </div>
 );
 };
