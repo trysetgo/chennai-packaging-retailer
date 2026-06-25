@@ -2,12 +2,30 @@
 @tailwind components;
 @tailwind utilities;
 
+:root {
+  --bwevo-primary-color: #1910d1;
+  --bwevo-text-color: #111827;
+  --bwevo-site-logo-url: url("http://localhost:5174/images/tsg-logo.webp");
+}
+
 body {
-  margin: 0;
-  font-family: sans-serif;
+  color: var(--bwevo-text-color);
+}
+
+.bwevo-page {
+  color: var(--bwevo-text-color);
+}
+
+.bwevo-page a {
+  color: var(--bwevo-primary-color);
 }
 
 .paragraph-content a {
-  color: blue;
+  color: var(--bwevo-primary-color);
   text-decoration: underline;
+}
+
+body {
+  margin: 0;
+  font-family: sans-serif;
 }

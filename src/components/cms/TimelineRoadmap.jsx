@@ -10,6 +10,8 @@ const DEFAULT_ITEMS = [
     title: "Discovery",
     date: "Week 1",
     status: "done",
+    icon: "01",
+    imageUrl: "",
     description:
       "Align on goals, audience needs, constraints, and the core outcomes this work should create.",
     bullets: ["Stakeholder interviews", "Success metrics", "Initial scope"],
@@ -22,6 +24,8 @@ const DEFAULT_ITEMS = [
     title: "Design Direction",
     date: "Weeks 2-3",
     status: "active",
+    icon: "02",
+    imageUrl: "",
     description:
       "Turn the strategy into flows, content structure, and visual direction ready for feedback.",
     bullets: ["Wireframes", "Visual system", "Content model"],
@@ -34,6 +38,8 @@ const DEFAULT_ITEMS = [
     title: "Build & Integrate",
     date: "Weeks 4-6",
     status: "planned",
+    icon: "03",
+    imageUrl: "",
     description:
       "Develop the experience, connect data and services, and prepare it for real users.",
     bullets: ["Frontend build", "CMS/API setup", "QA pass"],
@@ -46,6 +52,8 @@ const DEFAULT_ITEMS = [
     title: "Launch",
     date: "Week 7",
     status: "planned",
+    icon: "04",
+    imageUrl: "",
     description:
       "Ship the finished work, monitor early usage, and refine based on live feedback.",
     bullets: ["Production release", "Analytics review", "Iteration plan"],
@@ -66,6 +74,16 @@ export const timelineRoadmapDefaultProps = {
   showDates: true,
   showStatus: true,
   showConnectors: true,
+  showBullets: true,
+  showCtas: true,
+  showItemImages: false,
+  visualStyle: "premium",
+  cardStyle: "elevated",
+  markerShape: "circle",
+  connectorStyle: "solid",
+  headerAlign: "left",
+  timelinePosition: "center",
+  enableHoverLift: true,
   sectionBackground: "#ffffff",
   surfaceBackground: "#ffffff",
   cardBackground: "#ffffff",
@@ -80,8 +98,12 @@ export const timelineRoadmapDefaultProps = {
   borderColor: "#d8e3df",
   badgeBackground: "#e7f8f5",
   badgeTextColor: "#0f766e",
+  markerBackground: "#ffffff",
+  ctaBackground: "#0f9f8f",
+  ctaTextColor: "#ffffff",
   width: "100%",
   maxWidth: "1100px",
+  headerMaxWidth: "760px",
   padding: "44px 16px",
   gap: "20px",
   cardPadding: "20px",
@@ -90,6 +112,8 @@ export const timelineRoadmapDefaultProps = {
   connectorWidth: "3px",
   boxShadow: "0 16px 34px rgba(17, 24, 39, 0.08)",
   fontSize: "14px",
+  titleFontSize: "2rem",
+  itemTitleFontSize: "1.25em",
   mobileBreakpoint: "760px",
   style: {},
   className: "",
@@ -105,6 +129,45 @@ const getStatusColor = (status, props) => {
   if (status === "done") return props.doneColor;
   if (status === "active") return props.activeColor;
   return props.plannedColor;
+};
+
+const getVisualTreatment = (props) => {
+  if (props.visualStyle === "dark") {
+    return {
+      sectionBackground: props.sectionBackground || "#07111f",
+      surfaceBackground: props.surfaceBackground || "#0f172a",
+      cardBackground: props.cardBackground || "#111827",
+      alternateCardBackground: props.alternateCardBackground || "#0f172a",
+      textColor: props.textColor || "#f8fafc",
+      mutedTextColor: props.mutedTextColor || "#cbd5e1",
+      borderColor: props.borderColor || "rgba(148, 163, 184, 0.28)",
+      connectorColor: props.connectorColor || "rgba(45, 212, 191, 0.35)",
+    };
+  }
+
+  if (props.visualStyle === "soft") {
+    return {
+      sectionBackground: props.sectionBackground || "#f8fafc",
+      surfaceBackground: props.surfaceBackground || "#ffffff",
+      cardBackground: props.cardBackground || "#ffffff",
+      alternateCardBackground: props.alternateCardBackground || "#f0fdfa",
+      textColor: props.textColor || "#0f172a",
+      mutedTextColor: props.mutedTextColor || "#475569",
+      borderColor: props.borderColor || "#dbe7e4",
+      connectorColor: props.connectorColor || "#b8d8d2",
+    };
+  }
+
+  return {
+    sectionBackground: props.sectionBackground,
+    surfaceBackground: props.surfaceBackground,
+    cardBackground: props.cardBackground,
+    alternateCardBackground: props.alternateCardBackground,
+    textColor: props.textColor,
+    mutedTextColor: props.mutedTextColor,
+    borderColor: props.borderColor,
+    connectorColor: props.connectorColor,
+  };
 };
 
 const parseSize = (value, fallback) => {
@@ -125,6 +188,16 @@ const TimelineRoadmapComponent = (incomingProps = {}) => {
     showDates,
     showStatus,
     showConnectors,
+    showBullets,
+    showCtas,
+    showItemImages,
+    visualStyle,
+    cardStyle,
+    markerShape,
+    connectorStyle,
+    headerAlign,
+    timelinePosition,
+    enableHoverLift,
     sectionBackground,
     surfaceBackground,
     cardBackground,
@@ -136,8 +209,12 @@ const TimelineRoadmapComponent = (incomingProps = {}) => {
     borderColor,
     badgeBackground,
     badgeTextColor,
+    markerBackground,
+    ctaBackground,
+    ctaTextColor,
     width,
     maxWidth,
+    headerMaxWidth,
     padding,
     gap,
     cardPadding,
@@ -146,12 +223,15 @@ const TimelineRoadmapComponent = (incomingProps = {}) => {
     connectorWidth,
     boxShadow,
     fontSize,
+    titleFontSize,
+    itemTitleFontSize,
     mobileBreakpoint,
     style,
     className,
   } = props;
 
   const [isMobileViewport, setIsMobileViewport] = useState(false);
+  const [hoveredItemId, setHoveredItemId] = useState(null);
 
   useEffect(() => {
     if (typeof window === "undefined") return undefined;
@@ -173,11 +253,22 @@ const TimelineRoadmapComponent = (incomingProps = {}) => {
   const isAlternating = layout === "alternating" && !isMobileViewport;
   const markerSizePx = Math.max(28, parseSize(markerSize, 42));
   const connectorWidthPx = Math.max(1, parseSize(connectorWidth, 3));
+  const treatment = getVisualTreatment({
+    visualStyle,
+    sectionBackground,
+    surfaceBackground,
+    cardBackground,
+    alternateCardBackground,
+    textColor,
+    mutedTextColor,
+    borderColor,
+    connectorColor,
+  });
 
   const sectionStyle = {
     width,
-    background: sectionBackground,
-    color: textColor,
+    background: treatment.sectionBackground,
+    color: treatment.textColor,
     padding,
     fontSize,
     boxSizing: "border-box",
@@ -190,8 +281,9 @@ const TimelineRoadmapComponent = (incomingProps = {}) => {
   };
 
   const renderMarkerContent = (item, index) => {
+    if (item.icon) return item.icon;
     if (markerStyle === "status") {
-      if (item.status === "done") return "OK";
+      if (item.status === "done") return "✓";
       if (item.status === "active") return "NOW";
       return `${index + 1}`;
     }
@@ -203,18 +295,59 @@ const TimelineRoadmapComponent = (incomingProps = {}) => {
     const status = item.status || "planned";
     const statusColor = getStatusColor(status, props);
     const bullets = Array.isArray(item.bullets) ? item.bullets : [];
+    const isHovered = hoveredItemId === (item.id || index);
+    const useGlass = cardStyle === "glass";
+    const isMinimal = cardStyle === "minimal";
 
     return (
       <article
+        onMouseEnter={() => setHoveredItemId(item.id || index)}
+        onMouseLeave={() => setHoveredItemId(null)}
         style={{
-          background: index % 2 ? alternateCardBackground : cardBackground,
-          border: `1px solid ${borderColor}`,
+          background: useGlass
+            ? `linear-gradient(145deg, ${index % 2 ? treatment.alternateCardBackground : treatment.cardBackground}ee, ${treatment.surfaceBackground}cc)`
+            : index % 2
+              ? treatment.alternateCardBackground
+              : treatment.cardBackground,
+          border: isMinimal ? `1px solid transparent` : `1px solid ${treatment.borderColor}`,
           borderRadius: cardRadius,
-          boxShadow,
+          boxShadow: isMinimal ? "none" : boxShadow,
           padding: cardPadding,
           minHeight: "100%",
+          position: "relative",
+          overflow: "hidden",
+          transform: enableHoverLift && isHovered ? "translateY(-4px)" : "translateY(0)",
+          transition: "transform 180ms ease, box-shadow 180ms ease, border-color 180ms ease",
+          backdropFilter: useGlass ? "blur(14px)" : undefined,
         }}
       >
+        {visualStyle === "premium" ? (
+          <div
+            aria-hidden="true"
+            style={{
+              position: "absolute",
+              inset: "0 auto 0 0",
+              width: "4px",
+              background: `linear-gradient(180deg, ${statusColor}, ${accentColor})`,
+            }}
+          />
+        ) : null}
+
+        {showItemImages && item.imageUrl ? (
+          <img
+            src={item.imageUrl}
+            alt=""
+            style={{
+              width: "100%",
+              height: "140px",
+              objectFit: "cover",
+              borderRadius: `calc(${cardRadius} - 2px)`,
+              marginBottom: "14px",
+              display: "block",
+            }}
+          />
+        ) : null}
+
         <div
           style={{
             display: "flex",
@@ -276,8 +409,8 @@ const TimelineRoadmapComponent = (incomingProps = {}) => {
         <h3
           style={{
             margin: 0,
-            color: textColor,
-            fontSize: "1.25em",
+            color: treatment.textColor,
+            fontSize: itemTitleFontSize,
             lineHeight: 1.25,
             fontWeight: 800,
           }}
@@ -288,19 +421,19 @@ const TimelineRoadmapComponent = (incomingProps = {}) => {
           <p
             style={{
               margin: "10px 0 0",
-              color: mutedTextColor,
+              color: treatment.mutedTextColor,
               lineHeight: 1.6,
             }}
           >
             {item.description}
           </p>
         ) : null}
-        {bullets.length ? (
+        {showBullets && bullets.length ? (
           <ul
             style={{
               margin: "12px 0 0",
               paddingLeft: "18px",
-              color: mutedTextColor,
+              color: treatment.mutedTextColor,
               lineHeight: 1.55,
             }}
           >
@@ -309,7 +442,7 @@ const TimelineRoadmapComponent = (incomingProps = {}) => {
             ))}
           </ul>
         ) : null}
-        {item.ctaText ? (
+        {showCtas && item.ctaText ? (
           <a
             href={item.ctaHref || "#"}
             style={{
@@ -318,8 +451,8 @@ const TimelineRoadmapComponent = (incomingProps = {}) => {
               marginTop: "14px",
               borderRadius: "8px",
               padding: "8px 12px",
-              background: accentColor,
-              color: "#ffffff",
+              background: ctaBackground || accentColor,
+              color: ctaTextColor,
               fontWeight: 800,
               textDecoration: "none",
             }}
@@ -342,8 +475,14 @@ const TimelineRoadmapComponent = (incomingProps = {}) => {
             bottom: markerSizePx / 2,
             left: markerSizePx / 2 - connectorWidthPx / 2,
             width: connectorWidth,
-            background: connectorColor,
+            background:
+              connectorStyle === "dashed"
+                ? `repeating-linear-gradient(180deg, ${treatment.connectorColor} 0 12px, transparent 12px 20px)`
+                : connectorStyle === "gradient"
+                  ? `linear-gradient(180deg, ${accentColor}, ${treatment.connectorColor})`
+                  : treatment.connectorColor,
             borderRadius: "999px",
+            opacity: connectorStyle === "dashed" ? 0.8 : 1,
           }}
         />
       ) : null}
@@ -366,8 +505,8 @@ const TimelineRoadmapComponent = (incomingProps = {}) => {
                 zIndex: 1,
                 width: markerSize,
                 height: markerSize,
-                borderRadius: "999px",
-                background: surfaceBackground,
+                borderRadius: markerShape === "square" ? cardRadius : "999px",
+                background: markerBackground || treatment.surfaceBackground,
                 border: `${connectorWidthPx}px solid ${statusColor}`,
                 color: statusColor,
                 display: "grid",
@@ -398,7 +537,12 @@ const TimelineRoadmapComponent = (incomingProps = {}) => {
             left: "50%",
             width: connectorWidth,
             transform: "translateX(-50%)",
-            background: connectorColor,
+            background:
+              connectorStyle === "dashed"
+                ? `repeating-linear-gradient(180deg, ${treatment.connectorColor} 0 12px, transparent 12px 20px)`
+                : connectorStyle === "gradient"
+                  ? `linear-gradient(180deg, ${accentColor}, ${treatment.connectorColor})`
+                  : treatment.connectorColor,
             borderRadius: "999px",
           }}
         />
@@ -424,8 +568,8 @@ const TimelineRoadmapComponent = (incomingProps = {}) => {
                 zIndex: 1,
                 width: markerSize,
                 height: markerSize,
-                borderRadius: "999px",
-                background: surfaceBackground,
+                borderRadius: markerShape === "square" ? cardRadius : "999px",
+                background: markerBackground || treatment.surfaceBackground,
                 border: `${connectorWidthPx}px solid ${statusColor}`,
                 color: statusColor,
                 display: "grid",
@@ -464,7 +608,12 @@ const TimelineRoadmapComponent = (incomingProps = {}) => {
               left: markerSizePx / 2,
               right: markerSizePx / 2,
               height: connectorWidth,
-              background: connectorColor,
+              background:
+                connectorStyle === "dashed"
+                  ? `repeating-linear-gradient(90deg, ${treatment.connectorColor} 0 12px, transparent 12px 20px)`
+                  : connectorStyle === "gradient"
+                    ? `linear-gradient(90deg, ${accentColor}, ${treatment.connectorColor})`
+                    : treatment.connectorColor,
               borderRadius: "999px",
             }}
           />
@@ -487,8 +636,8 @@ const TimelineRoadmapComponent = (incomingProps = {}) => {
                   zIndex: 1,
                   width: markerSize,
                   height: markerSize,
-                  borderRadius: "999px",
-                  background: surfaceBackground,
+                  borderRadius: markerShape === "square" ? cardRadius : "999px",
+                  background: markerBackground || treatment.surfaceBackground,
                   border: `${connectorWidthPx}px solid ${statusColor}`,
                   color: statusColor,
                   display: "grid",
@@ -514,11 +663,11 @@ const TimelineRoadmapComponent = (incomingProps = {}) => {
         <div style={innerStyle}>
           <div
             style={{
-              border: `1px dashed ${borderColor}`,
+              border: `1px dashed ${treatment.borderColor}`,
               borderRadius: cardRadius,
               padding: "24px",
-              color: mutedTextColor,
-              background: surfaceBackground,
+              color: treatment.mutedTextColor,
+              background: treatment.surfaceBackground,
             }}
           >
             Add milestones to build your timeline.
@@ -532,7 +681,15 @@ const TimelineRoadmapComponent = (incomingProps = {}) => {
     <section style={sectionStyle} className={className}>
       <div style={innerStyle}>
         {showHeader ? (
-          <div style={{ marginBottom: "28px", maxWidth: "760px" }}>
+          <div
+            style={{
+              marginBottom: "28px",
+              maxWidth: headerMaxWidth,
+              textAlign: headerAlign,
+              marginLeft: headerAlign === "center" ? "auto" : undefined,
+              marginRight: headerAlign === "center" ? "auto" : undefined,
+            }}
+          >
             {eyebrow ? (
               <p
                 style={{
@@ -551,8 +708,8 @@ const TimelineRoadmapComponent = (incomingProps = {}) => {
               <h2
                 style={{
                   margin: "8px 0 0",
-                  color: textColor,
-                  fontSize: "2rem",
+                  color: treatment.textColor,
+                  fontSize: titleFontSize,
                   lineHeight: 1.14,
                   fontWeight: 900,
                 }}
@@ -564,9 +721,11 @@ const TimelineRoadmapComponent = (incomingProps = {}) => {
               <p
                 style={{
                   margin: "10px 0 0",
-                  color: mutedTextColor,
+                  color: treatment.mutedTextColor,
                   lineHeight: 1.6,
                   maxWidth: "700px",
+                  marginLeft: headerAlign === "center" ? "auto" : undefined,
+                  marginRight: headerAlign === "center" ? "auto" : undefined,
                 }}
               >
                 {subtitle}
@@ -575,7 +734,7 @@ const TimelineRoadmapComponent = (incomingProps = {}) => {
           </div>
         ) : null}
 
-        {isHorizontal ? renderHorizontal() : isAlternating ? renderAlternating() : renderVertical()}
+        {isHorizontal ? renderHorizontal() : isAlternating && timelinePosition === "center" ? renderAlternating() : renderVertical()}
       </div>
     </section>
   );
@@ -593,6 +752,8 @@ TimelineRoadmapComponent.propTypes = {
       title: PropTypes.string,
       date: PropTypes.string,
       status: PropTypes.oneOf(["done", "active", "planned"]),
+      icon: PropTypes.string,
+      imageUrl: PropTypes.string,
       description: PropTypes.string,
       bullets: PropTypes.arrayOf(PropTypes.string),
       ctaText: PropTypes.string,
@@ -604,6 +765,16 @@ TimelineRoadmapComponent.propTypes = {
   showDates: PropTypes.bool,
   showStatus: PropTypes.bool,
   showConnectors: PropTypes.bool,
+  showBullets: PropTypes.bool,
+  showCtas: PropTypes.bool,
+  showItemImages: PropTypes.bool,
+  visualStyle: PropTypes.oneOf(["premium", "soft", "dark", "plain"]),
+  cardStyle: PropTypes.oneOf(["elevated", "glass", "minimal"]),
+  markerShape: PropTypes.oneOf(["circle", "square"]),
+  connectorStyle: PropTypes.oneOf(["solid", "gradient", "dashed"]),
+  headerAlign: PropTypes.oneOf(["left", "center"]),
+  timelinePosition: PropTypes.oneOf(["center", "left"]),
+  enableHoverLift: PropTypes.bool,
   sectionBackground: PropTypes.string,
   surfaceBackground: PropTypes.string,
   cardBackground: PropTypes.string,
@@ -618,8 +789,12 @@ TimelineRoadmapComponent.propTypes = {
   borderColor: PropTypes.string,
   badgeBackground: PropTypes.string,
   badgeTextColor: PropTypes.string,
+  markerBackground: PropTypes.string,
+  ctaBackground: PropTypes.string,
+  ctaTextColor: PropTypes.string,
   width: PropTypes.string,
   maxWidth: PropTypes.string,
+  headerMaxWidth: PropTypes.string,
   padding: PropTypes.string,
   gap: PropTypes.string,
   cardPadding: PropTypes.string,
@@ -628,6 +803,8 @@ TimelineRoadmapComponent.propTypes = {
   connectorWidth: PropTypes.string,
   boxShadow: PropTypes.string,
   fontSize: PropTypes.string,
+  titleFontSize: PropTypes.string,
+  itemTitleFontSize: PropTypes.string,
   mobileBreakpoint: PropTypes.string,
   style: PropTypes.object,
   className: PropTypes.string,

@@ -12,7 +12,6 @@ import IllustratedHowItWorks from './cms/IllustratedHowItWorks.jsx';
 import CenteredCta from './cms/CenteredCta.jsx';
 import ImageCard from './cms/ImageCard.jsx';
 import RichTextContentBlock from './cms/RichTextContentBlock.jsx';
-import TwoColumnContent from './cms/TwoColumnContent.jsx';
 
 const LayoutRendererInternalComponentMap = {
   "Minimal Header": MinimalHeader,
@@ -28,7 +27,6 @@ const LayoutRendererInternalComponentMap = {
   "Centered CTA": CenteredCta,
   "Image Card": ImageCard,
   "Rich Text Content Block": RichTextContentBlock,
-  "TwoColumnContent": TwoColumnContent,
 };
 
 let RenderElementInternal;
