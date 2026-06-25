@@ -498,7 +498,7 @@ const SingleImageCard = ({
             className="modal-close-button"
             onClick={closeModal}
           >
-            ×
+            &times;
           </button>
           <img
             src={imageUrl || defaultImageUrl}
@@ -624,7 +624,7 @@ const ImageCardComponent = ({
   if (!cards || cards.length === 0) {
     return (
       <div style={{ padding: "1rem", textAlign: "center", color: "#9ca3af" }}>
-        प्रदर्शित करने के लिए कोई छवि कार्ड नहीं. संपादक में कुछ जोड़ें!
+        No image cards to display. Add some in the editor!
       </div>
     );
   }

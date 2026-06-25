@@ -37,12 +37,12 @@ const sizeToPx = (value, fallback) => {
 export const headerComponentDefaultProps = {
   variant: "solid",
   showTopStrip: false,
-  topStripText: "अब इस तिमाही के लिए लॉन्च पार्टनर की बुकिंग हो रही है",
+  topStripText: "Now booking launch partners for this quarter",
   topStripBackground: "linear-gradient(135deg, #2563eb 0%, #4f46e5 100%)",
   topStripTextColor: "#ffffff",
   logoSrc: "",
-  logoAlt: "कंपनी का लोगो",
-  logoText: "ब्रांड स्टूडियो",
+  logoAlt: "Company Logo",
+  logoText: "Brand Studio",
   logoTextColor: "#0f172a",
   logoFontSize: "1.25rem",
   logoFontWeight: 700,
@@ -52,34 +52,23 @@ export const headerComponentDefaultProps = {
   logoWidth: "auto",
   logoHeight: "32px",
   showLogoBadge: false,
-  logoBadgeText: "बीटा",
+  logoBadgeText: "Beta",
   logoBadgeBackground: "rgba(15,23,42,0.05)",
   logoBadgeTextColor: "#0f172a",
   navLinks: [
-    {
-      id: "nav1",
-      text: "विशेषताएँ",
-      href: "#"
-    },
-    {
-      id: "nav2",
-      text: "समाधान",
-      href: "#"
-    },
-    {
-      id: "nav3",
-      text: "मूल्य निर्धारण",
-      href: "#"
-    }
+    { id: "nav1", text: "Features", href: "#" },
+    { id: "nav2", text: "Solutions", href: "#" },
+    { id: "nav3", text: "Pricing", href: "#" },
   ],
   navGap: "0.25rem",
-  navDropdownBg: "rgba(255,255,255,0.98)",
+  navDropdownBg:
+    "rgba(255,255,255,0.98)",
   navDropdownTextColor: "#0f172a",
   navDropdownBorder: "1px solid rgba(226,232,240,0.8)",
   navDropdownShadow: "0 10px 40px -10px rgba(15,23,42,0.1)",
   textColor: "#334155",
   showSearch: false,
-  searchPlaceholder: "खोज...",
+  searchPlaceholder: "Search...",
   searchWidth: "200px",
   searchBg: "rgba(241,245,249,0.8)",
   searchBorderColor: "transparent",
@@ -89,7 +78,8 @@ export const headerComponentDefaultProps = {
   headerHeight: "72px",
   maxWidth: "100%",
   backgroundColor: "transparent",
-  innerBackground: "rgba(255,255,255,0.85)",
+  innerBackground:
+    "rgba(255,255,255,0.85)",
   innerBorder: "1px solid rgba(255,255,255,0.4)",
   innerRadius: "0px",
   innerShadow: "0 4px 24px -6px rgba(15,23,42,0.05)",
@@ -101,11 +91,11 @@ export const headerComponentDefaultProps = {
   zIndex: 50,
   showAuth: true,
   isLoggedIn: false,
-  loginText: "लॉग इन करें",
-  registerText: "साइन अप करें",
-  welcomeText: "स्वागत",
-  logoutText: "लॉग आउट",
-  alignItems: "केंद्र",
+  loginText: "Log in",
+  registerText: "Sign up",
+  welcomeText: "Welcome",
+  logoutText: "Log out",
+  alignItems: "center",
   style: {},
   linkStyle: {
     color: "#475569",
@@ -114,28 +104,29 @@ export const headerComponentDefaultProps = {
     fontSize: "0.875rem",
     fontWeight: "500",
     padding: "0.5rem 1rem",
-    borderRadius: "999px"
+    borderRadius: "999px",
   },
   showPrimaryAction: true,
-  primaryActionText: "शुरू हो जाओ",
+  primaryActionText: "Get Started",
   primaryActionHref: "#",
   primaryActionBg: "#0f172a",
   primaryActionTextColor: "#ffffff",
   primaryActionBorderColor: "transparent",
   primaryActionBorderWidth: "0px",
   primaryActionBorderRadius: "999px",
-  mobileMenuBg: "rgba(255,255,255,0.98)",
+  mobileMenuBg:
+    "rgba(255,255,255,0.98)",
   mobileMenuTextColor: "#0f172a",
   mobileMenuBorderColor: "rgba(226,232,240,0.8)",
   mobileMenuShadow: "0 20px 40px -10px rgba(15,23,42,0.15)",
   mobileBreakpoint: "900px",
   menuLayout: "inline",
-  menuAlignment: "left"
+  menuAlignment: "left",
 };
 
 const buildCompatibleHeaderProps = (rawProps = {}) => ({
   ...rawProps,
-  variant: rawProps.variant || "ठोस",
+  variant: rawProps.variant || "solid",
   linkStyle: {
     ...headerComponentDefaultProps.linkStyle,
     ...(rawProps.linkStyle || {}),
@@ -148,14 +139,14 @@ const buildCompatibleHeaderProps = (rawProps = {}) => ({
     rawProps.innerBorder ||
     (rawProps.borderBottomStyle && rawProps.borderBottomStyle !== "none"
       ? `${rawProps.borderBottomWidth || "1px"} ${rawProps.borderBottomStyle} ${
-          rawProps.borderBottomColor || "आरजीबीए(226,232,240,0.88)"
+          rawProps.borderBottomColor || "rgba(226,232,240,0.88)"
         }`
       : headerComponentDefaultProps.innerBorder),
   innerRadius: rawProps.innerRadius || rawProps.borderRadius || headerComponentDefaultProps.innerRadius,
   innerShadow: rawProps.innerShadow || rawProps.boxShadow || headerComponentDefaultProps.innerShadow,
   navDropdownBorder:
     rawProps.navDropdownBorder ||
-    `1px solid ${rawProps.borderBottomColor || "आरजीबीए(226,232,240,0.9)"}`,
+    `1px solid ${rawProps.borderBottomColor || "rgba(226,232,240,0.9)"}`,
   searchShadow: rawProps.searchShadow || headerComponentDefaultProps.searchShadow,
   mobileMenuBorderColor:
     rawProps.mobileMenuBorderColor ||
@@ -305,7 +296,7 @@ const HeaderComponent = (rawProps) => {
       color: linkStyle.color || textColor || "#0f172a",
       fontSize: linkStyle.fontSize || "15px",
       fontWeight: linkStyle.fontWeight || "600",
-      padding: linkStyle.padding || "0.6रेम 0.95रेम",
+      padding: linkStyle.padding || "0.6rem 0.95rem",
       borderRadius: linkStyle.borderRadius || "999px",
       transition:
         "transform 180ms ease, background-color 180ms ease, color 180ms ease, box-shadow 180ms ease",
@@ -327,7 +318,7 @@ const HeaderComponent = (rawProps) => {
         : linkStyle.color || textColor || "#475569",
       background:
         isHovered
-          ? linkStyle.hoverBg || "आरजीबीए(15,23,42,0.04)"
+          ? linkStyle.hoverBg || "rgba(15,23,42,0.04)"
           : "transparent",
       boxShadow: "none",
       transform: "none",
@@ -343,7 +334,7 @@ const HeaderComponent = (rawProps) => {
         : linkStyle.color || textColor || "#475569",
       background:
         isHovered
-          ? linkStyle.hoverBg || "आरजीबीए(15,23,42,0.04)"
+          ? linkStyle.hoverBg || "rgba(15,23,42,0.04)"
           : "transparent",
     };
   };

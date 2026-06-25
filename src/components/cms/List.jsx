@@ -40,11 +40,7 @@ const ListComponent = ({
   style = {},
 }) => {
   const ListTag = ordered ? "ol" : "ul";
-  const defaultItems = [
-  "वस्तु 1",
-  "मद 2",
-  "मद 3"
-];
+  const defaultItems = ["Item 1", "Item 2", "Item 3"];
   const listItemsRaw =
     items.length > 0 ? items : defaultItems.map((text, index) => ({ id: `default-${index}`, text }));
 
@@ -55,13 +51,13 @@ const ListComponent = ({
     return item || { id: `item-${index}`, text: "List Item" };
   });
 
-  const scopedClass = `list-component-${String(id || "गलती करना").replace(/[^a-zA-Z0-9_-]/g, "")}`;
+  const scopedClass = `list-component-${String(id || "default").replace(/[^a-zA-Z0-9_-]/g, "")}`;
   const normalizedStyleType = listStyleType || (ordered ? "decimal" : "disc");
 
   const listContainerStyle = {
     listStyleType: normalizedStyleType,
     listStylePosition,
-    paddingLeft: paddingLeft || "2.5 रेम",
+    paddingLeft: paddingLeft || "2.5rem",
     marginTop,
     marginRight,
     marginBottom,
@@ -110,7 +106,7 @@ const ListComponent = ({
           >
             <span
               dangerouslySetInnerHTML={{
-                __html: item.text || "सूची आइटम",
+                __html: item.text || "List Item",
               }}
             />
           </li>
@@ -168,18 +164,9 @@ ListComponent.propTypes = {
 
 export const listComponentDefaultProps = {
   items: [
-    {
-      id: "item1",
-      text: "डिफ़ॉल्ट आइटम 1"
-    },
-    {
-      id: "item2",
-      text: "डिफ़ॉल्ट आइटम 2"
-    },
-    {
-      id: "item3",
-      text: "डिफ़ॉल्ट आइटम 3"
-    }
+    { id: "item1", text: "Default Item 1" },
+    { id: "item2", text: "Default Item 2" },
+    { id: "item3", text: "Default Item 3" },
   ],
   ordered: false,
   listStyleType: "disc",
@@ -213,7 +200,7 @@ export const listComponentDefaultProps = {
   containerMaxWidth: "100%",
   containerAlign: "left",
   className: "",
-  style: {}
+  style: {},
 };
 
 export default ListComponent;

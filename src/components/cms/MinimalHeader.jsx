@@ -11,38 +11,18 @@ const parsePx = (value, fallback) => {
 
 export const minimalHeaderDefaultProps = {
   headerMode: "header",
-  logoText: "गोल्ड स्टूडियो",
+  logoText: "Aurum Studio",
   logoSrc: "",
-  logoAlt: "ब्रांड लोगो",
+  logoAlt: "Brand logo",
   logoHref: "#",
   navLinks: [
-    {
-      id: "home",
-      text: "घर",
-      href: "#home",
-      target: "_खुद"
-    },
-    {
-      id: "work",
-      text: "काम",
-      href: "#work",
-      target: "_खुद"
-    },
-    {
-      id: "services",
-      text: "सेवाएं",
-      href: "#services",
-      target: "_खुद"
-    },
-    {
-      id: "contact",
-      text: "संपर्क",
-      href: "#contact",
-      target: "_खुद"
-    }
+    { id: "home", text: "Home", href: "#home", target: "_self" },
+    { id: "work", text: "Work", href: "#work", target: "_self" },
+    { id: "services", text: "Services", href: "#services", target: "_self" },
+    { id: "contact", text: "Contact", href: "#contact", target: "_self" },
   ],
   showCTA: true,
-  ctaText: "शुरू हो जाओ",
+  ctaText: "Get Started",
   ctaHref: "#contact",
   ctaTarget: "_self",
   backgroundColor: "#ffffff",
@@ -103,16 +83,16 @@ export const minimalHeaderDefaultProps = {
   heroContainerBorderColor: "#ffffff",
   heroContainerBorderWidth: "2px",
   heroContentMaxWidth: "760px",
-  heroTitle: "हम अद्भुत रियल एस्टेट प्रदान करते हैं",
-  heroSubtitle: "हम आपके परिवार के लिए उच्च गुणवत्ता वाली अचल संपत्ति प्रदान करते हैं और भविष्य का निवेश अभी शुरू होता है!",
+  heroTitle: "We Provide Awesome Real Estate",
+  heroSubtitle: "We provide high quality real estate for your family and future investment starts now!",
   heroTitleColor: "#0f172a",
   heroSubtitleColor: "#4b5563",
   heroTitleFontSize: "64px",
   heroSubtitleFontSize: "28px",
   showHeroSearchBar: true,
-  heroSearchField1Placeholder: "जगह",
-  heroSearchField2Placeholder: "बजट",
-  heroSearchButtonText: "खोज करना",
+  heroSearchField1Placeholder: "Location",
+  heroSearchField2Placeholder: "Budget",
+  heroSearchButtonText: "Discover",
   heroSearchBackgroundColor: "#ffffff",
   heroSearchButtonBackgroundColor: "#ea580c",
   heroSearchButtonTextColor: "#ffffff",
@@ -121,38 +101,38 @@ export const minimalHeaderDefaultProps = {
     {
       id: "hero-1",
       src: "https://images.unsplash.com/photo-1605276374104-dee2a0ed3cd6?w=1200&q=80",
-      alt: "आलीशान घर",
+      alt: "Luxury house",
       href: "#hero-1",
       price: "$2.45M",
       wishlistSymbol: "♡",
       discountPrice: "$2.1M",
-      flashSaleLabel: "तेज़ बिक्री"
+      flashSaleLabel: "Flash Sale",
     },
     {
       id: "hero-2",
       src: "https://images.unsplash.com/photo-1600607687939-ce8a6c25118c?w=1200&q=80",
-      alt: "आधुनिक संपदा",
+      alt: "Modern estate",
       href: "#hero-2",
       price: "$1.95M",
       wishlistSymbol: "♡",
       discountPrice: "$1.75M",
-      flashSaleLabel: "सीमित समय"
+      flashSaleLabel: "Limited Time",
     },
     {
       id: "hero-3",
       src: "https://images.unsplash.com/photo-1613490493576-7fde63acd811?w=1200&q=80",
-      alt: "अपार्टमेंट इमारत",
+      alt: "Apartment building",
       href: "#hero-3",
       price: "$3.1M",
       wishlistSymbol: "♡",
       discountPrice: "$2.85M",
-      flashSaleLabel: "तेज़ बिक्री"
-    }
+      flashSaleLabel: "Flash Sale",
+    },
   ],
   heroGalleryGap: "16px",
   heroImageRadius: "28px",
   style: {},
-  className: ""
+  className: "",
 };
 
 const MinimalHeader = ({
@@ -390,13 +370,17 @@ const MinimalHeader = ({
       {logoSrc ? (
         <img
           src={logoSrc}
-          alt={logoAlt || "ब्रांड लोगो"}
+          alt={logoAlt || "Brand logo"}
           style={{ height: logoMaxHeight, width: "auto", objectFit: "contain", maxWidth: "180px" }}
         />
       ) : null}
       {logoText ? <p style={logoTextStyle}>{logoText}</p> : null}
     </a>
-  ); कॉन्स्ट टाइटलटैग = हीरोटाइटलटैग || "एच1"; वापस करना (
+  );
+
+  const TitleTag = heroTitleTag || "h1";
+
+  return (
     <section id={id} className={`relative ${className}`}>
       <header className="relative" style={headerStyle}>
       <style>{`
@@ -437,15 +421,15 @@ const MinimalHeader = ({
             <nav aria-label="Primary navigation">
               <ul style={{ display: "flex", alignItems: "center", gap: navGap, listStyle: "none", margin: 0, padding: 0 }}>
               {safeLinks.map((link, index) => (
-                <li key={link.id || `${link.text || "जोड़ना"}-${index}`}>
+                <li key={link.id || `${link.text || "link"}-${index}`}>
                 <a
                   href={link.href || "#"}
-                  target={link.target || "_खुद"}
+                  target={link.target || "_self"}
                   rel={link.target === "_blank" ? "noopener noreferrer" : undefined}
                   className={`minimal-header-link hover-style-${navHoverStyle}`}
                   style={navLinkStyle}
                 >
-                  {link.text || "जोड़ना"}
+                  {link.text || "Link"}
                 </a>
                 </li>
               ))}
@@ -454,7 +438,7 @@ const MinimalHeader = ({
             {showCTA && (
               <a
                 href={ctaHref || "#"}
-                target={ctaTarget || "_खुद"}
+                target={ctaTarget || "_self"}
                 rel={ctaTarget === "_blank" ? "noopener noreferrer" : undefined}
                 style={{
                   textDecoration: "none",
@@ -467,7 +451,7 @@ const MinimalHeader = ({
                   lineHeight: 1.2,
                 }}
               >
-                {ctaText || "शुरू हो जाओ"}
+                {ctaText || "Get Started"}
               </a>
             )}
           </div>
@@ -477,7 +461,7 @@ const MinimalHeader = ({
           <div style={{ display: "flex", alignItems: "center" }}>
             <a
               href={ctaHref || "#"}
-              target={ctaTarget || "_खुद"}
+              target={ctaTarget || "_self"}
               rel={ctaTarget === "_blank" ? "noopener noreferrer" : undefined}
               style={{
                 textDecoration: "none",
@@ -490,7 +474,7 @@ const MinimalHeader = ({
                 lineHeight: 1.2,
               }}
             >
-              {ctaText || "शुरू हो जाओ"}
+              {ctaText || "Get Started"}
             </a>
           </div>
         )}
@@ -555,10 +539,10 @@ const MinimalHeader = ({
             >
               <ul style={{ display: "flex", flexDirection: "column", gap: "6px", marginTop: "6px", listStyle: "none", padding: 0 }}>
               {safeLinks.map((link, index) => (
-                <li key={`mobile-${link.id || `${link.text || "जोड़ना"}-${index}`}`}>
+                <li key={`mobile-${link.id || `${link.text || "link"}-${index}`}`}>
                 <a
                   href={link.href || "#"}
-                  target={link.target || "_खुद"}
+                  target={link.target || "_self"}
                   rel={link.target === "_blank" ? "noopener noreferrer" : undefined}
                   className="minimal-header-mobile-link"
                   style={{
@@ -572,7 +556,7 @@ const MinimalHeader = ({
                   }}
                   onClick={onLinkClick}
                 >
-                  {link.text || "जोड़ना"}
+                  {link.text || "Link"}
                 </a>
                 </li>
               ))}
@@ -581,7 +565,7 @@ const MinimalHeader = ({
             {showCTA && (
               <a
                 href={ctaHref || "#"}
-                target={ctaTarget || "_खुद"}
+                target={ctaTarget || "_self"}
                 rel={ctaTarget === "_blank" ? "noopener noreferrer" : undefined}
                 style={{
                   marginTop: "10px",
@@ -596,7 +580,7 @@ const MinimalHeader = ({
                 }}
                 onClick={onLinkClick}
               >
-                {ctaText || "शुरू हो जाओ"}
+                {ctaText || "Get Started"}
               </a>
             )}
           </div>
@@ -615,15 +599,15 @@ const MinimalHeader = ({
           <nav aria-label="Primary navigation">
             <ul style={{ display: "flex", alignItems: "center", gap: navGap, listStyle: "none", margin: 0, padding: 0 }}>
             {safeLinks.map((link, index) => (
-              <li key={link.id || `${link.text || "जोड़ना"}-${index}`}>
+              <li key={link.id || `${link.text || "link"}-${index}`}>
               <a
                 href={link.href || "#"}
-                target={link.target || "_खुद"}
+                target={link.target || "_self"}
                 rel={link.target === "_blank" ? "noopener noreferrer" : undefined}
                 className={`minimal-header-link hover-style-${navHoverStyle}`}
                 style={navLinkStyle}
               >
-                {link.text || "जोड़ना"}
+                {link.text || "Link"}
               </a>
               </li>
             ))}
@@ -762,7 +746,7 @@ const MinimalHeader = ({
                   const imageKey = img.id || `hero-image-${index}`;
                   const imageHeight = heroImageHeight;
                   const linkHref = img.href || img.link;
-                  const linkTarget = img.target || "_खुद";
+                  const linkTarget = img.target || "_self";
                   const linkRel = linkTarget === "_blank" ? "noopener noreferrer" : undefined;
                   const wrapperStyle = {
                     position: "relative",
@@ -809,9 +793,14 @@ const MinimalHeader = ({
                           ) : null}
                           <span style={{ fontSize: "14px" }}>{discountPrice}</span>
                         </div>
-                      ) : असली कीमत ? (
+                      )
+                    : originalPrice
+                      ? (
                           <span style={{ fontSize: "14px", fontWeight: 600 }}>{originalPrice}</span>
-                        ) : व्यर्थ; स्थिरांक flashSaleLabel = img.flashSaleLabel; स्थिरांक छवि तत्व = (
+                        )
+                      : null;
+                  const flashSaleLabel = img.flashSaleLabel;
+                  const imageElement = (
                     <>
                       <img
                         src={img.src}

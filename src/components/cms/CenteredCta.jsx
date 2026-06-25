@@ -25,11 +25,11 @@ const CenteredCTA = ({
   overlayOpacity = 0,
   textColor = "#0f172a",
   subtitleColor = "#475569",
-  accentTagLabel = "प्रीमियम एक्सेस",
+  accentTagLabel = "Premium Access",
   accentTagColor = "#0f766e",
   accentTagBackground = "transparent",
   accentTagBorder = "none",
-  audienceLabel = "साहसी टीमों के लिए",
+  audienceLabel = "For bold teams",
   audienceColor = "#64748b",
   audienceBackground = "transparent",
   cardBackground = "transparent",
@@ -72,32 +72,20 @@ const CenteredCTA = ({
   className = "",
 }) => {
   const defaultButtons = [
-  {
-    id: "1",
-    text: "अभी खरीदें",
-    link: "#",
-    style: "प्राथमिक",
-    target: "_खुद"
-  },
-  {
-    id: "2",
-    text: "हमसे संपर्क करें",
-    link: "#",
-    style: "माध्यमिक",
-    target: "_खुद"
-  }
-];
+    { id: "1", text: "Shop Now", link: "#", style: "primary", target: "_self" },
+    { id: "2", text: "Contact Us", link: "#", style: "secondary", target: "_self" },
+  ];
 
   const displayButtons = Array.isArray(buttons) && buttons.length ? buttons : defaultButtons;
 
   const getButtonStyles = (buttonStyle) => {
     switch (buttonStyle) {
       case "primary":
-        return { backgroundColor: primaryButtonBg, color: primaryButtonColor, border: primaryButtonBorder || "कोई नहीं" };
+        return { backgroundColor: primaryButtonBg, color: primaryButtonColor, border: primaryButtonBorder || "none" };
       case "secondary":
-        return { backgroundColor: secondaryButtonBg, color: secondaryButtonColor, border: secondaryButtonBorder || "कोई नहीं" };
+        return { backgroundColor: secondaryButtonBg, color: secondaryButtonColor, border: secondaryButtonBorder || "none" };
       case "tertiary":
-        return { backgroundColor: tertiaryButtonBg, color: tertiaryButtonColor, border: tertiaryButtonBorder || "कोई नहीं" };
+        return { backgroundColor: tertiaryButtonBg, color: tertiaryButtonColor, border: tertiaryButtonBorder || "none" };
       default:
         return { backgroundColor: "#e2e8f0", color: "#0f172a", border: "none" };
     }
@@ -107,12 +95,14 @@ const CenteredCTA = ({
   const resolvedOverlayOpacity = Number(overlayOpacity) || 0;
   const resolvedShapeOpacity = Number(floatingShapeOpacity) || 0;
   const showOverlay = Boolean(backgroundOverlay) && resolvedOverlayOpacity > 0;
-  const showShape = Boolean(floatingShapeColor && floatingShapeColor !== "transparent") && resolvedShapeOpacity > 0; वापस करना (
+  const showShape = Boolean(floatingShapeColor && floatingShapeColor !== "transparent") && resolvedShapeOpacity > 0;
+
+  return (
     <section
       id={id}
       className={`evo-centered-cta ${className}`.trim()}
       style={{
-        "--cta-bg": background || "पारदर्शी",
+        "--cta-bg": background || "transparent",
         "--cta-max-width": maxWidth,
         "--cta-section-padding": sectionPadding,
         "--cta-content-gap": contentGap,
@@ -340,7 +330,7 @@ const CenteredCTA = ({
               <span
                 className="evo-centered-cta__tag"
                 style={{
-                  "--tag-bg": accentTagBackground || "पारदर्शी",
+                  "--tag-bg": accentTagBackground || "transparent",
                   "--tag-color": accentTagColor,
                   border: "none",
                 }}
@@ -352,7 +342,7 @@ const CenteredCTA = ({
               <span
                 className="evo-centered-cta__audience"
                 style={{
-                  "--audience-bg": audienceBackground || "पारदर्शी",
+                  "--audience-bg": audienceBackground || "transparent",
                   "--audience-color": audienceColor,
                 }}
               >
@@ -371,11 +361,11 @@ const CenteredCTA = ({
               key={button.id || `${button.text}-${button.link}`}
               className="evo-centered-cta__button"
               href={button.link || "#"}
-              target={button.target || "_खुद"}
+              target={button.target || "_self"}
               rel={button.target === "_blank" ? "noopener noreferrer" : undefined}
               style={getButtonStyles(button.style)}
             >
-              {button.text || "बटन"}
+              {button.text || "Button"}
             </a>
           ))}
         </div>

@@ -5,8 +5,8 @@ import PropTypes from "prop-types";
 import classNames from "classnames";
 
 export const illustratedHowItWorksDefaultProps = {
-  heading: "यह काम किस प्रकार करता है",
-  subheading: "स्पष्ट, पारदर्शी कदमों के साथ निर्बाध सहयोग।",
+  heading: "How It Works",
+  subheading: "Seamless collaboration with clear, transparent steps.",
   background: "#f6f7fb",
   cardBackground: "#ffffff",
   accentColor: "#7c5dfa",
@@ -25,51 +25,51 @@ export const illustratedHowItWorksDefaultProps = {
   steps: [
     {
       id: "step-1",
-      title: "एक प्रोजेक्ट बनाएं",
-      description: "हमारे दूरदर्शी प्रोजेक्ट के साथ नवाचार के क्षेत्र में प्रवेश करें।",
+      title: "Create a Project",
+      description: "Enter innovation’s realm with our visionary project.",
       image: "https://images.unsplash.com/photo-1556761175-4b46a572b786?w=640",
-      imageAlt: "लैपटॉप पर किसी प्रोजेक्ट पर काम कर रहा व्यक्ति",
-      imagePosition: "सही",
+      imageAlt: "Person working on a project on a laptop",
+      imagePosition: "right",
       imageWidth: "160px",
-      imageHeight: "120px"
+      imageHeight: "120px",
     },
     {
       id: "step-2",
-      title: "लेन-देन संबंधी सदस्यों को आमंत्रित करें",
-      description: "विशेष आमंत्रणों की प्रतीक्षा है, जो सहयोग को बढ़ावा दे रहे हैं।",
+      title: "Invite Transactional Members",
+      description: "Exclusive invitations await, sparking collaboration.",
       image: "https://images.unsplash.com/photo-1524504388940-b1c1722653e1?w=640",
-      imageAlt: "दो लोग हाथ मिला रहे हैं",
-      imagePosition: "सही",
+      imageAlt: "Two people shaking hands",
+      imagePosition: "right",
       imageWidth: "160px",
-      imageHeight: "120px"
+      imageHeight: "120px",
     },
     {
       id: "step-3",
-      title: "सहयोग करना प्रारंभ करें",
-      description: "टीम वर्क और नवाचार की यात्रा के लिए एकजुट हों।",
+      title: "Begin Collaborating",
+      description: "Unite for a journey of teamwork and innovation.",
       image: "https://images.unsplash.com/photo-1521737604893-d14cc237f11d?w=640",
-      imageAlt: "टीम एक मेज के चारों ओर सहयोग कर रही है",
-      imagePosition: "बाएं",
+      imageAlt: "Team collaborating around a table",
+      imagePosition: "left",
       imageWidth: "140px",
-      imageHeight: "110px"
+      imageHeight: "110px",
     },
     {
       id: "step-4",
-      title: "सौदे बंद करें",
-      description: "जैसे-जैसे सौदे निर्बाध रूप से आगे बढ़ते हैं, सफलता का मार्ग प्रशस्त करें।",
+      title: "Close Deals",
+      description: "Seal the path to success as deals unfold seamlessly.",
       image: "https://images.unsplash.com/photo-1521737604893-ffb90e06a0f3?w=640",
-      imageAlt: "एक सफल सौदे के बाद लोग उत्साह में हैं",
-      imagePosition: "सही",
+      imageAlt: "People high-fiving after a successful deal",
+      imagePosition: "right",
       imageWidth: "170px",
-      imageHeight: "130px"
-    }
+      imageHeight: "130px",
+    },
   ],
   titleColor: "#111827",
   titleFontSize: "16px",
   descriptionColor: "#4b5563",
   descriptionFontSize: "13px",
   className: "",
-  style: {}
+  style: {},
 };
 
 const IllustratedHowItWorks = ({
@@ -102,7 +102,7 @@ const IllustratedHowItWorks = ({
   const safeSteps = Array.isArray(steps) ? steps.slice(0, 6) : [];
   const columnCount = Math.max(1, Number(columns) || 2);
   const sliderRef = useRef(null);
-  const headingId = heading ? `ihiw-heading-${id || "गलती करना"}` : undefined;
+  const headingId = heading ? `ihiw-heading-${id || "default"}` : undefined;
   const toPx = (v, fallback = 0) => {
     const n = parseFloat(v);
     return Number.isFinite(n) ? n : fallback;
@@ -185,8 +185,8 @@ const IllustratedHowItWorks = ({
                 scrollSnapAlign: sliderMode ? "start" : "initial",
                 "--card-min-height": step.cardHeight || cardHeight,
                 "--card-width": step.cardWidth || cardWidth,
-                "--card-grid-areas": (step.imagePosition || "सही") === "left" ? '"media text"' : '"text media"',
-                "--card-media-align": (step.imagePosition || "सही") === "left" ? "left" : "right",
+                "--card-grid-areas": (step.imagePosition || "right") === "left" ? '"media text"' : '"text media"',
+                "--card-media-align": (step.imagePosition || "right") === "left" ? "left" : "right",
               }}
             >
               <div style={{ position: "absolute", top: "14px", left: "14px", zIndex: 10 }}>
@@ -224,7 +224,7 @@ const IllustratedHowItWorks = ({
                     style={{
                       margin: 0,
                       color: descriptionColor || "#4b5563",
-                      fontSize: descriptionFontSize || "13 पिक्सल",
+                      fontSize: descriptionFontSize || "13px",
                       lineHeight: 1.5,
                     }}
                   >
@@ -237,10 +237,10 @@ const IllustratedHowItWorks = ({
                 {step.image ? (
                   <img
                     src={step.image}
-                    alt={step.title || "चरण चित्रण"}
+                    alt={step.title || "Step illustration"}
                     style={{
                       width: step.imageWidth || "160px",
-                      height: step.imageHeight || "ऑटो",
+                      height: step.imageHeight || "auto",
                       maxWidth: "100%",
                       maxHeight: "160px",
                       borderRadius: "14px",
@@ -257,8 +257,8 @@ const IllustratedHowItWorks = ({
                       borderRadius: "12px",
                       background: `${accentColor}12`,
                       border: `1px dashed ${accentColor}66`,
-                      marginLeft: (step.imagePosition || "सही") === "left" ? "0" : "auto",
-                      marginRight: (step.imagePosition || "सही") === "left" ? "auto" : "0",
+                      marginLeft: (step.imagePosition || "right") === "left" ? "0" : "auto",
+                      marginRight: (step.imagePosition || "right") === "left" ? "auto" : "0",
                     }}
                   />
                 )}
@@ -273,14 +273,14 @@ const IllustratedHowItWorks = ({
               onClick={() => scrollByCard(-1)}
               className="px-3 py-1.5 text-xs font-semibold rounded-full bg-white shadow border border-gray-200 hover:bg-gray-50"
             >
-              ‹ पिछला
+              ‹ Prev
             </button>
             <button
               type="button"
               onClick={() => scrollByCard(1)}
               className="px-3 py-1.5 text-xs font-semibold rounded-full bg-white shadow border border-gray-200 hover:bg-gray-50"
             >
-              अगला >
+              Next ›
             </button>
           </div>
         ) : null}

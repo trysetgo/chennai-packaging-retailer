@@ -2,8 +2,9 @@ import React from "react";
 import PropTypes from "prop-types";
 
 const richTextContentBlockDefaultProps = {
-  title: "उत्पाद वर्णन",
-  content: "\u003cp>यह हल्की सूती-लिनन मिश्रित शर्ट गर्म दिनों के लिए बिल्कुल उपयुक्त है। सांस लेने योग्य बुनाई और साफ सुथरी फिनिश के साथ आराम के लिए डिज़ाइन किया गया।\u003c/p>\u003cp>समृद्ध विवरण, नीतियों, फीचर ब्रेकडाउन और संपादकीय अनुभागों के लिए इस ब्लॉक का उपयोग करें।\u003c/p>",
+  title: "Product Description",
+  content:
+    "<p>This lightweight cotton-linen blend shirt is perfect for warm days. Designed for comfort with a breathable weave and clean tailored finish.</p><p>Use this block for rich descriptions, policies, feature breakdowns, and editorial sections.</p>",
   showTitle: true,
   textAlign: "left",
   containerMaxWidth: "900px",
@@ -36,7 +37,7 @@ const richTextContentBlockDefaultProps = {
   className: "",
   style: {},
   titleStyle: {},
-  contentStyle: {}
+  contentStyle: {},
 };
 
 const RichTextContentBlock = ({

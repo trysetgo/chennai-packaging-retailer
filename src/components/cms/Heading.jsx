@@ -97,7 +97,7 @@ const HeadingComponent = (props) => {
 
   return (
     <Tag style={computedStyle} className={className}>
-      {text || "शीर्षक पाठ"}
+      {text || "Heading Text"}
     </Tag>
   );
 };
@@ -133,7 +133,7 @@ HeadingComponent.propTypes = {
 };
 
 export const headingComponentDefaultProps = {
-  text: "शीर्षक पाठ",
+  text: "Heading Text",
   level: "2",
   className: "",
   style: {},
@@ -169,7 +169,7 @@ export const headingComponentDefaultProps = {
   boxShadowColor: "#000000",
   opacity: 1,
   zIndex: "auto",
-  styleProps: {}
+  styleProps: {},
 };
 
 HeadingComponent.defaultProps = headingComponentDefaultProps;
