@@ -10,6 +10,7 @@ const pageSettings = {
   "defaultMetaDescription": "",
   "defaultMetaKeywords": "",
   "defaultLanguage": "en-US",
+  "supportedLanguages": "en-US, hi-IN",
   "googleAnalyticsId": "",
   "enabled": true,
   "canonicalUrl": "",
@@ -39,12 +40,12 @@ const pageWrapperStyle = {
   "--bwevo-link-color": "#1910d1"
 };
 
-export default function TestPage() { // Standardized page component name
-return (
-<div className="bwevo-page" style={pageWrapperStyle}>
-<PageMeta settings={pageSettings} />
-
-<div>Empty Page Content</div>
-</div>
-);
-};
+export default function TestPage() {
+  return (
+    <div className="bwevo-page" style={pageWrapperStyle}>
+      <PageMeta settings={pageSettings} />
+      
+      <div>Empty Page Content</div>
+    </div>
+  );
+}
