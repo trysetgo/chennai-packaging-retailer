@@ -11,18 +11,38 @@ const parsePx = (value, fallback) => {
 
 export const minimalHeaderDefaultProps = {
   headerMode: "header",
-  logoText: "Aurum Studio",
+  logoText: "गोल्ड स्टूडियो",
   logoSrc: "",
-  logoAlt: "Brand logo",
+  logoAlt: "ब्रांड लोगो",
   logoHref: "#",
   navLinks: [
-    { id: "home", text: "Home", href: "#home", target: "_self" },
-    { id: "work", text: "Work", href: "#work", target: "_self" },
-    { id: "services", text: "Services", href: "#services", target: "_self" },
-    { id: "contact", text: "Contact", href: "#contact", target: "_self" },
+    {
+      id: "home",
+      text: "Home",
+      href: "#home",
+      target: "_self"
+    },
+    {
+      id: "work",
+      text: "Work",
+      href: "#work",
+      target: "_self"
+    },
+    {
+      id: "services",
+      text: "Services",
+      href: "#services",
+      target: "_self"
+    },
+    {
+      id: "contact",
+      text: "Contact",
+      href: "#contact",
+      target: "_self"
+    }
   ],
   showCTA: true,
-  ctaText: "Get Started",
+  ctaText: "शुरू हो जाओ",
   ctaHref: "#contact",
   ctaTarget: "_self",
   backgroundColor: "#ffffff",
@@ -83,8 +103,8 @@ export const minimalHeaderDefaultProps = {
   heroContainerBorderColor: "#ffffff",
   heroContainerBorderWidth: "2px",
   heroContentMaxWidth: "760px",
-  heroTitle: "We Provide Awesome Real Estate",
-  heroSubtitle: "We provide high quality real estate for your family and future investment starts now!",
+  heroTitle: "हम अद्भुत रियल एस्टेट प्रदान करते हैं",
+  heroSubtitle: "हम आपके परिवार के लिए उच्च गुणवत्ता वाली अचल संपत्ति प्रदान करते हैं और भविष्य का निवेश अभी शुरू होता है!",
   heroTitleColor: "#0f172a",
   heroSubtitleColor: "#4b5563",
   heroTitleFontSize: "64px",
@@ -101,38 +121,38 @@ export const minimalHeaderDefaultProps = {
     {
       id: "hero-1",
       src: "https://images.unsplash.com/photo-1605276374104-dee2a0ed3cd6?w=1200&q=80",
-      alt: "Luxury house",
+      alt: "आलीशान घर",
       href: "#hero-1",
       price: "$2.45M",
       wishlistSymbol: "♡",
       discountPrice: "$2.1M",
-      flashSaleLabel: "Flash Sale",
+      flashSaleLabel: "तेज़ बिक्री"
     },
     {
       id: "hero-2",
       src: "https://images.unsplash.com/photo-1600607687939-ce8a6c25118c?w=1200&q=80",
-      alt: "Modern estate",
+      alt: "आधुनिक संपदा",
       href: "#hero-2",
       price: "$1.95M",
       wishlistSymbol: "♡",
       discountPrice: "$1.75M",
-      flashSaleLabel: "Limited Time",
+      flashSaleLabel: "सीमित समय"
     },
     {
       id: "hero-3",
       src: "https://images.unsplash.com/photo-1613490493576-7fde63acd811?w=1200&q=80",
-      alt: "Apartment building",
+      alt: "अपार्टमेंट इमारत",
       href: "#hero-3",
       price: "$3.1M",
       wishlistSymbol: "♡",
       discountPrice: "$2.85M",
-      flashSaleLabel: "Flash Sale",
-    },
+      flashSaleLabel: "तेज़ बिक्री"
+    }
   ],
   heroGalleryGap: "16px",
   heroImageRadius: "28px",
   style: {},
-  className: "",
+  className: ""
 };
 
 const MinimalHeader = ({

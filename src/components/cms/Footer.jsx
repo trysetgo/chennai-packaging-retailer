@@ -75,18 +75,18 @@ export const footerComponentDefaultProps = {
   socialIconSize: "28px",
   socialIconShape: "circle",
   logoSrc: "",
-  logoAlt: "Company Logo",
+  logoAlt: "कंपनी का लोगो",
   logoMaxWidth: "150px",
   logoText: "",
   logoTextColor: "#F9FAFB",
   logoTextSize: "18px",
-  brandDescription: "Making the world a better place through constructed layouts.",
+  brandDescription: "निर्मित लेआउट के माध्यम से दुनिया को एक बेहतर जगह बनाना।",
   brandDescriptionColor: "#9CA3AF",
   textAlign: "left",
   showNewsletter: false,
-  newsletterTitle: "Subscribe to our newsletter",
-  newsletterDescription: "The latest news, articles, and resources, sent to your inbox weekly.",
-  newsletterPlaceholder: "Enter your email",
+  newsletterTitle: "हमारे न्युजलेटर की सदस्यता प्राप्त करें",
+  newsletterDescription: "नवीनतम समाचार, लेख और संसाधन, साप्ताहिक रूप से आपके इनबॉक्स में भेजे जाते हैं।",
+  newsletterPlaceholder: "अपना ईमेल दर्ज करें",
   newsletterButtonText: "Subscribe",
   newsletterAction: "mailto:contact@example.com",
   showLinkSections: true,
@@ -99,28 +99,64 @@ export const footerComponentDefaultProps = {
       id: "s1",
       title: "Company",
       links: [
-        { id: "l1", text: "About", url: "#" },
-        { id: "l2", text: "Careers", url: "#" },
-        { id: "l3", text: "Press", url: "#" },
-      ],
+        {
+          id: "l1",
+          text: "About",
+          url: "#"
+        },
+        {
+          id: "l2",
+          text: "Careers",
+          url: "#"
+        },
+        {
+          id: "l3",
+          text: "Press",
+          url: "#"
+        }
+      ]
     },
     {
       id: "s2",
       title: "Resources",
       links: [
-        { id: "l4", text: "Blog", url: "#" },
-        { id: "l5", text: "Help Center", url: "#" },
-        { id: "l6", text: "Contact", url: "#" },
-      ],
-    },
+        {
+          id: "l4",
+          text: "Blog",
+          url: "#"
+        },
+        {
+          id: "l5",
+          text: "सहायता केंद्र",
+          url: "#"
+        },
+        {
+          id: "l6",
+          text: "Contact",
+          url: "#"
+        }
+      ]
+    }
   ],
   socialLinks: [
-    { id: "sm1", platform: "facebook", url: "#" },
-    { id: "sm2", platform: "twitter", url: "#" },
-    { id: "sm3", platform: "instagram", url: "#" },
+    {
+      id: "sm1",
+      platform: "facebook",
+      url: "#"
+    },
+    {
+      id: "sm2",
+      platform: "twitter",
+      url: "#"
+    },
+    {
+      id: "sm3",
+      platform: "instagram",
+      url: "#"
+    }
   ],
-  copyrightText: `© ${new Date().getFullYear()} YourBrand. All rights reserved.`,
-  style: {},
+  copyrightText: "© 2026 योरब्रांड। सर्वाधिकार सुरक्षित।",
+  style: {}
 };
 
 const FooterComponent = (rawProps) => {

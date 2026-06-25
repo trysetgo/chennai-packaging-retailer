@@ -37,12 +37,12 @@ const sizeToPx = (value, fallback) => {
 export const headerComponentDefaultProps = {
   variant: "solid",
   showTopStrip: false,
-  topStripText: "Now booking launch partners for this quarter",
+  topStripText: "अब इस तिमाही के लिए लॉन्च पार्टनर की बुकिंग हो रही है",
   topStripBackground: "linear-gradient(135deg, #2563eb 0%, #4f46e5 100%)",
   topStripTextColor: "#ffffff",
   logoSrc: "",
-  logoAlt: "Company Logo",
-  logoText: "Brand Studio",
+  logoAlt: "कंपनी का लोगो",
+  logoText: "ब्रांड स्टूडियो",
   logoTextColor: "#0f172a",
   logoFontSize: "1.25rem",
   logoFontWeight: 700,
@@ -56,19 +56,30 @@ export const headerComponentDefaultProps = {
   logoBadgeBackground: "rgba(15,23,42,0.05)",
   logoBadgeTextColor: "#0f172a",
   navLinks: [
-    { id: "nav1", text: "Features", href: "#" },
-    { id: "nav2", text: "Solutions", href: "#" },
-    { id: "nav3", text: "Pricing", href: "#" },
+    {
+      id: "nav1",
+      text: "Features",
+      href: "#"
+    },
+    {
+      id: "nav2",
+      text: "Solutions",
+      href: "#"
+    },
+    {
+      id: "nav3",
+      text: "Pricing",
+      href: "#"
+    }
   ],
   navGap: "0.25rem",
-  navDropdownBg:
-    "rgba(255,255,255,0.98)",
+  navDropdownBg: "rgba(255,255,255,0.98)",
   navDropdownTextColor: "#0f172a",
   navDropdownBorder: "1px solid rgba(226,232,240,0.8)",
   navDropdownShadow: "0 10px 40px -10px rgba(15,23,42,0.1)",
   textColor: "#334155",
   showSearch: false,
-  searchPlaceholder: "Search...",
+  searchPlaceholder: "खोज...",
   searchWidth: "200px",
   searchBg: "rgba(241,245,249,0.8)",
   searchBorderColor: "transparent",
@@ -78,8 +89,7 @@ export const headerComponentDefaultProps = {
   headerHeight: "72px",
   maxWidth: "100%",
   backgroundColor: "transparent",
-  innerBackground:
-    "rgba(255,255,255,0.85)",
+  innerBackground: "rgba(255,255,255,0.85)",
   innerBorder: "1px solid rgba(255,255,255,0.4)",
   innerRadius: "0px",
   innerShadow: "0 4px 24px -6px rgba(15,23,42,0.05)",
@@ -91,10 +101,10 @@ export const headerComponentDefaultProps = {
   zIndex: 50,
   showAuth: true,
   isLoggedIn: false,
-  loginText: "Log in",
-  registerText: "Sign up",
+  loginText: "लॉग इन करें",
+  registerText: "साइन अप करें",
   welcomeText: "Welcome",
-  logoutText: "Log out",
+  logoutText: "लॉग आउट",
   alignItems: "center",
   style: {},
   linkStyle: {
@@ -104,24 +114,23 @@ export const headerComponentDefaultProps = {
     fontSize: "0.875rem",
     fontWeight: "500",
     padding: "0.5rem 1rem",
-    borderRadius: "999px",
+    borderRadius: "999px"
   },
   showPrimaryAction: true,
-  primaryActionText: "Get Started",
+  primaryActionText: "शुरू हो जाओ",
   primaryActionHref: "#",
   primaryActionBg: "#0f172a",
   primaryActionTextColor: "#ffffff",
   primaryActionBorderColor: "transparent",
   primaryActionBorderWidth: "0px",
   primaryActionBorderRadius: "999px",
-  mobileMenuBg:
-    "rgba(255,255,255,0.98)",
+  mobileMenuBg: "rgba(255,255,255,0.98)",
   mobileMenuTextColor: "#0f172a",
   mobileMenuBorderColor: "rgba(226,232,240,0.8)",
   mobileMenuShadow: "0 20px 40px -10px rgba(15,23,42,0.15)",
   mobileBreakpoint: "900px",
   menuLayout: "inline",
-  menuAlignment: "left",
+  menuAlignment: "left"
 };
 
 const buildCompatibleHeaderProps = (rawProps = {}) => ({

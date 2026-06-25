@@ -350,10 +350,10 @@ const renderTrustItems = (items, trustStyle, accentColor, textColor) => {
 };
 
 export const heroComponentDefaultProps = {
-  heading: "Build something amazing",
-  subheading: "Create beautiful, fast, and modern web applications with our intuitive drag-and-drop builder.",
+  heading: "कुछ अद्भुत बनाएं",
+  subheading: "हमारे सहज ज्ञान युक्त ड्रैग-एंड-ड्रॉप बिल्डर के साथ सुंदर, तेज़ और आधुनिक वेब एप्लिकेशन बनाएं।",
   showEyebrow: false,
-  eyebrowText: "New Release",
+  eyebrowText: "नई रिलीज",
   eyebrowColor: "#4f46e5",
   eyebrowBackground: "rgba(79,70,229,0.1)",
   eyebrowBorderColor: "rgba(79,70,229,0.2)",
@@ -389,20 +389,20 @@ export const heroComponentDefaultProps = {
   contentPanelPadding: "32px",
   contentPanelShadow: "0 20px 40px rgba(0,0,0,0.05)",
   ctaLayout: "inline",
-  buttonText: "Get Started",
+  buttonText: "शुरू हो जाओ",
   buttonUrl: "#",
   buttonStyle: "primary",
   buttonColor: "#4f46e5",
   buttonTextColor: "#ffffff",
   buttonBorderRadius: "999px",
-  secondaryButtonText: "Learn More",
+  secondaryButtonText: "और अधिक जानें",
   secondaryButtonUrl: "#",
   showSecondaryButton: true,
   secondaryButtonStyle: "outline",
   secondaryButtonColor: "transparent",
   secondaryButtonTextColor: "#0f172a",
   showSearch: false,
-  searchPlaceholder: "Search...",
+  searchPlaceholder: "खोज...",
   searchFields: [],
   searchButtonText: "Search",
   searchWidth: "lg",
@@ -417,7 +417,7 @@ export const heroComponentDefaultProps = {
   searchFieldDividerColor: "#e2e8f0",
   mediaType: "image",
   mediaImageUrl: "https://images.unsplash.com/photo-1551434678-e076c223a692?auto=format&fit=crop&w=1600&q=80",
-  mediaImageAlt: "Hero Image",
+  mediaImageAlt: "हीरो छवि",
   mediaObjectFit: "cover",
   mediaAspectRatio: "4/3",
   mediaPanelBackground: "transparent",
@@ -427,7 +427,7 @@ export const heroComponentDefaultProps = {
   mediaPanelShadow: "0 20px 40px rgba(0,0,0,0.1)",
   mediaCardEyebrow: "Highlights",
   mediaCardTitle: "Performance",
-  mediaCardDescription: "Lightning fast load times and optimized delivery.",
+  mediaCardDescription: "बहुत तेज़ लोड समय और अनुकूलित डिलीवरी।",
   mediaCardValue: "100",
   mediaCardMeta: "Performance Score",
   mediaCardItems: [],
@@ -448,7 +448,11 @@ export const heroComponentDefaultProps = {
   trustStyle: "inline",
   trustItems: [],
   showFeatures: false,
-  featuresGridColumns: { base: 1, sm: 2, lg: 3 },
+  featuresGridColumns: {
+    base: 1,
+    sm: 2,
+    lg: 3
+  },
   features: [],
   showStats: false,
   statsVariant: "inline",
@@ -457,7 +461,7 @@ export const heroComponentDefaultProps = {
   productGridColumns: 3,
   productGrids: [],
   seoHeadingTag: "h1",
-  lazyLoadMedia: false,
+  lazyLoadMedia: false
 };
 
 const HeroComponent = (rawProps) => {

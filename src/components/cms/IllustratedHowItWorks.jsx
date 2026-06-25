@@ -5,8 +5,8 @@ import PropTypes from "prop-types";
 import classNames from "classnames";
 
 export const illustratedHowItWorksDefaultProps = {
-  heading: "How It Works",
-  subheading: "Seamless collaboration with clear, transparent steps.",
+  heading: "यह काम किस प्रकार करता है",
+  subheading: "स्पष्ट, पारदर्शी कदमों के साथ निर्बाध सहयोग।",
   background: "#f6f7fb",
   cardBackground: "#ffffff",
   accentColor: "#7c5dfa",
@@ -25,51 +25,51 @@ export const illustratedHowItWorksDefaultProps = {
   steps: [
     {
       id: "step-1",
-      title: "Create a Project",
-      description: "Enter innovation’s realm with our visionary project.",
+      title: "एक प्रोजेक्ट बनाएं",
+      description: "हमारे दूरदर्शी प्रोजेक्ट के साथ नवाचार के क्षेत्र में प्रवेश करें।",
       image: "https://images.unsplash.com/photo-1556761175-4b46a572b786?w=640",
-      imageAlt: "Person working on a project on a laptop",
+      imageAlt: "लैपटॉप पर किसी प्रोजेक्ट पर काम कर रहा व्यक्ति",
       imagePosition: "right",
       imageWidth: "160px",
-      imageHeight: "120px",
+      imageHeight: "120px"
     },
     {
       id: "step-2",
-      title: "Invite Transactional Members",
-      description: "Exclusive invitations await, sparking collaboration.",
+      title: "लेन-देन संबंधी सदस्यों को आमंत्रित करें",
+      description: "विशेष आमंत्रणों की प्रतीक्षा है, जो सहयोग को बढ़ावा दे रहे हैं।",
       image: "https://images.unsplash.com/photo-1524504388940-b1c1722653e1?w=640",
-      imageAlt: "Two people shaking hands",
+      imageAlt: "दो लोग हाथ मिला रहे हैं",
       imagePosition: "right",
       imageWidth: "160px",
-      imageHeight: "120px",
+      imageHeight: "120px"
     },
     {
       id: "step-3",
-      title: "Begin Collaborating",
-      description: "Unite for a journey of teamwork and innovation.",
+      title: "सहयोग करना प्रारंभ करें",
+      description: "टीम वर्क और नवाचार की यात्रा के लिए एकजुट हों।",
       image: "https://images.unsplash.com/photo-1521737604893-d14cc237f11d?w=640",
-      imageAlt: "Team collaborating around a table",
+      imageAlt: "टीम एक मेज के चारों ओर सहयोग कर रही है",
       imagePosition: "left",
       imageWidth: "140px",
-      imageHeight: "110px",
+      imageHeight: "110px"
     },
     {
       id: "step-4",
-      title: "Close Deals",
-      description: "Seal the path to success as deals unfold seamlessly.",
+      title: "सौदे बंद करें",
+      description: "जैसे-जैसे सौदे निर्बाध रूप से आगे बढ़ते हैं, सफलता का मार्ग प्रशस्त करें।",
       image: "https://images.unsplash.com/photo-1521737604893-ffb90e06a0f3?w=640",
-      imageAlt: "People high-fiving after a successful deal",
+      imageAlt: "एक सफल सौदे के बाद लोग उत्साह में हैं",
       imagePosition: "right",
       imageWidth: "170px",
-      imageHeight: "130px",
-    },
+      imageHeight: "130px"
+    }
   ],
   titleColor: "#111827",
   titleFontSize: "16px",
   descriptionColor: "#4b5563",
   descriptionFontSize: "13px",
   className: "",
-  style: {},
+  style: {}
 };
 
 const IllustratedHowItWorks = ({

@@ -164,9 +164,18 @@ ListComponent.propTypes = {
 
 export const listComponentDefaultProps = {
   items: [
-    { id: "item1", text: "Default Item 1" },
-    { id: "item2", text: "Default Item 2" },
-    { id: "item3", text: "Default Item 3" },
+    {
+      id: "item1",
+      text: "डिफ़ॉल्ट आइटम 1"
+    },
+    {
+      id: "item2",
+      text: "डिफ़ॉल्ट आइटम 2"
+    },
+    {
+      id: "item3",
+      text: "डिफ़ॉल्ट आइटम 3"
+    }
   ],
   ordered: false,
   listStyleType: "disc",
@@ -200,7 +209,7 @@ export const listComponentDefaultProps = {
   containerMaxWidth: "100%",
   containerAlign: "left",
   className: "",
-  style: {},
+  style: {}
 };
 
 export default ListComponent;
