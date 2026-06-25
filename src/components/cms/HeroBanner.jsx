@@ -89,7 +89,7 @@ const buildCompatibleHeroProps = (rawProps = {}) => {
         : searchFields.length > 0,
     searchFields,
     searchPlaceholder:
-      rawProps?.searchPlaceholder || searchFields?.[0]?.placeholder || "Search...",
+      rawProps?.searchPlaceholder || searchFields?.[0]?.placeholder || "खोज...",
     searchButtonText:
       rawProps?.searchButtonText ||
       (String(primaryActionLabel || "").toLowerCase().includes("search")
@@ -106,7 +106,7 @@ const buildCompatibleHeroProps = (rawProps = {}) => {
         : rawProps?.variant === "spotlight"
           ? "panel"
           : "centered"),
-    seoHeadingTag: rawProps?.seoHeadingTag || "h1",
+    seoHeadingTag: rawProps?.seoHeadingTag || "एच 1",
     lazyLoadMedia: rawProps?.lazyLoadMedia || false,
   };
 };
@@ -174,7 +174,7 @@ const renderFeatureCards = (items, textColor, accentColor) => (
         {feature.imageUrl ? (
           <img
             src={feature.imageUrl}
-            alt={feature.title || "Feature"}
+            alt={feature.title || "विशेषता"}
             className="mb-3 h-12 w-12 rounded-lg object-cover"
           />
         ) : (
@@ -234,7 +234,7 @@ const renderStatCards = (items, textColor, accentColor) => (
             border: `1px solid ${hexToRgba(accentColor, 0.12, "rgba(236,48,128,0.12)")}`,
           }}
         >
-          {item.icon || "Stat"}
+          {item.icon || "स्टेट"}
         </div>
         <div className="text-2xl font-bold" style={{ color: textColor }}>
           {item.value}
@@ -259,7 +259,7 @@ const renderProductCards = (items) => (
           {!!grid.imageUrl && (
             <img
               src={grid.imageUrl}
-              alt={grid.name || "Product"}
+              alt={grid.name || "उत्पाद"}
               className="mb-3 h-44 w-full rounded-lg object-cover"
             />
           )}
@@ -267,8 +267,8 @@ const renderProductCards = (items) => (
             className="font-semibold"
             style={{
               color: grid.productNameColor || "#0f172a",
-              fontSize: grid.productNameFontSize || "1rem",
-              marginBottom: grid.productNameMarginBottom || "0.5rem",
+              fontSize: grid.productNameFontSize || "1रेम",
+              marginBottom: grid.productNameMarginBottom || "0.5 रेम",
               padding: grid.productNamePadding || "0",
             }}
           >
@@ -278,8 +278,8 @@ const renderProductCards = (items) => (
             <div
               style={{
                 color: grid.productDiscountColor || "#16a34a",
-                fontSize: grid.productDiscountFontSize || "0.875rem",
-                marginBottom: grid.productDiscountMarginBottom || "0.5rem",
+                fontSize: grid.productDiscountFontSize || "0.875रेम",
+                marginBottom: grid.productDiscountMarginBottom || "0.5 रेम",
                 padding: grid.productDiscountPadding || "0",
               }}
             >
@@ -294,7 +294,7 @@ const renderProductCards = (items) => (
               color: grid.productButtonTextColor || "#ffffff",
             }}
           >
-            {grid.productButtonText || "Buy Now"}
+            {grid.productButtonText || "अभी खरीदें"}
           </button>
         </div>
       ))}
@@ -328,7 +328,7 @@ const renderTrustItems = (items, trustStyle, accentColor, textColor) => {
           {item.imageUrl ? (
             <img
               src={item.imageUrl}
-              alt={item.label || "Trust item"}
+              alt={item.label || "विश्वास की वस्तु"}
               className="h-6 w-6 rounded object-cover"
             />
           ) : (
@@ -404,7 +404,7 @@ export const heroComponentDefaultProps = {
   showSearch: false,
   searchPlaceholder: "खोज...",
   searchFields: [],
-  searchButtonText: "Search",
+  searchButtonText: "खोज",
   searchWidth: "lg",
   searchStyle: "default",
   searchButtonColor: "#4f46e5",
@@ -425,8 +425,8 @@ export const heroComponentDefaultProps = {
   mediaPanelRadius: "24px",
   mediaPanelPadding: "0px",
   mediaPanelShadow: "0 20px 40px rgba(0,0,0,0.1)",
-  mediaCardEyebrow: "Highlights",
-  mediaCardTitle: "Performance",
+  mediaCardEyebrow: "हाइलाइट",
+  mediaCardTitle: "प्रदर्शन",
   mediaCardDescription: "बहुत तेज़ लोड समय और अनुकूलित डिलीवरी।",
   mediaCardValue: "100",
   mediaCardMeta: "Performance Score",
@@ -588,8 +588,8 @@ const HeroComponent = (rawProps) => {
   const safeSearchFields = Array.isArray(searchFields) ? searchFields.filter(Boolean) : [];
   const safeTrustItems = Array.isArray(trustItems) ? trustItems.filter(Boolean) : [];
   const safeMediaCardItems = Array.isArray(mediaCardItems) ? mediaCardItems.filter(Boolean) : [];
-  const safeMediaType = mediaType || "none";
-  const safeLayoutMode = layoutMode || "panel";
+  const safeMediaType = mediaType || "कोई नहीं";
+  const safeLayoutMode = layoutMode || "पैनल";
   const isSideBySide = ["split", "split-reverse", "panel", "immersive"].includes(safeLayoutMode);
   const isReverse = safeLayoutMode === "split-reverse";
   const isCentered = safeLayoutMode === "centered";
@@ -851,15 +851,14 @@ const HeroComponent = (rawProps) => {
     const featureGridColumns = featuresGridColumns?.lg || 3;
     return (
       <>
-        {showStats && safeStats.length > 0 && safeMediaType !== "stats" ? (
-          statsVariant === "inline" ? (
+        {showStats && safeStats.length > 0 && सुरक्षित मीडिया प्रकार !== "आँकड़े" ? ( आँकड़े वेरिएंट === "इनलाइन"? (
             <div className="mt-8 w-full">{renderInlineStats(safeStats, textColor)}</div>
           ) : (
             <div className="mt-8 w-full">{renderStatCards(safeStats, textColor, accentColor)}</div>
           )
         ) : null}
 
-        {showFeatures && safeFeatures.length > 0 && safeMediaType !== "features" ? (
+        {showFeatures && safeFeatures.length > 0 && सुरक्षित मीडिया प्रकार !== "सुविधाएँ" ? (
           <div
             className={classNames("mt-8 grid w-full gap-4", columnClass(featureGridColumns))}
           >
@@ -871,7 +870,7 @@ const HeroComponent = (rawProps) => {
                 {feature.imageUrl ? (
                   <img
                     src={feature.imageUrl}
-                    alt={feature.title || "Feature"}
+                    alt={feature.title || "विशेषता"}
                     className="mb-4 h-12 w-12 rounded-2xl object-cover"
                   />
                 ) : (
@@ -896,7 +895,7 @@ const HeroComponent = (rawProps) => {
           </div>
         ) : null}
 
-        {showProductGrid && safeProductGrids.length > 0 && safeMediaType !== "products" ? (
+        {showProductGrid && safeProductGrids.length > 0 && सुरक्षित मीडिया प्रकार !== "उत्पाद" ? (
           <div
             className={classNames(
               "mt-8 grid w-full gap-4",
@@ -911,7 +910,7 @@ const HeroComponent = (rawProps) => {
                 {!!grid.imageUrl && (
                   <img
                     src={grid.imageUrl}
-                    alt={grid.name || "Product"}
+                    alt={grid.name || "उत्पाद"}
                     className="mb-4 h-48 w-full rounded-[18px] object-cover"
                   />
                 )}
@@ -919,8 +918,8 @@ const HeroComponent = (rawProps) => {
                   className="font-semibold"
                   style={{
                     color: grid.productNameColor || "#0f172a",
-                    fontSize: grid.productNameFontSize || "1rem",
-                    marginBottom: grid.productNameMarginBottom || "0.5rem",
+                    fontSize: grid.productNameFontSize || "1रेम",
+                    marginBottom: grid.productNameMarginBottom || "0.5 रेम",
                     padding: grid.productNamePadding || "0",
                   }}
                 >
@@ -930,8 +929,8 @@ const HeroComponent = (rawProps) => {
                   <div
                     style={{
                       color: grid.productDiscountColor || "#16a34a",
-                      fontSize: grid.productDiscountFontSize || "0.875rem",
-                      marginBottom: grid.productDiscountMarginBottom || "0.5rem",
+                      fontSize: grid.productDiscountFontSize || "0.875रेम",
+                      marginBottom: grid.productDiscountMarginBottom || "0.5 रेम",
                       padding: grid.productDiscountPadding || "0",
                     }}
                   >
@@ -947,7 +946,7 @@ const HeroComponent = (rawProps) => {
                     color: grid.productButtonTextColor || "#ffffff",
                   }}
                 >
-                  {grid.productButtonText || "Buy now"}
+                  {grid.productButtonText || "अभी खरीदें"}
                 </button>
               </div>
             ))}
@@ -1069,7 +1068,7 @@ const HeroComponent = (rawProps) => {
         {mediaCardTitle ? (
           <h3
             className="relative z-10 max-w-md font-semibold leading-tight"
-            style={{ color: mediaCardTitleColor, fontSize: mediaCardTitleFontSize || "clamp(1.8rem,3vw,2.6rem)" }}
+            style={{ color: mediaCardTitleColor, fontSize: mediaCardTitleFontSize || "क्लैंप(1.8rem,3vw,2.6rem)" }}
           >
             {mediaCardTitle}
           </h3>
@@ -1085,13 +1084,13 @@ const HeroComponent = (rawProps) => {
         <div className="relative z-10 mt-8 grid gap-4 sm:grid-cols-[minmax(0,1fr)_auto] sm:items-end">
           <div className="rounded-[24px] border border-slate-200/80 p-5 backdrop-blur-sm" style={{ backgroundColor: mediaCardIsTransparent ? "transparent" : mediaCardBackgroundColor }}>
             <p className="text-[11px] font-semibold uppercase tracking-[0.24em] text-slate-500">
-              System signal
+              सिस्टम सिग्नल
             </p>
             <div className="mt-3 font-semibold" style={{ color: mediaCardValueColor, fontSize: mediaCardValueFontSize }}>
               {mediaCardValue || "01"}
             </div>
             <p className="mt-2 text-sm text-slate-600">
-              {mediaCardMeta || "Composed from props"}
+              {mediaCardMeta || "प्रॉप्स से बना है"}
             </p>
           </div>
           <div className="rounded-[24px] border border-slate-200/80 px-5 py-4 text-sm backdrop-blur-sm" style={{ backgroundColor: mediaCardIsTransparent ? "transparent" : mediaCardBackgroundColor, color: mediaCardItemColor, fontSize: mediaCardItemFontSize }}>
@@ -1125,7 +1124,7 @@ const HeroComponent = (rawProps) => {
   };
 
   const mediaPanel = renderMediaPanel();
-  const HeadingTag = seoHeadingTag || "h1";
+  const HeadingTag = seoHeadingTag || "एच 1";
   const contentBlock = (
     <div className={contentAreaClass}>
       <div className={contentInnerClass} style={contentSurfaceStyle}>
@@ -1154,7 +1153,7 @@ const HeroComponent = (rawProps) => {
               </span>
             ) : null}
           </div>
-        ) : showBadge && badgeText ? (
+        ) : शोबैज && बैजटेक्स्ट? (
           <span
             className="mb-5 inline-flex items-center rounded-full px-4 py-2 text-[11px] font-semibold uppercase tracking-[0.18em]"
             style={{
@@ -1230,10 +1229,10 @@ const HeroComponent = (rawProps) => {
           md: "min-h-[420px] md:min-h-[620px]",
           lg: "min-h-[520px] md:min-h-[760px]",
           full: "min-h-[80vh] md:min-h-screen",
-        }[height] || "min-h-[520px] md:min-h-[760px]",
+        }[height] || "मिनट-एच-[520पीएक्स] एमडी:मिनट-एच-[760पीएक्स]",
       )}
       style={backgroundStyle}
-      aria-label={heading || "Hero section"}
+      aria-label={heading || "हीरो अनुभाग"}
     >
       {overlayStyle ? (
         <div className="pointer-events-none absolute inset-0" style={overlayStyle} />
@@ -1287,12 +1286,12 @@ const HeroComponent = (rawProps) => {
             </div>
             </div>
           </>
-        ) : isStacked && mediaPanel ? (
+        ) : स्टैक्ड && मीडियापैनल है? (
           <div className="space-y-8">
             {contentBlock}
             <div className="w-full">{mediaPanel}</div>
           </div>
-        ) : isCentered && mediaPanel ? (
+        ) : केन्द्रित && मीडिया पैनल है? (
           <div className="space-y-8">
             <div className="mx-auto max-w-5xl">{contentBlock}</div>
             <div className="mx-auto w-full max-w-4xl">{mediaPanel}</div>

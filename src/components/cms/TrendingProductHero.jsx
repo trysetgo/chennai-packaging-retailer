@@ -146,10 +146,7 @@ const TrendingProductHero = (props) => {
     setCurrentIndex((prev) => (prev - 1 + displayProducts.length) % displayProducts.length);
   };
 
-  const safeIndex = currentIndex >= displayProducts.length ? 0 : Math.max(0, currentIndex);
-  const activeProduct = displayProducts[safeIndex];
-
-  return (
+  const safeIndex = currentIndex >= डिस्प्लेप्रोडक्ट्स.लंबाई? 0 : Math.max(0, currentIndex); स्थिरांक सक्रिय उत्पाद = प्रदर्शन उत्पाद [सुरक्षित सूचकांक]; वापस करना (
     <div 
       className="relative w-full overflow-hidden"
       style={{ 
@@ -268,7 +265,7 @@ const TrendingProductHero = (props) => {
                         className="px-6 py-3 rounded-full font-semibold text-sm transition-transform hover:scale-105"
                         style={{ backgroundColor: styles.primaryColor, color: "#ffffff" }}
                       >
-                        {activeProduct.ctaText || "Shop Now"}
+                        {activeProduct.ctaText || "अभी खरीदें"}
                       </a>
                       {displayProducts.length > 1 && (
                         <div className="flex space-x-2">
@@ -301,7 +298,7 @@ const TrendingProductHero = (props) => {
                   exit={{ opacity: 0 }}
                   className="w-full max-w-md rounded-3xl overflow-hidden shadow-xl relative bg-gray-50 dark:bg-gray-800/50 flex items-center justify-center p-8 min-h-[400px] border border-dashed border-gray-300 dark:border-gray-700"
                 >
-                  <p className="text-gray-500 dark:text-gray-400 text-center font-medium">No products available.</p>
+                  <p className="text-gray-500 dark:text-gray-400 text-center font-medium">कोई उत्पाद उपलब्ध नहीं.</p>
                 </motion.div>
               )}
             </AnimatePresence>

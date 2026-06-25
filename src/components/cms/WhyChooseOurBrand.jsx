@@ -4,10 +4,30 @@ import React, { useMemo } from "react";
 import PropTypes from "prop-types";
 
 const defaultFeatures = [
-  { id: "feat-1", title: "Premium Quality", image: "https://images.unsplash.com/photo-1542291026-7eec264c27ff?auto=format&fit=crop&w=400&q=80", text: "Crafted with excellence." },
-  { id: "feat-2", title: "Fast Delivery", image: "https://images.unsplash.com/photo-1580828369019-2238b6d774d0?auto=format&fit=crop&w=400&q=80", text: "Shipped quickly to your door." },
-  { id: "feat-3", title: "24/7 Support", image: "https://images.unsplash.com/photo-1516321318423-f06f85e504b3?auto=format&fit=crop&w=400&q=80", text: "Always here to help you." },
-  { id: "feat-4", title: "Eco Friendly", image: "https://images.unsplash.com/photo-1542601906990-b4d3fb778b09?auto=format&fit=crop&w=400&q=80", text: "Sustainable materials." },
+  {
+    id: "feat-1",
+    title: "प्रीमियम गुणवत्ता",
+    image: "https://images.unsplash.com/photo-1542291026-7eec264c27ff?auto=format&fit=crop&w=400&q=80",
+    text: "उत्कृष्टता के साथ तैयार किया गया."
+  },
+  {
+    id: "feat-2",
+    title: "तेजी से वितरण",
+    image: "https://images.unsplash.com/photo-1580828369019-2238b6d774d0?auto=format&fit=crop&w=400&q=80",
+    text: "जल्दी से आपके दरवाजे पर भेज दिया गया।"
+  },
+  {
+    id: "feat-3",
+    title: "24/7 सहायता",
+    image: "https://images.unsplash.com/photo-1516321318423-f06f85e504b3?auto=format&fit=crop&w=400&q=80",
+    text: "आपकी मदद के लिए हमेशा मौजूद हूं."
+  },
+  {
+    id: "feat-4",
+    title: "पर्यावरण के अनुकूल",
+    image: "https://images.unsplash.com/photo-1542601906990-b4d3fb778b09?auto=format&fit=crop&w=400&q=80",
+    text: "टिकाऊ सामग्री."
+  }
 ];
 
 export const whyChooseOurBrandDefaultProps = {

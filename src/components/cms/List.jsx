@@ -40,7 +40,11 @@ const ListComponent = ({
   style = {},
 }) => {
   const ListTag = ordered ? "ol" : "ul";
-  const defaultItems = ["Item 1", "Item 2", "Item 3"];
+  const defaultItems = [
+  "वस्तु 1",
+  "मद 2",
+  "मद 3"
+];
   const listItemsRaw =
     items.length > 0 ? items : defaultItems.map((text, index) => ({ id: `default-${index}`, text }));
 
@@ -51,13 +55,13 @@ const ListComponent = ({
     return item || { id: `item-${index}`, text: "List Item" };
   });
 
-  const scopedClass = `list-component-${String(id || "default").replace(/[^a-zA-Z0-9_-]/g, "")}`;
+  const scopedClass = `list-component-${String(id || "गलती करना").replace(/[^a-zA-Z0-9_-]/g, "")}`;
   const normalizedStyleType = listStyleType || (ordered ? "decimal" : "disc");
 
   const listContainerStyle = {
     listStyleType: normalizedStyleType,
     listStylePosition,
-    paddingLeft: paddingLeft || "2.5rem",
+    paddingLeft: paddingLeft || "2.5 रेम",
     marginTop,
     marginRight,
     marginBottom,
@@ -106,7 +110,7 @@ const ListComponent = ({
           >
             <span
               dangerouslySetInnerHTML={{
-                __html: item.text || "List Item",
+                __html: item.text || "सूची आइटम",
               }}
             />
           </li>

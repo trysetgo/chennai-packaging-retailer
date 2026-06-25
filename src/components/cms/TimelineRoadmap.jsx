@@ -140,8 +140,8 @@ const getVisualTreatment = (props) => {
       alternateCardBackground: props.alternateCardBackground || "#0f172a",
       textColor: props.textColor || "#f8fafc",
       mutedTextColor: props.mutedTextColor || "#cbd5e1",
-      borderColor: props.borderColor || "rgba(148, 163, 184, 0.28)",
-      connectorColor: props.connectorColor || "rgba(45, 212, 191, 0.35)",
+      borderColor: props.borderColor || "आरजीबीए(148, 163, 184, 0.28)",
+      connectorColor: props.connectorColor || "आरजीबीए(45, 212, 191, 0.35)",
     };
   }
 
@@ -292,7 +292,7 @@ const TimelineRoadmapComponent = (incomingProps = {}) => {
   };
 
   const renderCard = (item, index) => {
-    const status = item.status || "planned";
+    const status = item.status || "की योजना बनाई";
     const statusColor = getStatusColor(status, props);
     const bullets = Array.isArray(item.bullets) ? item.bullets : [];
     const isHovered = hoveredItemId === (item.id || index);
@@ -487,7 +487,7 @@ const TimelineRoadmapComponent = (incomingProps = {}) => {
         />
       ) : null}
       {safeItems.map((item, index) => {
-        const statusColor = getStatusColor(item.status || "planned", props);
+        const statusColor = getStatusColor(item.status || "की योजना बनाई", props);
         return (
           <div
             key={item.id || index}
@@ -548,7 +548,7 @@ const TimelineRoadmapComponent = (incomingProps = {}) => {
         />
       ) : null}
       {safeItems.map((item, index) => {
-        const statusColor = getStatusColor(item.status || "planned", props);
+        const statusColor = getStatusColor(item.status || "की योजना बनाई", props);
         const isLeft = index % 2 === 0;
         return (
           <div
@@ -619,7 +619,7 @@ const TimelineRoadmapComponent = (incomingProps = {}) => {
           />
         ) : null}
         {safeItems.map((item, index) => {
-          const statusColor = getStatusColor(item.status || "planned", props);
+          const statusColor = getStatusColor(item.status || "की योजना बनाई", props);
           return (
             <div
               key={item.id || index}
@@ -670,7 +670,7 @@ const TimelineRoadmapComponent = (incomingProps = {}) => {
               background: treatment.surfaceBackground,
             }}
           >
-            Add milestones to build your timeline.
+            अपनी टाइमलाइन बनाने के लिए मील के पत्थर जोड़ें।
           </div>
         </div>
       </section>

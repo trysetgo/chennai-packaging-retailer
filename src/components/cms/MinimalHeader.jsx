@@ -18,27 +18,27 @@ export const minimalHeaderDefaultProps = {
   navLinks: [
     {
       id: "home",
-      text: "Home",
+      text: "घर",
       href: "#home",
-      target: "_self"
+      target: "_खुद"
     },
     {
       id: "work",
-      text: "Work",
+      text: "काम",
       href: "#work",
-      target: "_self"
+      target: "_खुद"
     },
     {
       id: "services",
-      text: "Services",
+      text: "सेवाएं",
       href: "#services",
-      target: "_self"
+      target: "_खुद"
     },
     {
       id: "contact",
-      text: "Contact",
+      text: "संपर्क",
       href: "#contact",
-      target: "_self"
+      target: "_खुद"
     }
   ],
   showCTA: true,
@@ -110,9 +110,9 @@ export const minimalHeaderDefaultProps = {
   heroTitleFontSize: "64px",
   heroSubtitleFontSize: "28px",
   showHeroSearchBar: true,
-  heroSearchField1Placeholder: "Location",
-  heroSearchField2Placeholder: "Budget",
-  heroSearchButtonText: "Discover",
+  heroSearchField1Placeholder: "जगह",
+  heroSearchField2Placeholder: "बजट",
+  heroSearchButtonText: "खोज करना",
   heroSearchBackgroundColor: "#ffffff",
   heroSearchButtonBackgroundColor: "#ea580c",
   heroSearchButtonTextColor: "#ffffff",
@@ -390,17 +390,13 @@ const MinimalHeader = ({
       {logoSrc ? (
         <img
           src={logoSrc}
-          alt={logoAlt || "Brand logo"}
+          alt={logoAlt || "ब्रांड लोगो"}
           style={{ height: logoMaxHeight, width: "auto", objectFit: "contain", maxWidth: "180px" }}
         />
       ) : null}
       {logoText ? <p style={logoTextStyle}>{logoText}</p> : null}
     </a>
-  );
-
-  const TitleTag = heroTitleTag || "h1";
-
-  return (
+  ); कॉन्स्ट टाइटलटैग = हीरोटाइटलटैग || "एच1"; वापस करना (
     <section id={id} className={`relative ${className}`}>
       <header className="relative" style={headerStyle}>
       <style>{`
@@ -441,15 +437,15 @@ const MinimalHeader = ({
             <nav aria-label="Primary navigation">
               <ul style={{ display: "flex", alignItems: "center", gap: navGap, listStyle: "none", margin: 0, padding: 0 }}>
               {safeLinks.map((link, index) => (
-                <li key={link.id || `${link.text || "link"}-${index}`}>
+                <li key={link.id || `${link.text || "जोड़ना"}-${index}`}>
                 <a
                   href={link.href || "#"}
-                  target={link.target || "_self"}
+                  target={link.target || "_खुद"}
                   rel={link.target === "_blank" ? "noopener noreferrer" : undefined}
                   className={`minimal-header-link hover-style-${navHoverStyle}`}
                   style={navLinkStyle}
                 >
-                  {link.text || "Link"}
+                  {link.text || "जोड़ना"}
                 </a>
                 </li>
               ))}
@@ -458,7 +454,7 @@ const MinimalHeader = ({
             {showCTA && (
               <a
                 href={ctaHref || "#"}
-                target={ctaTarget || "_self"}
+                target={ctaTarget || "_खुद"}
                 rel={ctaTarget === "_blank" ? "noopener noreferrer" : undefined}
                 style={{
                   textDecoration: "none",
@@ -471,7 +467,7 @@ const MinimalHeader = ({
                   lineHeight: 1.2,
                 }}
               >
-                {ctaText || "Get Started"}
+                {ctaText || "शुरू हो जाओ"}
               </a>
             )}
           </div>
@@ -481,7 +477,7 @@ const MinimalHeader = ({
           <div style={{ display: "flex", alignItems: "center" }}>
             <a
               href={ctaHref || "#"}
-              target={ctaTarget || "_self"}
+              target={ctaTarget || "_खुद"}
               rel={ctaTarget === "_blank" ? "noopener noreferrer" : undefined}
               style={{
                 textDecoration: "none",
@@ -494,7 +490,7 @@ const MinimalHeader = ({
                 lineHeight: 1.2,
               }}
             >
-              {ctaText || "Get Started"}
+              {ctaText || "शुरू हो जाओ"}
             </a>
           </div>
         )}
@@ -559,10 +555,10 @@ const MinimalHeader = ({
             >
               <ul style={{ display: "flex", flexDirection: "column", gap: "6px", marginTop: "6px", listStyle: "none", padding: 0 }}>
               {safeLinks.map((link, index) => (
-                <li key={`mobile-${link.id || `${link.text || "link"}-${index}`}`}>
+                <li key={`mobile-${link.id || `${link.text || "जोड़ना"}-${index}`}`}>
                 <a
                   href={link.href || "#"}
-                  target={link.target || "_self"}
+                  target={link.target || "_खुद"}
                   rel={link.target === "_blank" ? "noopener noreferrer" : undefined}
                   className="minimal-header-mobile-link"
                   style={{
@@ -576,7 +572,7 @@ const MinimalHeader = ({
                   }}
                   onClick={onLinkClick}
                 >
-                  {link.text || "Link"}
+                  {link.text || "जोड़ना"}
                 </a>
                 </li>
               ))}
@@ -585,7 +581,7 @@ const MinimalHeader = ({
             {showCTA && (
               <a
                 href={ctaHref || "#"}
-                target={ctaTarget || "_self"}
+                target={ctaTarget || "_खुद"}
                 rel={ctaTarget === "_blank" ? "noopener noreferrer" : undefined}
                 style={{
                   marginTop: "10px",
@@ -600,7 +596,7 @@ const MinimalHeader = ({
                 }}
                 onClick={onLinkClick}
               >
-                {ctaText || "Get Started"}
+                {ctaText || "शुरू हो जाओ"}
               </a>
             )}
           </div>
@@ -619,15 +615,15 @@ const MinimalHeader = ({
           <nav aria-label="Primary navigation">
             <ul style={{ display: "flex", alignItems: "center", gap: navGap, listStyle: "none", margin: 0, padding: 0 }}>
             {safeLinks.map((link, index) => (
-              <li key={link.id || `${link.text || "link"}-${index}`}>
+              <li key={link.id || `${link.text || "जोड़ना"}-${index}`}>
               <a
                 href={link.href || "#"}
-                target={link.target || "_self"}
+                target={link.target || "_खुद"}
                 rel={link.target === "_blank" ? "noopener noreferrer" : undefined}
                 className={`minimal-header-link hover-style-${navHoverStyle}`}
                 style={navLinkStyle}
               >
-                {link.text || "Link"}
+                {link.text || "जोड़ना"}
               </a>
               </li>
             ))}
@@ -766,7 +762,7 @@ const MinimalHeader = ({
                   const imageKey = img.id || `hero-image-${index}`;
                   const imageHeight = heroImageHeight;
                   const linkHref = img.href || img.link;
-                  const linkTarget = img.target || "_self";
+                  const linkTarget = img.target || "_खुद";
                   const linkRel = linkTarget === "_blank" ? "noopener noreferrer" : undefined;
                   const wrapperStyle = {
                     position: "relative",
@@ -813,14 +809,9 @@ const MinimalHeader = ({
                           ) : null}
                           <span style={{ fontSize: "14px" }}>{discountPrice}</span>
                         </div>
-                      )
-                    : originalPrice
-                      ? (
+                      ) : असली कीमत ? (
                           <span style={{ fontSize: "14px", fontWeight: 600 }}>{originalPrice}</span>
-                        )
-                      : null;
-                  const flashSaleLabel = img.flashSaleLabel;
-                  const imageElement = (
+                        ) : व्यर्थ; स्थिरांक flashSaleLabel = img.flashSaleLabel; स्थिरांक छवि तत्व = (
                     <>
                       <img
                         src={img.src}

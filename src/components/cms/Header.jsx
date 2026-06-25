@@ -52,23 +52,23 @@ export const headerComponentDefaultProps = {
   logoWidth: "auto",
   logoHeight: "32px",
   showLogoBadge: false,
-  logoBadgeText: "Beta",
+  logoBadgeText: "बीटा",
   logoBadgeBackground: "rgba(15,23,42,0.05)",
   logoBadgeTextColor: "#0f172a",
   navLinks: [
     {
       id: "nav1",
-      text: "Features",
+      text: "विशेषताएँ",
       href: "#"
     },
     {
       id: "nav2",
-      text: "Solutions",
+      text: "समाधान",
       href: "#"
     },
     {
       id: "nav3",
-      text: "Pricing",
+      text: "मूल्य निर्धारण",
       href: "#"
     }
   ],
@@ -103,9 +103,9 @@ export const headerComponentDefaultProps = {
   isLoggedIn: false,
   loginText: "लॉग इन करें",
   registerText: "साइन अप करें",
-  welcomeText: "Welcome",
+  welcomeText: "स्वागत",
   logoutText: "लॉग आउट",
-  alignItems: "center",
+  alignItems: "केंद्र",
   style: {},
   linkStyle: {
     color: "#475569",
@@ -135,7 +135,7 @@ export const headerComponentDefaultProps = {
 
 const buildCompatibleHeaderProps = (rawProps = {}) => ({
   ...rawProps,
-  variant: rawProps.variant || "solid",
+  variant: rawProps.variant || "ठोस",
   linkStyle: {
     ...headerComponentDefaultProps.linkStyle,
     ...(rawProps.linkStyle || {}),
@@ -148,14 +148,14 @@ const buildCompatibleHeaderProps = (rawProps = {}) => ({
     rawProps.innerBorder ||
     (rawProps.borderBottomStyle && rawProps.borderBottomStyle !== "none"
       ? `${rawProps.borderBottomWidth || "1px"} ${rawProps.borderBottomStyle} ${
-          rawProps.borderBottomColor || "rgba(226,232,240,0.88)"
+          rawProps.borderBottomColor || "आरजीबीए(226,232,240,0.88)"
         }`
       : headerComponentDefaultProps.innerBorder),
   innerRadius: rawProps.innerRadius || rawProps.borderRadius || headerComponentDefaultProps.innerRadius,
   innerShadow: rawProps.innerShadow || rawProps.boxShadow || headerComponentDefaultProps.innerShadow,
   navDropdownBorder:
     rawProps.navDropdownBorder ||
-    `1px solid ${rawProps.borderBottomColor || "rgba(226,232,240,0.9)"}`,
+    `1px solid ${rawProps.borderBottomColor || "आरजीबीए(226,232,240,0.9)"}`,
   searchShadow: rawProps.searchShadow || headerComponentDefaultProps.searchShadow,
   mobileMenuBorderColor:
     rawProps.mobileMenuBorderColor ||
@@ -305,7 +305,7 @@ const HeaderComponent = (rawProps) => {
       color: linkStyle.color || textColor || "#0f172a",
       fontSize: linkStyle.fontSize || "15px",
       fontWeight: linkStyle.fontWeight || "600",
-      padding: linkStyle.padding || "0.6rem 0.95rem",
+      padding: linkStyle.padding || "0.6रेम 0.95रेम",
       borderRadius: linkStyle.borderRadius || "999px",
       transition:
         "transform 180ms ease, background-color 180ms ease, color 180ms ease, box-shadow 180ms ease",
@@ -327,7 +327,7 @@ const HeaderComponent = (rawProps) => {
         : linkStyle.color || textColor || "#475569",
       background:
         isHovered
-          ? linkStyle.hoverBg || "rgba(15,23,42,0.04)"
+          ? linkStyle.hoverBg || "आरजीबीए(15,23,42,0.04)"
           : "transparent",
       boxShadow: "none",
       transform: "none",
@@ -343,7 +343,7 @@ const HeaderComponent = (rawProps) => {
         : linkStyle.color || textColor || "#475569",
       background:
         isHovered
-          ? linkStyle.hoverBg || "rgba(15,23,42,0.04)"
+          ? linkStyle.hoverBg || "आरजीबीए(15,23,42,0.04)"
           : "transparent",
     };
   };

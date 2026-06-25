@@ -97,7 +97,7 @@ const HeadingComponent = (props) => {
 
   return (
     <Tag style={computedStyle} className={className}>
-      {text || "Heading Text"}
+      {text || "शीर्षक पाठ"}
     </Tag>
   );
 };

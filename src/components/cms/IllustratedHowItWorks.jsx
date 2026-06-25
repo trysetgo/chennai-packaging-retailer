@@ -29,7 +29,7 @@ export const illustratedHowItWorksDefaultProps = {
       description: "हमारे दूरदर्शी प्रोजेक्ट के साथ नवाचार के क्षेत्र में प्रवेश करें।",
       image: "https://images.unsplash.com/photo-1556761175-4b46a572b786?w=640",
       imageAlt: "लैपटॉप पर किसी प्रोजेक्ट पर काम कर रहा व्यक्ति",
-      imagePosition: "right",
+      imagePosition: "सही",
       imageWidth: "160px",
       imageHeight: "120px"
     },
@@ -39,7 +39,7 @@ export const illustratedHowItWorksDefaultProps = {
       description: "विशेष आमंत्रणों की प्रतीक्षा है, जो सहयोग को बढ़ावा दे रहे हैं।",
       image: "https://images.unsplash.com/photo-1524504388940-b1c1722653e1?w=640",
       imageAlt: "दो लोग हाथ मिला रहे हैं",
-      imagePosition: "right",
+      imagePosition: "सही",
       imageWidth: "160px",
       imageHeight: "120px"
     },
@@ -49,7 +49,7 @@ export const illustratedHowItWorksDefaultProps = {
       description: "टीम वर्क और नवाचार की यात्रा के लिए एकजुट हों।",
       image: "https://images.unsplash.com/photo-1521737604893-d14cc237f11d?w=640",
       imageAlt: "टीम एक मेज के चारों ओर सहयोग कर रही है",
-      imagePosition: "left",
+      imagePosition: "बाएं",
       imageWidth: "140px",
       imageHeight: "110px"
     },
@@ -59,7 +59,7 @@ export const illustratedHowItWorksDefaultProps = {
       description: "जैसे-जैसे सौदे निर्बाध रूप से आगे बढ़ते हैं, सफलता का मार्ग प्रशस्त करें।",
       image: "https://images.unsplash.com/photo-1521737604893-ffb90e06a0f3?w=640",
       imageAlt: "एक सफल सौदे के बाद लोग उत्साह में हैं",
-      imagePosition: "right",
+      imagePosition: "सही",
       imageWidth: "170px",
       imageHeight: "130px"
     }
@@ -102,7 +102,7 @@ const IllustratedHowItWorks = ({
   const safeSteps = Array.isArray(steps) ? steps.slice(0, 6) : [];
   const columnCount = Math.max(1, Number(columns) || 2);
   const sliderRef = useRef(null);
-  const headingId = heading ? `ihiw-heading-${id || "default"}` : undefined;
+  const headingId = heading ? `ihiw-heading-${id || "गलती करना"}` : undefined;
   const toPx = (v, fallback = 0) => {
     const n = parseFloat(v);
     return Number.isFinite(n) ? n : fallback;
@@ -185,8 +185,8 @@ const IllustratedHowItWorks = ({
                 scrollSnapAlign: sliderMode ? "start" : "initial",
                 "--card-min-height": step.cardHeight || cardHeight,
                 "--card-width": step.cardWidth || cardWidth,
-                "--card-grid-areas": (step.imagePosition || "right") === "left" ? '"media text"' : '"text media"',
-                "--card-media-align": (step.imagePosition || "right") === "left" ? "left" : "right",
+                "--card-grid-areas": (step.imagePosition || "सही") === "left" ? '"media text"' : '"text media"',
+                "--card-media-align": (step.imagePosition || "सही") === "left" ? "left" : "right",
               }}
             >
               <div style={{ position: "absolute", top: "14px", left: "14px", zIndex: 10 }}>
@@ -224,7 +224,7 @@ const IllustratedHowItWorks = ({
                     style={{
                       margin: 0,
                       color: descriptionColor || "#4b5563",
-                      fontSize: descriptionFontSize || "13px",
+                      fontSize: descriptionFontSize || "13 पिक्सल",
                       lineHeight: 1.5,
                     }}
                   >
@@ -237,10 +237,10 @@ const IllustratedHowItWorks = ({
                 {step.image ? (
                   <img
                     src={step.image}
-                    alt={step.title || "Step illustration"}
+                    alt={step.title || "चरण चित्रण"}
                     style={{
                       width: step.imageWidth || "160px",
-                      height: step.imageHeight || "auto",
+                      height: step.imageHeight || "ऑटो",
                       maxWidth: "100%",
                       maxHeight: "160px",
                       borderRadius: "14px",
@@ -257,8 +257,8 @@ const IllustratedHowItWorks = ({
                       borderRadius: "12px",
                       background: `${accentColor}12`,
                       border: `1px dashed ${accentColor}66`,
-                      marginLeft: (step.imagePosition || "right") === "left" ? "0" : "auto",
-                      marginRight: (step.imagePosition || "right") === "left" ? "auto" : "0",
+                      marginLeft: (step.imagePosition || "सही") === "left" ? "0" : "auto",
+                      marginRight: (step.imagePosition || "सही") === "left" ? "auto" : "0",
                     }}
                   />
                 )}
@@ -273,14 +273,14 @@ const IllustratedHowItWorks = ({
               onClick={() => scrollByCard(-1)}
               className="px-3 py-1.5 text-xs font-semibold rounded-full bg-white shadow border border-gray-200 hover:bg-gray-50"
             >
-              ‹ Prev
+              ‹ पिछला
             </button>
             <button
               type="button"
               onClick={() => scrollByCard(1)}
               className="px-3 py-1.5 text-xs font-semibold rounded-full bg-white shadow border border-gray-200 hover:bg-gray-50"
             >
-              Next ›
+              अगला >
             </button>
           </div>
         ) : null}
