@@ -10,8 +10,6 @@ import WhyChooseOurBrand from './cms/WhyChooseOurBrand.jsx';
 import TrendingProductHero from './cms/TrendingProductHero.jsx';
 import IllustratedHowItWorks from './cms/IllustratedHowItWorks.jsx';
 import CenteredCta from './cms/CenteredCta.jsx';
-import ImageCard from './cms/ImageCard.jsx';
-import RichTextContentBlock from './cms/RichTextContentBlock.jsx';
 
 const LayoutRendererInternalComponentMap = {
   "Minimal Header": MinimalHeader,
@@ -25,8 +23,6 @@ const LayoutRendererInternalComponentMap = {
   "Trending Product Hero": TrendingProductHero,
   "Illustrated How It Works": IllustratedHowItWorks,
   "Centered CTA": CenteredCta,
-  "Image Card": ImageCard,
-  "Rich Text Content Block": RichTextContentBlock,
 };
 
 let RenderElementInternal;
