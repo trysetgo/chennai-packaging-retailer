@@ -1,25 +1,27 @@
 import React from 'react';
-import MinimalHeader from './cms/MinimalHeader.jsx';
-import RichTextContentBlock from './cms/RichTextContentBlock.jsx';
-import Footer from './cms/Footer.jsx';
 import Header from './cms/Header.jsx';
 import HeroBanner from './cms/HeroBanner.jsx';
 import WhyChooseOurBrand from './cms/WhyChooseOurBrand.jsx';
 import TrendingProductHero from './cms/TrendingProductHero.jsx';
 import IllustratedHowItWorks from './cms/IllustratedHowItWorks.jsx';
 import CenteredCta from './cms/CenteredCta.jsx';
+import Footer from './cms/Footer.jsx';
+import MinimalHeader from './cms/MinimalHeader.jsx';
+import Paragraph from './cms/Paragraph.jsx';
+import Image from './cms/Image.jsx';
 import BannerCarousel from './cms/BannerCarousel.jsx';
 
 const LayoutRendererInternalComponentMap = {
-  "Minimal Header": MinimalHeader,
-  "Rich Text Content Block": RichTextContentBlock,
-  "Footer": Footer,
   "Header": Header,
   "Hero Banner": HeroBanner,
   "Why Choose Our Brand": WhyChooseOurBrand,
   "Trending Product Hero": TrendingProductHero,
   "Illustrated How It Works": IllustratedHowItWorks,
   "Centered CTA": CenteredCta,
+  "Footer": Footer,
+  "Minimal Header": MinimalHeader,
+  "Paragraph": Paragraph,
+  "Image": Image,
   "Banner Carousel": BannerCarousel,
 };
 
