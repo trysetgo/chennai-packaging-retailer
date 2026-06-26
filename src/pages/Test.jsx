@@ -1,4 +1,5 @@
 import React from 'react';
+import BannerCarousel from '../components/cms/BannerCarousel.jsx';
 import PageMeta from '../components/PageMeta.jsx';
 
 const pageSettings = {
@@ -24,7 +25,7 @@ const pageSettings = {
   "twitterDescription": "",
   "twitterImage": "",
   "structuredData": "",
-  "backgroundColor": "#f35858",
+  "backgroundColor": "#ffffff",
   "linkColor": "#1910d1",
   "fontFamily": "",
   "maxWidth": "",
@@ -33,7 +34,7 @@ const pageSettings = {
   "customCss": ""
 };
 const pageWrapperStyle = {
-  "backgroundColor": "#f35858",
+  "backgroundColor": "#ffffff",
   "color": "#df1111",
   "--bwevo-primary-color": "#1910d1",
   "--bwevo-text-color": "#df1111",
@@ -45,7 +46,7 @@ export default function TestPage() {
     <div className="bwevo-page" style={pageWrapperStyle}>
       <PageMeta settings={pageSettings} />
       
-      <div>Empty Page Content</div>
+      <BannerCarousel style={JSON.parse(`{}`)} height="420px" slides={JSON.parse(`[{"id":"slide-1","link":"#","title":"Elevate Your Brand with Premium Packaging","altText":"Premium Packaging Printing","imageUrl":"https://images.unsplash.com/photo-1520607162513-77705c0f0d4a?auto=format&fit=crop&w=1600&q=80","description":"Discover our stunning packaging solutions designed to make your products stand out."},{"id":"slide-2","link":"#","title":"Transform Your Packaging Experience","altText":"Creative Packaging Solutions","imageUrl":"https://images.unsplash.com/photo-1519389950473-47ba0277781c?auto=format&fit=crop&w=1600&q=80","description":"Join us in creating memorable unboxing experiences that captivate customers."}]`)} autoplay={true} interval={5000} className="" objectFit="cover" borderRadius="16px" controlColor="#000000" pauseOnHover={true} showControls={true} titleFontSize="24px" indicatorColor="rgba(0,0,0,0.5)" overlayPadding="12px 20px" showIndicators={true} overlayMaxWidth="76%" overlayPosition="bottom-center" titleFontWeight="700" overlayTextColor="#000000" controlBackground="rgba(255, 255, 255, 0.8)" descriptionFontSize="15px" activeIndicatorColor="#000000" descriptionLineHeight="1.6" overlayBackgroundColor="linear-gradient(90deg, rgba(211,235,279,0.8), rgba(255,215,0,0.8))" id="9b9f3d7b-afe7-417d-bcb9-ee9b21411416"></BannerCarousel>
     </div>
   );
 }
