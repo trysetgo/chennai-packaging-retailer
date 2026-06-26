@@ -1,8 +1,6 @@
 import React from 'react';
 import MinimalHeader from './cms/MinimalHeader.jsx';
-import Heading from './cms/Heading.jsx';
-import List from './cms/List.jsx';
-import TimelineRoadmap from './cms/TimelineRoadmap.jsx';
+import RichTextContentBlock from './cms/RichTextContentBlock.jsx';
 import Footer from './cms/Footer.jsx';
 import Header from './cms/Header.jsx';
 import HeroBanner from './cms/HeroBanner.jsx';
@@ -14,9 +12,7 @@ import BannerCarousel from './cms/BannerCarousel.jsx';
 
 const LayoutRendererInternalComponentMap = {
   "Minimal Header": MinimalHeader,
-  "Heading": Heading,
-  "List": List,
-  "Timeline / Roadmap": TimelineRoadmap,
+  "Rich Text Content Block": RichTextContentBlock,
   "Footer": Footer,
   "Header": Header,
   "Hero Banner": HeroBanner,
